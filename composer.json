@@ -1,0 +1,5 @@
+{
+    "require": {
+        "njh/easyrdf": "dev-master"
+    }
+}
