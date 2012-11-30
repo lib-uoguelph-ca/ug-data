@@ -1,49 +1,44 @@
 {
-    "hash": "f1fb9e2fc3f66e923cee56cbfb1a02f6",
+    "hash": "a09dd31d52546f0ea19c344a0534c0dc",
     "packages": [
         {
-            "name": "njh/easyrdf",
+            "name": "chh/optparse",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git://github.com/njh/easyrdf.git",
-                "reference": "6297d947fcd86a70d05e5932073f28735a6df80e"
+                "url": "git://github.com/CHH/optparse",
+                "reference": "3abf522b87b4952ce4afb6e1eed217fa22295f1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/njh/easyrdf/archive/6297d947fcd86a70d05e5932073f28735a6df80e.zip",
-                "reference": "6297d947fcd86a70d05e5932073f28735a6df80e",
+                "url": "https://github.com/CHH/optparse/archive/3abf522b87b4952ce4afb6e1eed217fa22295f1b.zip",
+                "reference": "3abf522b87b4952ce4afb6e1eed217fa22295f1b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.8"
+                "php": ">=5.3.3"
             },
-            "time": "2012-11-24 00:05:22",
+            "time": "2012-08-28 17:25:43",
             "type": "library",
             "installation-source": "source",
             "autoload": {
-                "psr-0": {
-                    "EasyRdf": "lib/"
-                }
+                "classmap": [
+                    "lib/"
+                ]
             },
             "license": [
-                "BSD-3-Clause"
+                "mit"
             ],
             "authors": [
                 {
-                    "name": "Nicholas Humfrey",
-                    "email": "njh@aelius.com",
-                    "homepage": "http://www.aelius.com/njh/",
-                    "role": "Developer"
+                    "name": "Christoph Hochstrasser",
+                    "email": "christoph.hochstrasser@gmail.com",
+                    "homepage": "http://christophh.net"
                 }
             ],
-            "description": "EasyRdf is a PHP library designed to make it easy to consume and produce RDF.",
-            "homepage": "http://www.aelius.com/njh/easyrdf/",
+            "description": "Easy to use option parser.",
             "keywords": [
-                "rdfa",
-                "RDF",
-                "Semantic Web",
-                "Turtle"
+                "cli"
             ]
         }
     ],
@@ -53,6 +48,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "njh/easyrdf": 20
+        "chh/optparse": 20
     }
 }

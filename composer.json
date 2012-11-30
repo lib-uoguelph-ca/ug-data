@@ -1,5 +1,12 @@
 {
     "require": {
-        "njh/easyrdf": "dev-master"
+        "chh/optparse": "dev-master"
+    },
+    
+    "autoload": {
+        "psr-0": {
+	        "Doana": "application/libraries/",
+	        "owllib": "vendor/"
+        }
     }
 }
