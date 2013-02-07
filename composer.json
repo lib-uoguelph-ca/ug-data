@@ -1,12 +1,14 @@
 {
     "require": {
-        "chh/optparse": "dev-master"
+        "chh/optparse": "dev-master",
+        "symfony/form": "2.1.4"
     },
     
     "autoload": {
         "psr-0": {
 	        "Doana": "application/libraries/",
-	        "owllib": "vendor/"
+	        "owllib": "vendor/",
+	        "PFBC": "application/libraries/"
         }
     }
 }

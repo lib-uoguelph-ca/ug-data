@@ -1,4 +1,6 @@
 application/config/*
 .settings/*
 .vagrant
-
+*.zip
+*.tgz
+composer.lock

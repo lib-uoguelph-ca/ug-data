@@ -3,6 +3,10 @@
 namespace doana\owlform;
 require '../vendor/autoload.php';
 
+//use \Symfony\Component\Form\Forms;
+
+use PFBC\Form;
+
 require_once "../vendor/owllib/owllib/OWLLib.php";
 require_once "$OWLLIB_ROOT/reader/OWLReader.php";
 require_once "$OWLLIB_ROOT/memory/OWLMemoryOntology.php";
@@ -113,15 +117,24 @@ class OwlForm {
 		$properties = $this->getProperties();
 		var_dump($properties); 
 		
-		/*
-		$form = '';
+		$form = new Form("Ontology");	
+		$form->configure(array(
+				"prevent" => array("bootstrap", "jQuery", "focus")
+		));
 		
-		$form .= '<fieldset id="' . $this->getName() . '" class="ontology">';
+		$form->addElement(new \PFBC\Element\Select("Type:", "type", $classes));
 		
-		$form .= '<select name="type" id="' . $this->getName() . '-type">';
+		$form->addElement(new \PFBC\Element\Textbox("My Textbox:", "MyTextbox"));
+		$form->addElement(new \PFBC\Element\Select("My Select:", "MySelect", array(
+				"Option #1",
+				"Option #2",
+				"Option #3"
+		)));
+		$form->addElement(new \PFBC\Element\Button);
+		$rendered_form = $form->render(TRUE);
 		
-		$form .= '</fieldset>';
-		*/
+		echo $rendered_form;
+		
 	}
 	
 }
