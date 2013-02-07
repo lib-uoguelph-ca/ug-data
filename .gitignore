@@ -4,3 +4,4 @@ application/config/*
 *.zip
 *.tgz
 composer.lock
+*.mwb.bak
