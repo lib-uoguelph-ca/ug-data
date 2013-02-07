@@ -81,6 +81,23 @@ class lamp($version='latest') {
       require => Package[$apache],
       notify  => Service[$apache_srv],
     }
+    
+    file { '/etc/apache2/sites-available/ug-data.conf':
+      ensure  => present,
+      source  => "puppet:///modules/lamp/apache2/ug-data.conf",
+      require => Package[$apache],
+      notify  => Service[$apache_srv],
+    }
+
+    file { '/etc/apache2/sites-enabled/ug-data':
+       ensure => link,
+       target => "/etc/apache2/sites-available/ug-data.conf",
+    }
+    
+    file { '/etc/apache2/mods-enabled/rewrite.load':
+       ensure => link,
+       target => "/etc/apache2/mods-available/rewrite.load",
+    }
 
     file { $sysconfig_conf:
       ensure  => present,
