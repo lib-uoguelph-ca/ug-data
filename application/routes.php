@@ -39,6 +39,10 @@ Route::get('/', function()
 
 Route::controller('home');
 Route::controller('search');
+#Route::controller('dataset');
+Route::get('dataset/(:num?)', 'dataset@index'); 
+
+
 
 /*
 |--------------------------------------------------------------------------
