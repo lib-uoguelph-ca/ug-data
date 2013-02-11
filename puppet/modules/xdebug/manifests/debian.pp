@@ -20,8 +20,8 @@ class xdebug::debian {
 	xdebug.remote_handler=dbgp
 	xdebug.remote_host=33.33.33.1
 	xdebug.remote_port=9000
-	xdebug.remote_autostart=1
-	',
+	xdebug.remote_autostart=0
+   ',
     }
 
     exec {'restart apache':
