@@ -1,0 +1,10 @@
+@mixin list {
+	margin-left: 2em;
+}
+
+@mixin border {
+	width: 95%;
+	padding: 1em;
+	float: left;
+	border: 1px solid $border_colour;
+}

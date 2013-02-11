@@ -4,9 +4,10 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
-$pri_colour: #7C0000;
+$pri_colour: #990000;
 $sec_colour: #FDC708;
 $main_link_colour: #336699;
+$border_colour: #777;
 
 @import "uofg/header";
 @import "uofg/sidebar";
@@ -17,3 +18,39 @@ $main_link_colour: #336699;
 @import "uofg/style";
 @import "uofg/style2";
 @import "uofg/topmenu";
+
+@import "mixins/general";
+
+/*
+ * Main Content
+ **/
+
+#main div.container {
+	padding: 10px 20px; 
+	width:820px;
+}
+
+a {
+	color: $main_link_colour;
+}
+
+ul {
+	@include list;
+	list-style-type: disc;
+}
+
+ol {
+	@include list;
+	list-style-type: decimal;
+}
+
+code {
+	font-family: "Courier New" Courier monospace;
+	background-color: #CCC;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+table td {
+	vertical-align: top;
+}
