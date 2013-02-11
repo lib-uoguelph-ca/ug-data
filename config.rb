@@ -1,0 +1,5 @@
+http_path = "public"
+sass_dir = "scss"
+css_dir = "public/css"
+javascripts_dir = "public/js"
+images_dir = "public/img"

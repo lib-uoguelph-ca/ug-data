@@ -5,3 +5,4 @@ application/config/*
 *.tgz
 composer.lock
 *.mwb.bak
+.sass-cache

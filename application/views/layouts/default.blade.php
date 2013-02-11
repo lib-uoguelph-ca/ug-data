@@ -13,8 +13,11 @@
         <link rel="icon" type="image/png" href="/img/guelph.ico">
 
         @section('css')	
-	        <link rel="stylesheet" href="/css/normalize.css">
-	        <link rel="stylesheet" href="/css/main.css">
+	        <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+			<link href="/css/print.css" media="print" rel="stylesheet" type="text/css" />
+			<!--[if IE]>
+			    <link href="/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+			<![endif]-->
         @endsection
         @yield('css')
         
