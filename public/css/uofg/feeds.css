@@ -1,0 +1,73 @@
+/* line 1, ../../../scss/uofg/feeds.scss */
+.jsFeed {
+  color: white;
+  padding-left: 15px;
+}
+
+/* line 5, ../../../scss/uofg/feeds.scss */
+.jsFeed a {
+  color: white;
+}
+
+/* line 8, ../../../scss/uofg/feeds.scss */
+.jsFeed h2 {
+  color: white;
+  background: url("../../media/feed.png") left no-repeat;
+  padding-left: 25px;
+  margin-bottom: 0.5em;
+}
+
+/* line 14, ../../../scss/uofg/feeds.scss */
+.jsFeed h3 {
+  color: white;
+  line-height: normal;
+  font-size: 14px;
+}
+
+/* line 19, ../../../scss/uofg/feeds.scss */
+.jsFeed h3 a {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 23, ../../../scss/uofg/feeds.scss */
+.jsFeed h3 a:hover {
+  text-decoration: underline;
+}
+
+/* line 26, ../../../scss/uofg/feeds.scss */
+.jsFeed h4 {
+  font-style: italic;
+  font-weight: normal;
+  font-size: x-small;
+}
+
+/* line 31, ../../../scss/uofg/feeds.scss */
+.jsFeed p {
+  margin-bottom: 1.5em;
+}
+
+/*
+ .jsFeed ul {
+	list-style-type: none;
+	padding-left: 1em;
+	margin-left: 0;
+	text-indent: -1em;
+}
+
+.jsFeed ul li {
+}
+
+.jsFeed span.headline {
+	padding-bottom: 0.25em;
+	color:#07A;
+	}
+	
+ .jsFeed span.headline a {
+	color: #07A;
+}
+
+.jsFeed div.date {
+	font-style: italic;
+}
+*/

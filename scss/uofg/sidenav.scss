@@ -1,0 +1,41 @@
+#sidebar #subnav {
+    padding: 0;
+    margin-top: 20px;
+}
+
+#sidebar #subnav h3 {
+    background: #666;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 0 40px;
+    text-transform: uppercase;
+}
+
+#sidebar #subnav ul {
+    list-style: none;
+    margin: 0 0 30px;
+    padding: 0;
+}
+
+#sidebar #subnav ul li {
+    border: 1px solid #ccc;
+    border-width: 0 0 1px;
+}
+
+#sidebar #subnav ul li a {
+    background: #fff;
+    color: #666;
+    display: block;
+    padding: 2px 40px;
+    text-decoration: none;
+}
+
+#sidebar #subnav ul li a:hover {
+    background: #999;
+    color: #fff;
+    text-decoration: none;
+}
+#sidebar #subnav ul li ul {
+    display: none;
+}

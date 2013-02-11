@@ -1,0 +1,80 @@
+/* line 1, ../../../scss/uofg/sidebar.scss */
+#sidebar {
+  color: #666666;
+  min-height: 270px;
+  background: white url("../../media/layout/sidebarbg.jpg") no-repeat;
+  display: block;
+  float: right;
+  padding: 20px 0;
+  width: 270px;
+  overflow: hidden;
+}
+
+/* line 12, ../../../scss/uofg/sidebar.scss */
+#sidebar a {
+  color: #666666;
+}
+
+/* line 16, ../../../scss/uofg/sidebar.scss */
+#sidebar a img {
+  border: none;
+}
+
+/* line 20, ../../../scss/uofg/sidebar.scss */
+#sidebar > * {
+  margin: 0;
+  padding: 2px 20px;
+  display: block;
+}
+
+/* line 26, ../../../scss/uofg/sidebar.scss */
+#sidebar > ol, #sidebar > ul {
+  padding: 0;
+}
+
+/* line 30, ../../../scss/uofg/sidebar.scss */
+#sidebar > * > li {
+  margin: 0 60px;
+  list-style-type: circle;
+}
+
+/* line 35, ../../../scss/uofg/sidebar.scss */
+#sidebar > * > li > ol, #sidebar > * > li > ul {
+  margin: 0 15px;
+}
+
+/* line 39, ../../../scss/uofg/sidebar.scss */
+#sidebar dl dt {
+  font-weight: 700;
+}
+
+/* line 43, ../../../scss/uofg/sidebar.scss */
+#sidebar dl dd {
+  margin-bottom: 1em;
+}
+
+/* line 47, ../../../scss/uofg/sidebar.scss */
+#sidebar h2, #sidebar p {
+  color: #666;
+  margin: 0 0 20px;
+  padding: 2px 40px;
+}
+
+/* line 53, ../../../scss/uofg/sidebar.scss */
+#sidebar h2 {
+  font-size: 16px;
+  margin: 10px 0 20px;
+}
+
+/* line 58, ../../../scss/uofg/sidebar.scss */
+#sidebar h3 {
+  color: #666;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* line 64, ../../../scss/uofg/sidebar.scss */
+#sidebar p {
+  font-size: 11px;
+  margin: 10px 0 20px;
+}

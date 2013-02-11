@@ -1,0 +1,135 @@
+#sidebar div.block-menu_block, #sidebar div.block-menu, #sidebar div.menu {
+  padding: 0;
+  margin-top: 20px;
+}
+
+#sidebar div.block-menu_block h3, #sidebar div.block-menu h3, #sidebar div.menu h3 {
+  background: #666;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 0 40px;
+  text-transform: uppercase;
+}
+
+#sidebar div.block-menu_block h3 a, #sidebar div.block-menu h3 a, #sidebar div.menu h3 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#sidebar div.block-menu_block h3 a:hover, #sidebar div.block-menu h3 a:hover, #sidebar div.menu h3 a:hover {
+  text-decoration: underline;
+}
+
+
+#sidebar div.block-menu_block ul.menu, #sidebar div.block-menu ul.menu {
+  list-style-type: none;
+  margin: 0 0 30px; padding: 0;
+}
+
+#sidebar div.block-menu_block ul.menu li, #sidebar div.block-menu ul.menu li {
+  border: solid #ccc;
+  border-width: 0 0 1px;
+  margin: 0; padding: 0;
+}
+
+#sidebar div.block-menu_block ul.menu li a, #sidebar div.block-menu ul.menu li a {
+  display: block;
+  width: auto;
+  background-color: white;
+  color: #666;
+  padding: 2px 5px 2px 40px;
+  text-decoration: none;
+  list-style: none outside none;
+}
+#sidebar div.block-menu_block ul.menu li.active a , #sidebar div.block-menu ul.menu li.active a { 
+  font-weight: bold;
+  text-decoration: underline;
+}
+#sidebar div.block-menu_block ul.menu li a, #sidebar div.block-menu ul.menu li a {
+  background: #fff url(../../media/nav/collapsed.gif) no-repeat left;
+}
+#sidebar div.block-menu_block ul.menu li a:hover, #sidebar div.block-menu ul.menu li a:hover {
+  background: #999 url(../../media/nav/collapsed_hover.gif) no-repeat left;
+}
+#sidebar div.block-menu_block ul.menu li.leaf a, #sidebar div.block-menu ul.menu li.leaf a {
+  background-image: none;
+}
+#sidebar div.block-menu_block ul.menu li.expanded a, #sidebar div.block-menu ul.menu li.expanded a {
+  background: #fff url(../../media/nav/expanded.gif) no-repeat left;
+}
+#sidebar div.block-menu_block ul.menu li.expanded a:hover, #sidebar div.block-menu ul.menu li.expanded a:hover {
+  background: #999 url(../../media/nav/expanded_hover.gif) no-repeat left;
+}
+#sidebar div.block-menu_block ul.menu li a:hover, #sidebar div.block-menu ul.menu li a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* 2nd level items */
+#sidebar div.block-menu_block ul.menu li.expanded ul li a, #sidebar div.block-menu ul.menu li.expanded ul li a {
+  text-decoration: none;
+}
+#sidebar div.block-menu_block ul.menu li.expanded a, #sidebar div.block-menu ul.menu li.expanded a {
+  border-bottom: 1px solid #ccc;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul, #sidebar div.block-menu ul.menu li.expanded ul {
+  margin: 0;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li, #sidebar div.block-menu ul.menu li.expanded ul li {
+  border: none;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li a, #sidebar div.block-menu ul.menu li.expanded ul li a {
+  border: none;
+  font-weight: normal;
+  background: none;
+  color: #333;
+  width: 225px;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li a:hover, #sidebar div.block-menu ul.menu li.expanded ul li a:hover {
+  text-decoration: underline;
+  background: none;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li.active a, #sidebar div.block-menu ul.menu li.expanded ul li.active a {
+  background: none;
+  font-weight: bold;
+  text-decoration: underline;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li a, #sidebar div.block-menu ul.menu li.expanded ul li a {
+  background: url(../../media/nav/collapsed.gif) no-repeat left;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li.collapsed a:hover, #sidebar div.block-menu ul.menu li.expanded ul li.collapsed a:hover {
+  background: url(../../media/nav/collapsed.gif) no-repeat left;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li.leaf a, #sidebar div.block-menu ul.menu li.expanded ul li.leaf a {
+  background-image: none;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li.expanded a, #sidebar div.block-menu ul.menu li.expanded ul li.expanded a {
+  background: url(../../media/nav/expanded.gif) no-repeat left;
+}
+
+/* 3rd level items */
+#sidebar div.block-menu_block ul.menu li.expanded ul li.expanded ul li, #sidebar div.block-menu ul.menu li.expanded ul li.expanded ul li {
+  padding-left: 10px;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li.expanded ul li.active a, #sidebar div.block-menu ul.menu li.expanded ul li.expanded ul li.active a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li.expanded ul li a, #sidebar div.block-menu ul.menu li.expanded ul li.expanded ul li a {
+  font-weight: normal;
+  text-decoration: none;
+  color: #333;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li.expanded ul li a, #sidebar div.block-menu ul.menu li.expanded ul li.expanded ul li a {
+  background-image: none;
+}
+#sidebar div.block-menu_block ul.menu li.expanded ul li.expanded ul li a:hover, #sidebar div.block-menu ul.menu li.expanded ul li.expanded ul li a:hover {
+  background-image: none;
+  text-decoration: underline;
+}
+
+/* 4th level items */
+#sidebar div.block-menu_block ul.menu li ul li ul li ul, #sidebar div.block-menu ul.menu li ul li ul li ul {
+  display: none;
+}

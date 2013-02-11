@@ -5,5 +5,4 @@ class Dataset extends Eloquent {
 	{
 		return $this->has_many('Attribute');
 	}
-	
 }

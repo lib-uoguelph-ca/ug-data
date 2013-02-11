@@ -1,0 +1,67 @@
+#sidebar {
+    color: #666666;
+    min-height: 270px;
+    background: #fff url("../../media/layout/sidebarbg.jpg") no-repeat;
+    display: block;
+    float: right;
+    padding: 20px 0;
+    width: 270px;
+    overflow: hidden;
+}
+
+#sidebar a {
+    color: #666666;
+}
+
+#sidebar a img {
+    border: none;
+}
+
+#sidebar > * {
+    margin: 0;
+    padding: 2px 20px;
+    display: block;
+}
+
+#sidebar > ol, #sidebar > ul {
+    padding: 0;
+}
+
+#sidebar > * > li {
+    margin: 0 60px;
+    list-style-type: circle;
+}
+
+#sidebar > * > li > ol, #sidebar > * > li > ul {
+    margin: 0 15px;
+}
+
+#sidebar dl dt {
+    font-weight: 700;
+}
+
+#sidebar dl dd {
+    margin-bottom: 1em;
+}
+
+#sidebar h2, #sidebar p {
+    color: #666;
+    margin: 0 0 20px;
+    padding: 2px 40px;
+}
+
+#sidebar h2 {
+    font-size: 16px;
+    margin: 10px 0 20px;
+}
+
+#sidebar h3 {
+	color: #666;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+#sidebar p {
+    font-size: 11px;
+    margin: 10px 0 20px;
+}

@@ -24,19 +24,59 @@
         <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     
-    <header>
-    	<h1>{{ $title }}</h1>
-    	<ul id="primary-links">
-	    	@section('primary-links')
-			    <li><a href="/">Home</a></li>
-			@endsection
-			@yield('primary-links')
-		</ul>
+    <header id="header">
+    	<div id="global">
+	    	<div class="container">
+	    		<a id="logo" href="http://www.uoguelph.ca/" tip=""><strong>University of Guelph</strong></a>
+		    	<h1>{{ $title }}</h1>
+		    	
+		    	<form id="searchbox_011117603928904778939:tp3ks5ha2dw" action="http://www.uoguelph.ca/search/" name="searchform">
+			        <input type="hidden" name="cx" value="011117603928904778939:tp3ks5ha2dw">
+			        <input type="hidden" name="cof" value="FORID:11">
+			        <input name="q" type="text" size="20" maxlength="256" class="search1" id="searchtext">
+			        <label for="searchtext">
+			        <input type="image" src="http://www.uoguelph.ca/img/search.gif" alt="search web" title="search web" id="searchbutton">
+			        </label>
+			    </form>				
+			    <div id="searchtype"><strong>search:</strong>
+					<span id="webSearchButton" class="selectedSearch"><label for="searchtext" onclick="webSearch();return false;"><span>Web</span></label></span>
+					<span id="dirSearchButton" class="altSearch"><a href="http://www.uoguelph.ca/directory"><span>Directory</span></a></span>
+					<span id="libSearchButton" class="altSearch"><a href="http://www.lib.uoguelph.ca"><span>Library</span></label></a></span>      
+		       	</div>
+			    
+		    	<div id="globalnav">
+			    	<ul id="primary-links">
+				    	@section('primary-links')
+					    	<li><a href="http://www.uoguelph.ca/academics/" id="menu-academics" tip=""><span>Academics</span></a></li>
+					        <li><a href="http://www.uoguelph.ca/campus/" id="menu-campus" tip=""><span>Campus</span></a></li>
+					        <li><a href="http://www.uoguelph.ca/international/info/" id="menu-library" tip=""><span>International</span></a></li>
+					        <li><a href="http://www.uoguelph.ca/research/" id="menu-research" tip=""><span>Research</span></a></li>
+					        <li><a href="http://www.uoguelph.ca/services/" id="menu-services" tip=""><span>Services</span></a></li>
+						@endsection
+						@yield('primary-links')
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="local">
+    		<div class="container">
+    			<ul id="secondary-links">
+			    	@section('secondary-links')
+					    <li><a href="/">Home</a></li>
+					@endsection
+					@yield('secondary-links')
+				</ul>
+    		</div>
+    	</div>
     </header>
     
-    <body>
-    	<h2>{{ $subtitle }}</h2>
-      	{{ $content }}
+    <body>    
+    	<div id="main">
+	    	<div class="container">
+	    	<h2>{{ $subtitle }}</h2>
+	      	{{ $content }}
+	      	</div>
+      	</div>
       	
       	@section('scripts')
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -53,5 +93,6 @@
 		    </script>
 		@endsection
 		@yield('scripts')
+		
     </body>
 </html>

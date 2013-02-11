@@ -1,0 +1,45 @@
+#frame {
+	position: relative;
+	left: 230px; top: 0;
+	border-left: 1px solid black;
+}
+
+#admin {
+	position: absolute;
+	left: 0; top: 0;
+ 	width: 230px;
+	height: 100%;
+	border-right: 1px solid black;
+}
+
+#header #local .container {
+    background: url("../../img/header/universityofguelph.gif") left bottom no-repeat;
+	height: 50px;
+}
+
+#localTitle {
+	float: right;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 20px;
+	padding: 10px 5px 0 0; 
+}
+ 
+#relatedLinks
+	{
+	list-style: none;
+	}
+	
+/*
+ * search
+ */
+#search
+	{
+	margin: 0;
+	padding: 15px 10px;
+	}
+#searchbox
+	{
+	background: white;
+	}

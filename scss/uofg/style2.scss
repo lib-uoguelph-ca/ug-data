@@ -1,0 +1,186 @@
+*{margin:0;padding:0;}
+body{background:#928a7d;margin:0;padding:0;}
+.container{margin:0 auto;position:relative;width:860px;}
+.clear{clear:both;display:inline-block;}
+.clear:after{clear:both;content:".";display:block;height:0;line-height:0;visibility:hidden;}
+* html .clear{height:1%;}
+a:active,a:focus{outline:0;}
+#header #global{background:#900 url("/img/header/globalbg.jpg");}
+#header #local, #header #local ul{background:#f90 url("/img/header/localbg.jpg");}
+#feature,#misc{background:#45403c;}
+#info{background:#787570 url("/img/layout/infobg.jpg");background-repeat:no-repeat;clear:both;display:block;padding:0 50px;}
+#footer{background:#21201c;clear:left;color:#fff;height:50px;padding:0 10px;text-align:right;}
+#footer .container{ background:#21201c;height:50px;}
+body,tr,td,input,select,textarea{font-family:"Lucida Grande","Lucida Sans Unicode",Tahoma, Helvetica, Verdana, sans-serif;font-size:small;line-height:1.5;voice-family:inherit;}
+h1,h2{font-family:Arial, Helvetica, sans-serif;font-size:18px;letter-spacing:-1px;}
+h2{text-transform:uppercase;}
+#news h2,#news h2 a{color:#f90;text-decoration:none;}
+#tools h2{background:#69c url("/img/icons/cog.png");background-position:0 center;background-repeat:no-repeat;color:#fff;margin:0 30px;padding:0 0 0 20px;}
+#global{height:100px;overflow:visible;}
+#global .container{background:inherit;height:100px;}
+#global h1{color:#fff;font-size:18px;height:30px;left:120px;margin:0;position:absolute;top:35px;}
+#logo{background:url("/img/header/universityofguelph.gif");display:block;float:left;height:100px;width:100px;}
+#logo strong{left:-999px;position:absolute;width:990px;}
+#globalnav{float:right;height:50px;position:absolute;right:0;top:66px;width:700px;}
+#globalnav ul{float:right;height:50px;list-style:none;margin:0;padding:0;}
+#globalnav li{float:left;margin:0 0 0 5px;}
+#globalnav a{color:#fff;font-weight:700;padding-bottom:5px;padding-left:20px;text-decoration:none;}
+#globalnav a span{padding-bottom:5px;padding-right:20px;padding-top:5px;}
+#globalnav a,#globalnav a span{display:block;float:none;}
+#globalnav a:hover{background:#800 url("/img/header/tabhoverbg.png") left top no-repeat;color:#fff;padding-bottom:0;padding-left:20px;}
+#globalnav a:hover span{background:url("/img/header/tabhoverbg.png") right top no-repeat;padding-bottom:9px;padding-right:20px;}
+body#academics a#menu-academics,body#campus a#menu-campus,body#library a#menu-library,body#research a#menu-research,body#services a#menu-services{background:#f90 url("/img/tabbg.png") left top no-repeat;padding-bottom:0;}
+body#academics a#menu-academics span,body#campus a#menu-campus span,body#library a#menu-library span,body#research a#menu-research span,body#services a#menu-services span{background:url("/img/tabbg.png") right top no-repeat;padding-bottom:12px;}
+#local{height:50px; overflow: hidden;}
+#local .container{background:url("/img/header/universityofguelph.gif") left bottom no-repeat;height:50px;}
+#local ul{float:right;height:50px;list-style:none;margin:0;}
+#local li{display:block;float:left;width:120px;}
+#local li a{color:#fff;display:block;height:38px;line-height:1.2;margin-left:30px;padding:8px 0;text-align:center;text-decoration:none;width:90px;}
+#local li a:hover{background:#c60 url("/img/header/localhover.jpg");}
+#feature{background:#45403a url("/img/featurebg.jpg");background-repeat:repeat-x;height:220px;padding:0 10px;}
+#feature #rotator{background:#fff;height:220px;}
+#feature #rotator img{border:0;display:none;height:220px;left:0;position:absolute;top:0;width:860px;}
+#main{background:#fff url("/img/mainbg.jpg");background-repeat:repeat-x;}
+#main .container{background:#fff;padding:0;width:860px;}
+body#homepage #main .container{background:#fff url("/img/mainbg.gif");padding:0 10px;width:860px;}
+#main2{background:#fff;clear:both;}
+#main2 .container{background:url("/img/main2bg.jpg");display:block;padding:0 10px;width:860px;}
+#news{background:#fff;float:left;width:590px;}
+#news h2{background:url("/img/feed.png");background-position:0 center;background-repeat:no-repeat;margin:15px 50px;padding:0 0 0 20px;}
+#news p,#news ul{margin:5px 50px;}
+#news p a{display:block;}
+#news ul{list-style:none;padding:0;}
+#news li{line-height:1.2;margin:.5em 0;}
+#news #other{float:left;margin:0 0 15px;width:300px;}
+#news #other h2{background:url("/img/icons/silk-icons/newspaper.png");background-position:0 center;background-repeat:no-repeat;}
+#events{display:block;float:right;width:270px;}
+#events h2,#events ul{margin:15px 0;}
+#events h2{background:url("/img/icons/silk-icons/calendar.png");background-position:0 center;background-repeat:no-repeat;}
+#events li{clear:both;display:block;line-height:1.2;margin:.5em 0;position:relative;width:270px;}
+#events a{text-decoration:none;}
+#events a:hover{cursor:pointer;}
+#events .summary{text-decoration:underline;display:block; width:170px; float:right;padding-right:20px;}
+#events .dtstart, #events .dtend { display:block; width:80px; float:left; clear:left;  }
+#events .dtend {margin-bottom:.5em;}
+#tools{display:block;float:right;padding:0 0 20px;width:270px;}
+#tools #podcast,#tools #weather,#tools #nowonline{color:#fff;background:#69c;display:block;line-height:1.2;margin:20px 30px;width:200px;}
+#tools #podcast h2{background:url("/img/icons/silk-icons/ipod_cast.png");background-position:0 center;background-repeat:no-repeat;margin:0 0 5px;}
+#tools #podcast h2 a{text-decoration:none;}
+#tools #podcast #player{margin-top:5px;}
+#tools #weather h2{background:url("/img/weather.png");background-position:0 center;background-repeat:no-repeat;margin:0 0 5px;}
+#tools #weather ul{margin:0;}
+#tools #weather ul a{color:#B4CBE4;text-decoration:none;}
+#tools #weather ul a span{color:#fff;text-decoration:underline;}
+#tools #weather ul a:hover {background:#69c;}
+#tools #weather #creditfooter{display:none;} 
+#tools #nowonline h2{background:url("/img/icons/silk-icons/information.png");background-position:0 center;background-repeat:no-repeat;margin:0 0 5px;}
+#tools #nowonline p{padding:0 0 0 20px;}
+#weather img{display:block;height:50px;margin:30px;width:200px;}
+#tools ul{list-style:none;margin:0 30px 30px;padding:0;}
+#tools ul li{border:1px solid #69c;}
+#tools ul li a{background:#69c;color:#fff;display:block;padding:2px 20px;}
+#tools ul li a:hover{background:#369;text-decoration:none;}
+#tools a#ipod{background-image:url("/img/icons/silk-icons/ipod_cast.png");background-position:175px center;background-repeat:no-repeat;}
+#tools a#webadvisor{background-image:url("/img/icons/silk-icons/clock.png");background-position:175px center;background-repeat:no-repeat;}
+#tools a#webmail{background-image:url("/img/icons/silk-icons/email.png");background-position:175px center;background-repeat:no-repeat;}
+#tools a#courselink{background-image:url("/img/icons/silk-icons/book.png");background-position:175px center;background-repeat:no-repeat;}
+#tools a#distanceeducation{background-image:url("/img/icons/silk-icons/computer.png");background-position:175px center;background-repeat:no-repeat;}
+#tools a#myportico{background-image:url("/img/icons/silk-icons/door.png");background-position:175px center;background-repeat:no-repeat;}
+#info h3{color:#fff;font-weight:400;margin:0;padding:40px 0 5px;}
+#info .infobox1,#info .infobox2,#info .infobox3{background:#787570;color:#fff;display:block;float:left;margin:0 0 25px;padding:0;width:220px;}
+#info .infobox2 {margin:0 50px;}
+#info .infobox3 {margin:0;}
+.infobox1 p, .infobox2 p, .infobox3 p { text-align:justify;}
+#misc{background:#45403a url("/img/footer/miscbg.jpg");background-repeat:repeat-x;clear:both;display:block;padding:0 10px;}
+#misc .container{background:#45403a url("/img/footer/misccontbg.gif");background-repeat:no-repeat;}
+#misc #links{float:left;width:565px;}
+#misc dl{float:left;margin:0 50px 0 0;padding:30px 0 15px;width:125px;}
+#misc dt{color:#fc0;}
+#misc dd{line-height:1.2;margin:.5em 0;padding:0;}
+#misc dd a{color:#ccc;background:#45403a;display:block;text-align:left;text-decoration:none;width:125px;}
+#misc dd a.more{text-align:right;}
+#address{color:#ccc;display:block;float:right;margin:15px 0;width:270px;}
+#address > div{color:#ccc;margin:15px 45px;}
+#address .org{font-weight:700;}
+#address div a{border:1px dotted #ccc;border-width:0 0 1px;color:#ccc;display:inline;text-decoration:none;}
+#address div a:hover{border:1px solid #ccc;border-width:0 0 1px;text-decoration:none;}
+#footer p{margin:0 40px;padding:10px 0;}
+html[xmlns] .clear,#news p a{display:block;}
+#events a:hover abbr,#events a:hover span.dtend,#misc a:hover{text-decoration:underline;}
+#tools a,#address p strong{color:#fff;}
+#content{background:#fff;float:left;margin:0 0 30px;width:590px;overflow:hidden;}
+#content>* { margin-left:50px;margin-right:50px;display:block; }
+#content script {display:none;}
+#content ul li {list-style-type:circle;}
+#content>*>li {margin:0 15px;}
+#content>*>li>ol,#content>*>li>ul {margin:0 15px;}
+#content dl dt{font-weight:700;}
+#content dl dd{margin-bottom:1em;}
+#content h1{color:#69c;font-size:36px;margin:15px 50px;}
+#content h2,#content p,#content ul{margin:0 50px 20px;}
+#content h2,#content h3,#content h4{color:#333;font-family:Georgia, "Times New Roman", Times, serif;font-size:18px;letter-spacing:normal;margin:10px 50px;text-transform:none;}
+#content h3,#content h4{color:#333;font-size:16px;}
+#content h5,#content h6{color:#333;font-size:12px;margin:10px 50px;text-transform:uppercase;}
+#sidebar{background:#fff url("/img/layout/sidebarbg.jpg") no-repeat;display:block;float:right;padding:20px 0;width:270px;overflow:hidden;}
+#sidebar a img { border:none;}
+#sidebar>*{margin:0;padding:2px 40px;display:block;}
+#sidebar>ol,#sidebar>ul{padding:0;}
+#sidebar>*>li {margin:0 60px;list-style-type:circle;}
+#sidebar>*>li>ol,#sidebar>*>li>ul {margin:0 15px;}
+#sidebar dl dt{font-weight:700;}
+#sidebar dl dd{margin-bottom:1em;}
+#sidebar h2,#sidebar p{color:#666;margin:0 0 20px;padding:2px 40px;}
+#sidebar h2{margin:10px 0 20px;}
+#sidebar p{font-size:11px;margin:10px 0 20px;}
+#sidebar #subnav{padding:0;}
+#sidebar #subnav h3{background:#666;color:#fff;display:block;font-size:16px;padding:0 40px;text-transform:uppercase;}
+#sidebar #subnav ul{list-style:none;margin:0 0 30px;padding:0;}
+#sidebar #subnav ul li{border:1px solid #ccc;border-width:0 0 1px;}
+#sidebar #subnav ul li a{background:#fff;color:#666;display:block;padding:2px 40px;text-decoration:none;}
+#sidebar #subnav ul li a:hover{background:#999;color:#fff;text-decoration:none;}
+#sidebar .sidebox{background:url("/img/sideboxbg.gif") 0 bottom;margin:0 auto;padding:0 0 20px;width:240px;}
+#subnav li a + span {display:none; }
+#sidebar .sidebox h4{background:#fff url("/img/sideboxbg.gif") 0 top;color:#666;margin:0;padding:25px 25px 0;}
+#sidebar .sidebox p{margin:10px 0;padding:0 25px;}
+#sidebar .profile a{background:#333; color:#fff; text-decoration:none; width:170px; display:block;padding:0 0 4px 0;}
+#sidebar .profile a strong, #sidebar .profile a em{padding:0 4px;font-style:normal;}
+#news a,#news a,#content a{color:#369;}
+#global form label a,#footer a{color:#fff;text-decoration:none;}
+#content .vcard { background:#f3f2ee !important; border: 2px solid #e8e5de !important; padding: 5px !important; 
+	-moz-border-radius: 8px; border-radius: 8px; margin: 5px 0 !important; }
+#content span.vcard { padding: 2px 1px 2px 70px !important; margin: 0 2px 0 !important; }
+#content div#more p { color:#666; margin:0; }
+#content a[href^="http://"] {
+    background: url(/img/external.png) center right no-repeat;
+    padding-right: 13px;
+}
+#content a[href*="uoguelph.ca"]  {
+    background: none;
+    padding-right: 0;
+}
+a[rel *="video"] { 
+	padding: 5px 20px 5px 0;
+	background: transparent url(http://www.uoguelph.ca/img/icons/silk-icons/film.png) no-repeat center right;
+}
+a[rel *="image"] { 
+	padding: 5px 20px 5px 0;
+	background: transparent url(http://www.uoguelph.ca/img/icons/silk-icons/images.png) no-repeat center right;
+}
+
+
+#global #dirSearch, #global #libSearch, #global #libSearchLink {display:none;}
+#global form{background:url("/img/header/searchbg.gif");background-repeat:no-repeat;float:right;height:36px;margin:10px 0;overflow:hidden;padding:4px 0;position:relative;width:260px;}
+#global form input#searchbutton, #global form input#searchbutton2, #global form input#searchbutton3 {border:0;display:block;height:16px;position:absolute;right:30px;top:5px;width:16px;}
+#global form #searchtext, #global form #searchtext2, #global form #searchtext3 {background:#fff transparent;border:solid 0 #fff;font-size:11px;height:12px;margin:0 15px;overflow:hidden;padding:2px;width:200px;}
+#global #searchtype{color:#fff;font-size:10px;margin:0;padding:0; position:absolute; top:38px; right:74px;}
+#global form label, #global #searchtype a, #global #searchtype b, #global #searchtype strong{color:#fff;font-size:10px;margin:0;padding:2px;font-weight:300;}
+#global #searchtype a, #global #searchtype label{text-decoration:none;padding:2px 0 4px 7px;}
+#global #searchtype a span, #global #searchtype label span{padding:0 7px 4px 0;}
+#global .selectedSearch {background:#c00 url("/img/header/searchtypebg.gif") left bottom no-repeat;padding:2px 0 4px 7px;}
+#global .selectedSearch span {background:#c00 url("http://www.uoguelph.ca/img/searchtypebg.gif") right bottom no-repeat;padding:0 7px 4px 0;}
+#libSearchLink {width:5px; float:right;position:absolute; right:-10px; top:0; }
+#emergency { position: absolute; top: 0; left: 0; z-index: 90; width: 100%; height: 1500px; background-image:url("http://www.uoguelph.ca/img/blackout.png"); color:#fff; }
+#emergency #message { width:550px; margin:100px auto 0 auto; }
+#emergency #message img { float:left; margin:0 20px 20px 0; border:2px solid #111; }
+#emergency #message h1 { padding-top:30px; margin-bottom:10px; color:#fc0; font-family:Arial; font-size:24px; }
+#emergency #message p { line-height:1.25; margin:0 0 12px 124px; }

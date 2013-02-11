@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  overflow: scroll;
+}
+
+body {
+  background: white url("../../media/layout/mainbg.jpg") repeat-x;
+  margin: 0; padding: 0;
+}
+
+body, tr, td, input, select, textarea {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Helvetica, Verdana, sans-serif;
+  font-size: small;
+  line-height: 1.5;
+}
+
+table {
+  margin-top: 1em;
+}
+th, td {
+  padding: 3px;
+}
+
+.container {
+  margin: 0 auto;
+  position: relative;
+  width: 860px;
+}
+
+.clear {
+  clear: both;
+}
+
+a:active, a:focus {
+  outline: 0;
+}
+
+h1, h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+#main {
+  background: white url("../../media/layout/mainbg.jpg") repeat-x;
+  border-top: 1px solid white;
+}
+
+#main > div.container {
+  background: white;
+  min-height: 290px;
+  overflow: hidden;
+}
+#misc div.container {
+  min-height: 290px;
+}
+
+/* rgeddes 28/04/09 - changed with from 516px to 500px */
+#content {
+  background: white;
+  padding: 15px 20px 0 50px;
+  margin: 0 0 30px;
+  width: 500px;
+  overflow: hidden;
+}
+
+#content a {
+  color: #369;
+}
+
+#content > * {
+  display: block;
+}
+
+#content.full {
+  width: 760px;
+}
+
+#content script {
+  display: none;
+}
+
+#content dl dt {
+  font-weight: 700;
+}
+
+#content dl dd {
+  margin-bottom: 1em;
+}
+
+#content h1 {
+  color: #69c;
+  font-size: 27px;
+  margin-bottom: .5em;
+}
+
+#content h2, #content p {
+  margin: 0 0 20px;
+}
+
+#content h2 {
+  font-size: 18px;
+}
+
+#content h3 {
+  font-size: 16px;
+}
+
+#content h4 {
+  font-size: 14px;
+}
+
+#content ul, #content ol {
+  margin-left: 15px;
+  margin-bottom: 1em;
+}
+
+#content h2, #content h3, #content h4 {
+  color: #333;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: normal;
+  margin: 10px 0;
+  text-transform: none;
+}
+
+#content h3, #content h4 {
+  color: #333;
+  font-weight: bold;
+}
+
+#content h5, #content h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 12px;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+#content h1,#content h2,#content h3,#content h4,#content h5,#content h6 {
+  clear: left;
+}
+
+#content h1 a {
+  color: #69c;
+}
+
+#content h2 a {
+  color: #333
+}
+
+#content h3 a {
+  color: #333
+}
+
+#content h1 a, h2 a {
+  text-decoration: none;
+}
+#content h2 a:hover {
+  text-decoration: underline;
+}
+
+#misc {
+  background: #45403c;
+}
+
+#misc {
+  background: #45403a url("../../media/footer/miscbg.jpg");
+  background-repeat: repeat-x;
+  clear: both;
+  display: block;
+  padding: 0 10px;
+}
+
+#misc .container {
+  background: #45403a url("../../media/footer/misccontbg.gif");
+  background-repeat: no-repeat;
+}
+
+#misc #links {
+  float: left;
+  width: 565px;
+}
+
+#misc dl {
+  float: left;
+  margin: 0 50px 0 0;
+  padding: 30px 0 15px;
+  width: 125px;
+}
+
+#misc dt {
+  color: #fc0;
+}
+
+#misc dd {
+  line-height: 1.2;
+  margin: .5em 0;
+  padding: 0;
+}
+
+#misc dd a {
+  color: #ccc;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  width: 125px;
+}
+
+#misc dd a.more {
+  text-align: right;
+}
+
+/* Using floated Divs in footer (misc) instead of Definition Lists
+ * as in original CPA design.
+ */
+#misc div.column {
+  float: left;
+  width: 178px;
+  color: #ccc;
+  margin: 30px 10px 15px 0;
+}
+#misc div.column h3 {
+  color: #fc0;
+  font-weight: normal;
+  font-size: small;
+}
+#misc div.column a {
+  color: #ccc;
+  text-decoration: none;
+}
+#misc div.colum a:visited {
+  color: #ccc;
+}
+#misc div.column a:hover {
+  color: #ccc;
+  text-decoration: underline;
+}
+#misc div.column p a {
+  text-decoration: underline;
+}
+#misc div.column ul {
+  list-style: none;
+  padding-left: 0;
+}
+#misc div.column li {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 3px;
+}
+
+#address {
+  color: #ccc;
+  display: block;
+  float: right;
+  margin: 15px 0;
+  width: 270px;
+}
+
+#address > div {
+  color: #ccc;
+  margin: 15px 45px;
+}
+
+#address .org {
+  font-weight: 700;
+}
+
+#address div a {
+  border: 1px dotted #ccc;
+  border-width: 0 0 1px;
+  color: #ccc;
+  display: inline;
+  text-decoration: none;
+}
+
+#address div a:hover {
+  border: 1px solid #ccc;
+  border-width: 0 0 1px;
+  text-decoration: none;
+}
+
+#footer {
+  background: #21201c;
+  clear: both;
+  color: white;
+  height: 50px;
+  padding: 0 10px;
+  text-align: right;
+}
+
+#footer a {
+  color: white;
+  text-decoration: none;
+}
+
+#footer p {
+  width: 760px;
+  margin: auto;
+  padding-top: 15px;
+}
+
+div.field {
+  margin: 5px 0 5px 0;
+}
+
+#content .vcard { 
+  background:#f3f2ee; 
+  border: 2px solid #e8e5de;
+  padding: 5px;
+  -moz-border-radius: 8px; 
+  border-radius: 8px; 
+  margin: 5px 0; 
+}
+
+#content span.vcard {
+  padding: 2px 1px 2px 70px;
+  margin: 0 2px 0; 
+}

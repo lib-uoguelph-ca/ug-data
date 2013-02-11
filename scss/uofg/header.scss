@@ -1,0 +1,170 @@
+/*
+ * Header
+ */
+#header #global {
+  background: #900 url("../../media/header/globalbg.jpg");
+}
+
+#logo {
+  background: url("../../media/header/universityofguelph.gif");
+  display: block;
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+
+#logo strong {
+  left: -999px;
+  position: absolute;
+  width: 990px;
+}
+
+#global {
+  height: 100px;
+  overflow: visible;
+}
+
+/* Note: #global h1 deprecated in favor of #global div.title */
+#global h1, #global div.title {
+  font: bold 24px Arial, Helvetica, sans-serif;
+  letter-spacing: -1px;
+  display: block;
+  position: absolute;
+  left: 125px; top: 10px;
+  color: white;
+}
+#global h1 a, #global div.title a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  letter-spacing: normal;
+  line-height: 100%;
+  white-space: nowrap;
+  width: 100%;
+}
+#global h1 a span.slogan, #global div.title a span.slogan {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+#globalnav {
+  position: absolute;
+  right: 0;
+  top: 66px;
+  width: 700px;
+  height: 50px;
+}
+
+#globalnav ul {
+  float: right;
+  list-style: none;
+}
+
+#globalnav li {
+  float: left;
+  margin: 0 0 0 5px;
+}
+
+#globalnav a {
+  color: white;
+  font-weight: 700;
+  padding: 0 0 5px 20px;
+  text-decoration: none;
+}
+
+#globalnav a span {
+  padding: 5px 20px 5px 0;
+}
+
+#globalnav a, #globalnav a span {
+  display: block;
+  float: none;
+}
+
+#globalnav a:hover {
+  background: #800 url("../../media/header/tabhoverbg.png") left top no-repeat;
+  color: white;
+  padding: 0 0 0 20px;
+}
+
+#globalnav a:hover span {
+  background: url("../../media/header/tabhoverbg.png") right top no-repeat;
+  padding: 5px 20px 9px 0;	
+}
+
+#global #dirSearch, #global #libSearch {
+  display: none;
+}
+
+#global form {
+  background: url("../../media/header/searchbg.gif");
+  background-repeat: no-repeat;
+  float: right;
+  height: 36px;
+  margin: 10px 0;
+  overflow: hidden;
+  padding: 4px 0;
+  position: relative;
+  width: 260px;
+}
+#global form input#searchbutton, #global form input#searchbutton2, #global form input#searchbutton3 {
+  border: 0;
+  display: block;
+  height: 16px;
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  width: 16px;
+}
+
+#global form #searchtext, #global form #searchtext2, #global form #searchtext3 {
+  background: #fff transparent;
+  border: solid 0 #fff;
+  font-size: 11px;
+  height: 12px;
+  margin: 0 15px;
+  overflow: hidden;
+  padding: 2px;
+  width: 200px;
+}
+
+#global #searchtype {
+  color: #fff;
+  font-size: 10px;
+  margin: 0;
+  padding: 0; 
+  position: absolute; 
+  top: 38px; 
+  right: 74px;
+}
+
+#global form label, #global #searchtype a, #global #searchtype b {
+  color: #fff;
+  font-size: 10px;
+  margin: 0;
+  padding: 2px;
+  font-weight: 300;
+}
+
+#global #searchtype a {
+  text-decoration: none;
+  padding: 2px 0 4px 7px;
+}
+
+#global #searchtype a span {
+  padding:0 7px 4px 0;
+}
+
+#global .selectedSearch {
+  background: #c00 url("../../media/header/searchtypebg.gif") left bottom no-repeat;
+  padding: 2px 0 4px 7px;
+}
+
+#global .selectedSearch span {
+  background: #c00 url("../../media/header/searchtypebg.gif") right bottom no-repeat;
+  padding: 0 7px 4px 0;
+}
+
+/*
+ * /Header
+ */

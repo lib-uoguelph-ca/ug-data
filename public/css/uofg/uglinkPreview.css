@@ -1,0 +1,62 @@
+/* line 1, ../../../scss/uofg/uglinkPreview.scss */
+.pdf {
+  width: 20px;
+  padding: 0 20px 0 0;
+  background: url(../../media/icons/pdf.png) no-repeat right;
+}
+
+/* line 6, ../../../scss/uofg/uglinkPreview.scss */
+.zip {
+  width: 20px;
+  padding: 0 23px 0 0;
+  background: url(../../media/icons/zip.png) no-repeat right;
+}
+
+/* line 11, ../../../scss/uofg/uglinkPreview.scss */
+.doc {
+  width: 16px;
+  padding: 0 16px 0 0;
+  background: url(../../media/icons/doc.png) no-repeat right;
+}
+
+/* line 16, ../../../scss/uofg/uglinkPreview.scss */
+.txt, .rtf {
+  width: 16px;
+  padding: 0 16px 0 0;
+  background: url(../../media/icons/txt.png) no-repeat right;
+}
+
+/* line 21, ../../../scss/uofg/uglinkPreview.scss */
+.ppt {
+  width: 16px;
+  padding: 0 16px 0 0;
+  background: url(../../media/icons/ppt.png) no-repeat right;
+}
+
+/* line 26, ../../../scss/uofg/uglinkPreview.scss */
+.xls {
+  width: 16px;
+  padding: 0 16px 0 0;
+  background: url(../../media/icons/xls.png) no-repeat right;
+}
+
+/* line 31, ../../../scss/uofg/uglinkPreview.scss */
+.emailp {
+  width: 13px;
+  padding: 0 15px 0 0;
+  background: url(../../media/icons/email.png) no-repeat right;
+}
+
+/* line 36, ../../../scss/uofg/uglinkPreview.scss */
+.wpd {
+  width: 16px;
+  padding: 0 16px 0 0;
+  background: url(../../media/icons/wpd.gif) no-repeat right;
+}
+
+/* line 41, ../../../scss/uofg/uglinkPreview.scss */
+.wmv {
+  width: 14px;
+  padding: 2px 16px 2px 0;
+  background: url(../../media/icons/wmv.gif) no-repeat right;
+}

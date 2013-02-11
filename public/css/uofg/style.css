@@ -1,0 +1,402 @@
+/* line 1, ../../../scss/uofg/style.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 6, ../../../scss/uofg/style.scss */
+html {
+  overflow: scroll;
+}
+
+/* line 10, ../../../scss/uofg/style.scss */
+body {
+  background: white url("../../media/layout/mainbg.jpg") repeat-x;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 15, ../../../scss/uofg/style.scss */
+body, tr, td, input, select, textarea {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Helvetica, Verdana, sans-serif;
+  font-size: small;
+  line-height: 1.5;
+}
+
+/* line 21, ../../../scss/uofg/style.scss */
+table {
+  margin-top: 1em;
+}
+
+/* line 24, ../../../scss/uofg/style.scss */
+th, td {
+  padding: 3px;
+}
+
+/* line 28, ../../../scss/uofg/style.scss */
+.container {
+  margin: 0 auto;
+  position: relative;
+  width: 860px;
+}
+
+/* line 34, ../../../scss/uofg/style.scss */
+.clear {
+  clear: both;
+}
+
+/* line 38, ../../../scss/uofg/style.scss */
+a:active, a:focus {
+  outline: 0;
+}
+
+/* line 42, ../../../scss/uofg/style.scss */
+h1, h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  letter-spacing: -1px;
+}
+
+/* line 48, ../../../scss/uofg/style.scss */
+h2 {
+  text-transform: uppercase;
+}
+
+/* line 52, ../../../scss/uofg/style.scss */
+#main {
+  background: white url("../../media/layout/mainbg.jpg") repeat-x;
+  border-top: 1px solid white;
+}
+
+/* line 57, ../../../scss/uofg/style.scss */
+#main > div.container {
+  background: white;
+  min-height: 290px;
+  overflow: hidden;
+}
+
+/* line 62, ../../../scss/uofg/style.scss */
+#misc div.container {
+  min-height: 290px;
+}
+
+/* rgeddes 28/04/09 - changed with from 516px to 500px */
+/* line 67, ../../../scss/uofg/style.scss */
+#content {
+  background: white;
+  padding: 15px 20px 0 50px;
+  margin: 0 0 30px;
+  width: 500px;
+  overflow: hidden;
+}
+
+/* line 75, ../../../scss/uofg/style.scss */
+#content a {
+  color: #369;
+}
+
+/* line 79, ../../../scss/uofg/style.scss */
+#content > * {
+  display: block;
+}
+
+/* line 83, ../../../scss/uofg/style.scss */
+#content.full {
+  width: 760px;
+}
+
+/* line 87, ../../../scss/uofg/style.scss */
+#content script {
+  display: none;
+}
+
+/* line 91, ../../../scss/uofg/style.scss */
+#content dl dt {
+  font-weight: 700;
+}
+
+/* line 95, ../../../scss/uofg/style.scss */
+#content dl dd {
+  margin-bottom: 1em;
+}
+
+/* line 99, ../../../scss/uofg/style.scss */
+#content h1 {
+  color: #69c;
+  font-size: 27px;
+  margin-bottom: .5em;
+}
+
+/* line 105, ../../../scss/uofg/style.scss */
+#content h2, #content p {
+  margin: 0 0 20px;
+}
+
+/* line 109, ../../../scss/uofg/style.scss */
+#content h2 {
+  font-size: 18px;
+}
+
+/* line 113, ../../../scss/uofg/style.scss */
+#content h3 {
+  font-size: 16px;
+}
+
+/* line 117, ../../../scss/uofg/style.scss */
+#content h4 {
+  font-size: 14px;
+}
+
+/* line 121, ../../../scss/uofg/style.scss */
+#content ul, #content ol {
+  margin-left: 15px;
+  margin-bottom: 1em;
+}
+
+/* line 126, ../../../scss/uofg/style.scss */
+#content h2, #content h3, #content h4 {
+  color: #333;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: normal;
+  margin: 10px 0;
+  text-transform: none;
+}
+
+/* line 134, ../../../scss/uofg/style.scss */
+#content h3, #content h4 {
+  color: #333;
+  font-weight: bold;
+}
+
+/* line 139, ../../../scss/uofg/style.scss */
+#content h5, #content h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 12px;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+/* line 147, ../../../scss/uofg/style.scss */
+#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+  clear: left;
+}
+
+/* line 151, ../../../scss/uofg/style.scss */
+#content h1 a {
+  color: #69c;
+}
+
+/* line 155, ../../../scss/uofg/style.scss */
+#content h2 a {
+  color: #333333;
+}
+
+/* line 159, ../../../scss/uofg/style.scss */
+#content h3 a {
+  color: #333333;
+}
+
+/* line 163, ../../../scss/uofg/style.scss */
+#content h1 a, h2 a {
+  text-decoration: none;
+}
+
+/* line 166, ../../../scss/uofg/style.scss */
+#content h2 a:hover {
+  text-decoration: underline;
+}
+
+/* line 170, ../../../scss/uofg/style.scss */
+#misc {
+  background: #45403c;
+}
+
+/* line 174, ../../../scss/uofg/style.scss */
+#misc {
+  background: #45403a url("../../media/footer/miscbg.jpg");
+  background-repeat: repeat-x;
+  clear: both;
+  display: block;
+  padding: 0 10px;
+}
+
+/* line 182, ../../../scss/uofg/style.scss */
+#misc .container {
+  background: #45403a url("../../media/footer/misccontbg.gif");
+  background-repeat: no-repeat;
+}
+
+/* line 187, ../../../scss/uofg/style.scss */
+#misc #links {
+  float: left;
+  width: 565px;
+}
+
+/* line 192, ../../../scss/uofg/style.scss */
+#misc dl {
+  float: left;
+  margin: 0 50px 0 0;
+  padding: 30px 0 15px;
+  width: 125px;
+}
+
+/* line 199, ../../../scss/uofg/style.scss */
+#misc dt {
+  color: #fc0;
+}
+
+/* line 203, ../../../scss/uofg/style.scss */
+#misc dd {
+  line-height: 1.2;
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+/* line 209, ../../../scss/uofg/style.scss */
+#misc dd a {
+  color: #ccc;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  width: 125px;
+}
+
+/* line 217, ../../../scss/uofg/style.scss */
+#misc dd a.more {
+  text-align: right;
+}
+
+/* Using floated Divs in footer (misc) instead of Definition Lists
+ * as in original CPA design.
+ */
+/* line 224, ../../../scss/uofg/style.scss */
+#misc div.column {
+  float: left;
+  width: 178px;
+  color: #ccc;
+  margin: 30px 10px 15px 0;
+}
+
+/* line 230, ../../../scss/uofg/style.scss */
+#misc div.column h3 {
+  color: #fc0;
+  font-weight: normal;
+  font-size: small;
+}
+
+/* line 235, ../../../scss/uofg/style.scss */
+#misc div.column a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* line 239, ../../../scss/uofg/style.scss */
+#misc div.colum a:visited {
+  color: #ccc;
+}
+
+/* line 242, ../../../scss/uofg/style.scss */
+#misc div.column a:hover {
+  color: #ccc;
+  text-decoration: underline;
+}
+
+/* line 246, ../../../scss/uofg/style.scss */
+#misc div.column p a {
+  text-decoration: underline;
+}
+
+/* line 249, ../../../scss/uofg/style.scss */
+#misc div.column ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* line 253, ../../../scss/uofg/style.scss */
+#misc div.column li {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 3px;
+}
+
+/* line 260, ../../../scss/uofg/style.scss */
+#address {
+  color: #ccc;
+  display: block;
+  float: right;
+  margin: 15px 0;
+  width: 270px;
+}
+
+/* line 268, ../../../scss/uofg/style.scss */
+#address > div {
+  color: #ccc;
+  margin: 15px 45px;
+}
+
+/* line 273, ../../../scss/uofg/style.scss */
+#address .org {
+  font-weight: 700;
+}
+
+/* line 277, ../../../scss/uofg/style.scss */
+#address div a {
+  border: 1px dotted #cccccc;
+  border-width: 0 0 1px;
+  color: #ccc;
+  display: inline;
+  text-decoration: none;
+}
+
+/* line 285, ../../../scss/uofg/style.scss */
+#address div a:hover {
+  border: 1px solid #cccccc;
+  border-width: 0 0 1px;
+  text-decoration: none;
+}
+
+/* line 291, ../../../scss/uofg/style.scss */
+#footer {
+  background: #21201c;
+  clear: both;
+  color: white;
+  height: 50px;
+  padding: 0 10px;
+  text-align: right;
+}
+
+/* line 300, ../../../scss/uofg/style.scss */
+#footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 305, ../../../scss/uofg/style.scss */
+#footer p {
+  width: 760px;
+  margin: auto;
+  padding-top: 15px;
+}
+
+/* line 311, ../../../scss/uofg/style.scss */
+div.field {
+  margin: 5px 0 5px 0;
+}
+
+/* line 315, ../../../scss/uofg/style.scss */
+#content .vcard {
+  background: #f3f2ee;
+  border: 2px solid #e8e5de;
+  padding: 5px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+/* line 324, ../../../scss/uofg/style.scss */
+#content span.vcard {
+  padding: 2px 1px 2px 70px;
+  margin: 0 2px 0;
+}

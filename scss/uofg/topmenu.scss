@@ -1,0 +1,35 @@
+/*
+ * UG  standard top menu bar
+ */
+#header #local {
+    background: #f90 url("../../img/header/localbg.jpg") repeat-x;
+}
+
+#topMenu ul {
+    float: right;
+    width: 760px;
+    height: 50px;
+    list-style: none;
+    margin: 0;
+}
+
+#topMenu li {
+    display: block;
+    float: right;
+    width: 100px;
+}
+
+#topMenu li a {
+    color: #fff;
+    display: block;
+    height: 33px;
+    line-height: 1.2;
+    padding: 8px 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 90px;
+}
+
+#topMenu li a:hover {
+    background: #c60 url("../../img/header/localhover.png") repeat-x;
+}

@@ -1,0 +1,40 @@
+#header, #sidebar, #misc, #footer, #feature {
+  display:none;
+}
+
+/* Drupal Specific */
+#tabs-wrapper {
+  display: none;
+}
+#content div.links {
+  display: none;
+}
+#content div.item-list ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+#content div.item-list ul li {
+  list-style-type: none;
+  margin-left: 0;
+}
+#content table tbody {
+  border-top: none;
+}
+/* /Drupal Specific */
+
+body, #main, #container, #content {
+  background: white;
+}
+/*body:before {
+  content: url('/common/cornerstone/media/header/universityofguelph.gif');
+}*/
+a, a:link, a:visited {
+  text-decoration: underline;
+}
+#content a:after, #content a:link:after, #content a:visited:after {
+  /*content: " (" attr(href) ") ";*/
+  font-size: small; background:#fff; color:#000;
+}
+#content a[href^="/"]:after {
+  content: " (http://www.uoguelph.ca" attr(href) ") ";
+}

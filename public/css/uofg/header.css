@@ -1,0 +1,62 @@
+/*
+ * Header - CCS specific overrides
+ */
+/* line 5, ../../../scss/uofg/header.scss */
+#global #uogSearch {
+  display: none;
+}
+
+/* line 9, ../../../scss/uofg/header.scss */
+#global h1 {
+  height: 70px;
+  left: 110px;
+  top: 10px;
+  width: 450px;
+}
+
+/* line 16, ../../../scss/uofg/header.scss */
+#global h1 a img {
+  border: none;
+}
+
+/* line 20, ../../../scss/uofg/header.scss */
+#global #searchtype {
+  right: 44px;
+}
+
+/* Fix widths of the main menu items when placed next to the CCS Header  */
+/* line 25, ../../../scss/uofg/header.scss */
+#globalnav {
+  width: 550px;
+}
+
+/* line 29, ../../../scss/uofg/header.scss */
+#globalnav a {
+  padding: 0 0 5px 10px;
+}
+
+/* line 33, ../../../scss/uofg/header.scss */
+#globalnav a span {
+  padding: 5px 10px 5px 0;
+}
+
+/* line 37, ../../../scss/uofg/header.scss */
+#globalnav a:hover {
+  padding: 0 0 0 10px;
+}
+
+/* line 41, ../../../scss/uofg/header.scss */
+#globalnav a:hover span {
+  padding: 5px 10px 9px 0;
+}
+
+/* /Fix widths */
+/* Ensure there is a space between "Gryph Mail" and "Help" on the main nav */
+/* line 47, ../../../scss/uofg/header.scss */
+#globalnav a#menu-help {
+  margin-left: 6em;
+}
+
+/*
+ * /Header
+ */

@@ -1,0 +1,59 @@
+/* line 1, ../../../scss/uofg/print.scss */
+#header, #sidebar, #misc, #footer, #feature {
+  display: none;
+}
+
+/* Drupal Specific */
+/* line 6, ../../../scss/uofg/print.scss */
+#tabs-wrapper {
+  display: none;
+}
+
+/* line 9, ../../../scss/uofg/print.scss */
+#content div.links {
+  display: none;
+}
+
+/* line 12, ../../../scss/uofg/print.scss */
+#content div.item-list ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+/* line 16, ../../../scss/uofg/print.scss */
+#content div.item-list ul li {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+/* line 20, ../../../scss/uofg/print.scss */
+#content table tbody {
+  border-top: none;
+}
+
+/* /Drupal Specific */
+/* line 25, ../../../scss/uofg/print.scss */
+body, #main, #container, #content {
+  background: white;
+}
+
+/*body:before {
+  content: url('/common/cornerstone/media/header/universityofguelph.gif');
+}*/
+/* line 31, ../../../scss/uofg/print.scss */
+a, a:link, a:visited {
+  text-decoration: underline;
+}
+
+/* line 34, ../../../scss/uofg/print.scss */
+#content a:after, #content a:link:after, #content a:visited:after {
+  /*content: " (" attr(href) ") ";*/
+  font-size: small;
+  background: #fff;
+  color: #000;
+}
+
+/* line 38, ../../../scss/uofg/print.scss */
+#content a[href^="/"]:after {
+  content: " (http://www.uoguelph.ca" attr(href) ") ";
+}
