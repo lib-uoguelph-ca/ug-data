@@ -1,9 +1,14 @@
 <?php
 
 class Search_Controller extends Base_Controller {
+	public $layout = 'layouts.default';
 
+
+	
 	public function action_index()
 	{
+		$this->layout->title = "UG-Data Search";
+		$this->layout->subtitle = "Discover your data";
 		/*
 		$all = Input::get();
 		var_dump($all);
@@ -23,7 +28,7 @@ class Search_Controller extends Base_Controller {
 			$view->results = FALSE;
 		}
 		
-		return $view;
+		$this->layout->content = $view;
 		
 	}
 
