@@ -94,5 +94,10 @@
 		@endsection
 		@yield('scripts')
 		
+		<div id="footer">
+			<div class="container">
+				<p><a href="http://www.uoguelph.ca/web/terms/">© 2013 University of Guelph</a></p>
+			</div>
+		</div>
     </body>
 </html>

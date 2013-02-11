@@ -40,8 +40,8 @@ body#academics a#menu-academics span,body#campus a#menu-campus span,body#library
 #feature{background:#45403a url("/img/featurebg.jpg");background-repeat:repeat-x;height:220px;padding:0 10px;}
 #feature #rotator{background:#fff;height:220px;}
 #feature #rotator img{border:0;display:none;height:220px;left:0;position:absolute;top:0;width:860px;}
-#main{background:#fff url("/img/mainbg.jpg");background-repeat:repeat-x;}
-#main .container{background:#fff;padding:0;width:860px;}
+#main{background:#fff url("/img/layout/mainbg.jpg");background-repeat:repeat-x;}
+#main .container{background:#fff;padding:0;width:840px;}
 body#homepage #main .container{background:#fff url("/img/mainbg.gif");padding:0 10px;width:860px;}
 #main2{background:#fff;clear:both;}
 #main2 .container{background:url("/img/main2bg.jpg");display:block;padding:0 10px;width:860px;}
@@ -59,7 +59,7 @@ body#homepage #main .container{background:#fff url("/img/mainbg.gif");padding:0 
 #events li{clear:both;display:block;line-height:1.2;margin:.5em 0;position:relative;width:270px;}
 #events a{text-decoration:none;}
 #events a:hover{cursor:pointer;}
-#events .summary{text-decoration:underline;display:block; width:170px; float:right;padding-right:20px;}
+#events .summary{text-decoration:underline;display:block; width:170px; float:right;padding-right:20px;} 
 #events .dtstart, #events .dtend { display:block; width:80px; float:left; clear:left;  }
 #events .dtend {margin-bottom:.5em;}
 #tools{display:block;float:right;padding:0 0 20px;width:270px;}
@@ -72,7 +72,7 @@ body#homepage #main .container{background:#fff url("/img/mainbg.gif");padding:0 
 #tools #weather ul a{color:#B4CBE4;text-decoration:none;}
 #tools #weather ul a span{color:#fff;text-decoration:underline;}
 #tools #weather ul a:hover {background:#69c;}
-#tools #weather #creditfooter{display:none;} 
+#tools #weather #creditfooter{display:none;}
 #tools #nowonline h2{background:url("/img/icons/silk-icons/information.png");background-position:0 center;background-repeat:no-repeat;margin:0 0 5px;}
 #tools #nowonline p{padding:0 0 0 20px;}
 #weather img{display:block;height:50px;margin:30px;width:200px;}
