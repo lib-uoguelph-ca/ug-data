@@ -19,14 +19,13 @@ class Dataset_Controller extends Base_Controller {
 		}
 		else if (is_numeric($id))  {
 			
-			$dataset = Dataset::find($id);
+			$dataset = Dataset::find($id);			
 			$this->layout->subtitle = $dataset->name;
 			
-			$attributes = $dataset->attributes()->get();
+			//$attributes = $dataset->attributes()->order_by('name', 'asc')->get();
 			
 			$view = View::make('dataset.dataset');
 			$view->dataset = $dataset;
-			$view->attributes = $attributes;
 			
 			$this->layout->content = $view;			
 		}

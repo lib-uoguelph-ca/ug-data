@@ -1,8 +1,10 @@
 <table>
-@foreach ($attributes as $attribute)
-	<tr id="{{ $attribute->name }}">
-    <td>{{ $attribute->name }}</td>
-    <td>{{ $attribute->value }}</td>
+{{ $dataset->getAttribute('test1') }}
+
+@foreach ($dataset->getSecondaryAttributes() as $name => $value)
+	<tr id="{{ $name }}">
+    <td>{{ $name }}</td>
+    <td>{{ $value }}</td>
 	</tr>
 @endforeach
 </table>

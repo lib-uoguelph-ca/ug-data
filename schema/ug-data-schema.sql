@@ -32,6 +32,7 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`attributes` (
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `dataset_id` (`dataset_id` ASC) ,
+  INDEX `name` (`name` ASC, `dataset_id` ASC) ,
   CONSTRAINT `did`
     FOREIGN KEY (`dataset_id` )
     REFERENCES `ug_data`.`datasets` (`id` )
