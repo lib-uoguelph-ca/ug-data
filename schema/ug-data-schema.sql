@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS `ug_data`.`datasets` ;
 CREATE  TABLE IF NOT EXISTS `ug_data`.`datasets` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` TEXT NOT NULL ,
+  `creation_date` TIMESTAMP NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -51,10 +52,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `ug_data`;
-INSERT INTO `ug_data`.`datasets` (`id`, `name`) VALUES (1, 'Adam');
-INSERT INTO `ug_data`.`datasets` (`id`, `name`) VALUES (2, 'Tyler');
-INSERT INTO `ug_data`.`datasets` (`id`, `name`) VALUES (3, 'Elisabeth');
-INSERT INTO `ug_data`.`datasets` (`id`, `name`) VALUES (4, 'Sarah');
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `creation_date`) VALUES (1, 'Adam', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `creation_date`) VALUES (2, 'Tyler', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `creation_date`) VALUES (3, 'Elisabeth', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `creation_date`) VALUES (4, 'Sarah', NULL);
 
 COMMIT;
 
