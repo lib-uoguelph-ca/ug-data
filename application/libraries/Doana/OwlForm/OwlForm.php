@@ -1,13 +1,14 @@
 <?php
 
 namespace doana\owlform;
-require '../vendor/autoload.php';
 
-//use \Symfony\Component\Form\Forms;
+$vendor_location = dirname(dirname(__FILE__)) . '/../../../vendor/';
+$autoload_path = $vendor_location . 'autoload.php';
+require $autoload_path;
 
 use PFBC\Form;
 
-require_once "../vendor/owllib/owllib/OWLLib.php";
+require_once $vendor_location . "/owllib/owllib/OWLLib.php";
 require_once "$OWLLIB_ROOT/reader/OWLReader.php";
 require_once "$OWLLIB_ROOT/memory/OWLMemoryOntology.php";
 
