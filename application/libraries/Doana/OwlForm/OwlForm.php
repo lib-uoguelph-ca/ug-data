@@ -88,6 +88,9 @@ class OwlForm {
 		return $properties;
 	}
 	
+	/*
+	 * If necessary, read the ontology in and cache the content for later use.  
+	 */
 	private function readOntology() {
 		if($this->ontology != NULL) {
 			return $this->ontology;
@@ -131,6 +134,7 @@ class OwlForm {
 		
 		$form->addElement(new \PFBC\Element\Select("Type:", $this->getName() . "_type", $classes));
 		
+		//Iterate through the properties and add one select box for each property.
 		foreach ($properties["object"] as $property) {
 			$name = $property['property'];
 			$domain = array('');
@@ -139,11 +143,37 @@ class OwlForm {
 			$form->addElement(new \PFBC\Element\Select($name . ":", $this->getName() . '_' . $name, $domain));
 		}
 		
-		$form->addElement(new \PFBC\Element\Button);
 		$rendered_form = $form->render(TRUE);
 		
-		return $rendered_form;
+		$rendered_form_content = $this->getFormContents($rendered_form);
 		
+		return $rendered_form_content;
+		
+	}
+	
+	/*
+	 * Returns the usable content of the generated form. 
+	 * 
+	 * For our purposes, we don't need the <form> tags. 
+	 * We also want to add an id and a class to the fieldset string that we 
+	 * can target with javascript on the client side.
+	 */
+	function getFormContents($form) {
+	
+		//Remove the <form> tags:
+		$content = '';
+		$matches = array();
+		if(preg_match('/<form.*>.*<\/form>/', $form, $matches) > 0) {
+			$form_start = strpos($matches[0], '>') + 1;
+			$form_end = strlen('</form>') * -1;
+			$content = substr($matches[0], $form_start, $form_end);
+		}
+		
+		//Add an id (the ontology name) and class ('ontology') to the fieldset.
+		$fieldset_str = '<fieldset id="' . $this->getName() . '" class="ontology">';
+		$content = preg_replace('/<fieldset>/', $fieldset_str,  $content, 1);
+	
+		return $content;
 	}
 	
 }
