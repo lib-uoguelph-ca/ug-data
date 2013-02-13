@@ -93,8 +93,6 @@ class OwlForm {
 			return $this->ontology;
 		}
 		else {
-
-			
 			$reader = new \OWLReader();
 			$ontology = new \OWLMemoryOntology();
 			$reader->readFromFile($this->filename, $ontology);
@@ -103,37 +101,48 @@ class OwlForm {
 
 			return $ontology;
 		}
-	
 	}
 	
 	public function getName() {
 		return substr($this->filename, 0, strrpos($this->filename, '.'));	
 	}
 	
+	/*
+	 * Using the loaded OWL file, generate a form that has corresponding inputs 
+	 * for the OWL classes and properties.
+	 * 
+	 */
 	public function getForm() {
 		
-		$classes = $this->getTypes();
-		var_dump($classes);
+		$classes = array('');
+		$classes = $classes + $this->getTypes();		
 		$properties = $this->getProperties();
-		var_dump($properties); 
 		
+		/*
+		 * $_SERVER['DOCUTMENT_ROOT'] is necessary because PFBC\Form assumes 
+		 * that it is running in a web server.
+		 */
+		$_SERVER['DOCUMENT_ROOT'] = dirname(__FILE__);
 		$form = new Form("Ontology");	
+		
 		$form->configure(array(
 				"prevent" => array("bootstrap", "jQuery", "focus")
 		));
 		
-		$form->addElement(new \PFBC\Element\Select("Type:", "type", $classes));
+		$form->addElement(new \PFBC\Element\Select("Type:", $this->getName() . "_type", $classes));
 		
-		$form->addElement(new \PFBC\Element\Textbox("My Textbox:", "MyTextbox"));
-		$form->addElement(new \PFBC\Element\Select("My Select:", "MySelect", array(
-				"Option #1",
-				"Option #2",
-				"Option #3"
-		)));
+		foreach ($properties["object"] as $property) {
+			$name = $property['property'];
+			$domain = array('');
+			$domain = $domain + $property['domain'];
+						
+			$form->addElement(new \PFBC\Element\Select($name . ":", $this->getName() . '_' . $name, $domain));
+		}
+		
 		$form->addElement(new \PFBC\Element\Button);
 		$rendered_form = $form->render(TRUE);
 		
-		echo $rendered_form;
+		return $rendered_form;
 		
 	}
 	
