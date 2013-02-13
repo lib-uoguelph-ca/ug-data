@@ -63,6 +63,8 @@
     			<ul id="secondary-links">
 			    	@section('secondary-links')
 					    <li><a href="/">Home</a></li>
+					    <li><a href="/datasets">Data Sets</a></li>
+					    <li><a href="/search">Search</a></li>
 					@endsection
 					@yield('secondary-links')
 				</ul>
