@@ -1,7 +1,6 @@
 {
     "require": {
-        "chh/optparse": "dev-master",
-        "symfony/form": "2.1.4"
+        "chh/optparse": "*@dev"
     },
     
     "autoload": {

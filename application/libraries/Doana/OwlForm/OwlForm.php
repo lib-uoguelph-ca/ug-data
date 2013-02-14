@@ -108,7 +108,10 @@ class OwlForm {
 	}
 	
 	public function getName() {
-		return substr($this->filename, 0, strrpos($this->filename, '.'));	
+		$start = strrpos($this->filename, '/') + 1;		
+		$name = substr($this->filename, $start, strlen($this->filename));
+		$name = substr($name, 0, strrpos($name, '.'));
+		return $name;	
 	}
 	
 	/*
