@@ -1,8 +1,4 @@
-$(document).ready(function() {
-	$('#advancedSearch').hide();
-	$('.ontology').hide();
-	
-	
+$(document).ready(function() {	
 	$('#ontology-select').change(function() {
 		$('#advancedSearch').show();
 		var id = '#' + $(this).val();

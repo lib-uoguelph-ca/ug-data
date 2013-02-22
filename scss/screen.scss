@@ -114,4 +114,9 @@ table td {
 	background-color: $shaded_colour;
 	border-radius: $border_radius;
 	padding: 0 1em;
+	display: none;
+		
+	legend {
+		font-size: 125%;
+	}
 }
