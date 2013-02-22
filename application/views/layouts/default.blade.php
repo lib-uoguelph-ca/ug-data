@@ -39,7 +39,7 @@
 			        </label>
 			    </form>				
 			    <div id="searchtype"><strong>search:</strong>
-					<span id="webSearchButton" class="selectedSearch"><label for="searchtext" onclick="webSearch();return false;"><span>Web</span></label></span>
+					<span id="webSearchButton" class="selectedSearch"><span>Web</span></span>
 					<span id="dirSearchButton" class="altSearch"><a href="http://www.uoguelph.ca/directory"><span>Directory</span></a></span>
 					<span id="libSearchButton" class="altSearch"><a href="http://www.lib.uoguelph.ca"><span>Library</span></label></a></span>      
 		       	</div>

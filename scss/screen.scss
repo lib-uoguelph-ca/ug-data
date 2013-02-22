@@ -4,11 +4,26 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+
+/*
+ * Variables
+ **/
 $pri_colour: #990000;
 $sec_colour: #FDC708;
 $main_link_colour: #336699;
 $border_colour: #777;
+$shaded_colour: #F5F5F5;
+$border_radius: 5px;
+/*
+ * Mixins
+ **/
+@import "compass";
+@import "mixins/general";
+@import "compass/css3/images";
 
+/*
+ * Imports
+ **/
 @import "uofg/header";
 @import "uofg/sidebar";
 @import "uofg/home";
@@ -19,7 +34,6 @@ $border_colour: #777;
 @import "uofg/style2";
 @import "uofg/topmenu";
 
-@import "mixins/general";
 
 /*
  * Main Content
@@ -53,4 +67,51 @@ code {
 
 table td {
 	vertical-align: top;
+}
+
+/*
+ * Search
+ **/
+#search {
+	#basicSearch {
+		float: left;
+		display: block;
+		margin-right: 1em;
+	}
+	
+	label,
+	input, 
+	select {
+		float: left;
+		clear: both;
+	}
+	
+	input,
+	select {
+		&:hover {
+			border: 2px solid #6699CC;
+		}
+		&:focus {
+			border: 2px solid #6699CC;
+		}
+		
+		margin-bottom: 0.5em;
+		width: 20em;
+	}
+	
+	select {
+		height: 24px;
+	}
+	
+	input[type="submit"] {
+		width: auto;
+	}
+}
+
+#advancedSearch {
+	float: left;
+	display: block;
+	background-color: $shaded_colour;
+	border-radius: $border_radius;
+	padding: 0 1em;
 }

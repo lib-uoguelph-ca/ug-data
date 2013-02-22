@@ -108,7 +108,7 @@ class OwlForm {
 	}
 	
 	public function getName() {
-		$start = strrpos($this->filename, '/') + 1;		
+		$start = strrpos($this->filename, '/');		
 		$name = substr($this->filename, $start, strlen($this->filename));
 		$name = substr($name, 0, strrpos($name, '.'));
 		return $name;	
@@ -124,6 +124,8 @@ class OwlForm {
 		$classes = array('');
 		$classes = $classes + $this->getTypes();		
 		$properties = $this->getProperties();
+		//var_dump($classes);
+		//var_dump($properties);
 		
 		/*
 		 * $_SERVER['DOCUTMENT_ROOT'] is necessary because PFBC\Form assumes 
@@ -139,12 +141,14 @@ class OwlForm {
 		$form->addElement(new \PFBC\Element\Select("Type:", $this->getName() . "_type", $classes));
 		
 		//Iterate through the properties and add one select box for each property.
-		foreach ($properties["object"] as $property) {
-			$name = $property['property'];
-			$domain = array('');
-			$domain = $domain + $property['domain'];
-						
-			$form->addElement(new \PFBC\Element\Select($name . ":", $this->getName() . '_' . $name, $domain));
+		if(!empty($properties["object"])) {
+			foreach ($properties["object"] as $property) {
+				$name = $property['property'];
+				$domain = array('');
+				$domain = $domain + $property['domain'];
+							
+				$form->addElement(new \PFBC\Element\Select($name . ":", $this->getName() . '_' . $name, $domain));
+			}
 		}
 		
 		$rendered_form = $form->render(TRUE);

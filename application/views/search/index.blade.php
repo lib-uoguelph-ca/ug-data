@@ -2,27 +2,29 @@
 	@parent
 	<script src="js/search.js"></script>
 @endsection
-		
-<form action="" method="Post">
-	<div id="basicSearch">
-		<label for="searchbox">Search</label>
-		<input type="text" name="keywords" />
-		<div>
-		<label for="ontology">Advanced Search</label>
-			<select id="ontology-select" name="ontology">
-				<option selected disabled value="0">Select an Ontology</option>
-				<option value="ont1">EXPO</option>
-				<option value="ont2">MicrO</option>
-			</select>
+<div id="search">		
+	<form action="" method="Post">
+		<div id="basicSearch">
+			<label for="search-keyword">Search</label>
+			<input type="text" id="search-keyword" />
+			<div>
+			<label for="ontology-select">Advanced Search</label>
+				<select id="ontology-select" name="ontology">
+					<option selected disabled value="0">Select an Ontology</option>
+					<option value="expo">Expo</option>
+					<option value="geopolitical">Geopolitical</option>
+					<option value="human_activities">Human Activities</option>
+				</select>
+			</div>
 		</div>
-	</div>
-	<div id="advancedSearch" style="background-color: #F5F5F5; border-radius: 15px; padding: 0px 0.5em;">
-		{{ View::make('search.ont1')->render() }}
-		{{ View::make('search.ont2')->render() }}
-	</div>
-	<input type="submit" value="Search" />
-</form>
-
+		<div id="advancedSearch" >
+			{{ View::make('search.geopolitical')->render() }}
+			{{ View::make('search.expo')->render() }}
+			{{ View::make('search.human_activities')->render() }}
+		</div>
+		<input type="submit" value="Search" />
+	</form>
+</div>
 @if ($results == TRUE)
 <div id="results">
 	<p>Your search: {{ $query }}</p>

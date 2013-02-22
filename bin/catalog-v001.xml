@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1354214236281" name="http://aims.fao.org/aos/geopolitical.owl" uri="geopolitical.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1354214236281" name="http://www.hozo.jp/owl/EXPOApr19.xml/" uri="expo.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1354214236281" name="http://www.mindswap.org/2003/nciOncology.owl#" uri="nciOncology.owl"/>
-    </group>
-</catalog>

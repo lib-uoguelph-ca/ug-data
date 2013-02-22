@@ -1,9 +1,14 @@
 $(document).ready(function() {
-	$('.ontology').hide();	
+	$('#advancedSearch').hide();
+	$('.ontology').hide();
+	
 	
 	$('#ontology-select').change(function() {
+		$('#advancedSearch').show();
 		var id = '#' + $(this).val();
 		$('.ontology').hide();
-		$(id).show(200);
+		$('#advancedSearch select').val("");
+		$('#advancedSearch input').val("");
+		$(id).show(400);
 	})
 })
