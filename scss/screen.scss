@@ -106,17 +106,23 @@ table td {
 	input[type="submit"] {
 		width: auto;
 	}
-}
-
-#advancedSearch {
-	float: left;
-	display: block;
-	background-color: $shaded_colour;
-	border-radius: $border_radius;
-	padding: 0 1em;
-	display: none;
-		
-	legend {
-		font-size: 125%;
+	
+	#advancedSearch {
+		float: left;
+		display: block;
+		background-color: $shaded_colour;
+		border-radius: $border_radius;
+		padding: 0 1em;
+		display: none;
+			
+		legend {
+			font-size: 125%;
+		}
 	}
 }
+
+#results {
+	float: left;
+	clear: both;
+}
+

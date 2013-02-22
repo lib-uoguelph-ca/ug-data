@@ -6,10 +6,10 @@
 	<form action="" method="Post">
 		<div id="basicSearch">
 			<label for="search-keyword">Search</label>
-			<input type="text" id="search-keyword" />
+			<input type="text" id="search-keyword" name="search-keyword"/>
 			<div>
-			<label for="ontology-select">Advanced Search</label>
-				<select id="ontology-select" name="ontology">
+				<label for="ontology-select">Advanced Search</label>
+				<select id="ontology-select" name="ontology-select">
 					<option selected disabled value="0">Select an Ontology</option>
 					<option value="expo">Expo</option>
 					<option value="geopolitical">Geopolitical</option>
@@ -28,6 +28,5 @@
 @if ($results == TRUE)
 <div id="results">
 	<p>Your search: {{ $query }}</p>
-	<p>With the following ontology: {{ $ontology }}</p>
 </div>
 @endif 
