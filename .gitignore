@@ -6,3 +6,5 @@ application/config/*
 composer.lock
 *.mwb.bak
 .sass-cache
+bin/*.owl
+bin/*.xml
