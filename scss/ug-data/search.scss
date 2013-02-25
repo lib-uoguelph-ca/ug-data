@@ -1,0 +1,56 @@
+/*
+ * Search
+ **/
+#search {
+	#basicSearch {
+		float: left;
+		display: block;
+		margin-right: 1em;
+	}
+	
+	label,
+	input, 
+	select {
+		float: left;
+		clear: both;
+	}
+	
+	input,
+	select {
+		&:hover {
+			border: 2px solid #6699CC;
+		}
+		&:focus {
+			border: 2px solid #6699CC;
+		}
+		
+		margin-bottom: 0.5em;
+		width: 20em;
+	}
+	
+	select {
+		height: 24px;
+	}
+	
+	input[type="submit"] {
+		width: auto;
+	}
+	
+	#advancedSearch {
+		float: left;
+		display: block;
+		background-color: $shaded_colour;
+		border-radius: $border_radius;
+		padding: 0 1em;
+		display: none;
+			
+		legend {
+			font-size: 125%;
+		}
+	}
+}
+
+#results {
+	float: left;
+	clear: both;
+}
