@@ -10,11 +10,11 @@ class Search_Controller extends Base_Controller {
 				
 		$view = View::make('search.index');
 		
-		$all = $this->queryStripEmpty(Input::get());
-		var_dump($all);
-		if(!empty($all)) {
+		$submission = $this->queryStripEmpty(Input::get());
+		var_dump($submission);
+		if(!empty($submission)) {
 			$view->results = TRUE;
-			$view->query = $all['search-keyword'];
+			$view->query = $submission['search-keyword'];
 			//$view->ontology = $ontology;
 		} 
 		else {

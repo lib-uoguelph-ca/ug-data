@@ -18,9 +18,9 @@
 			</div>
 		</div>
 		<div id="advancedSearch" >
-			{{ View::make('search.geopolitical')->render() }}
-			{{ View::make('search.expo')->render() }}
-			{{ View::make('search.human_activities')->render() }}
+			{{ View::make('search.ontology.geopolitical')->render() }}
+			{{ View::make('search.ontology.expo')->render() }}
+			{{ View::make('search.ontology.human_activities')->render() }}
 		</div>
 		<input type="submit" value="Search" />
 	</form>
