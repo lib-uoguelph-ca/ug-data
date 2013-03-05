@@ -14,6 +14,8 @@ DROP TABLE IF EXISTS `ug_data`.`datasets` ;
 CREATE  TABLE IF NOT EXISTS `ug_data`.`datasets` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` TEXT NOT NULL ,
+  `url` VARCHAR(500) NOT NULL ,
+  `description` TEXT NULL ,
   `creation_date` TIMESTAMP NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
@@ -42,6 +44,47 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`attributes` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `ug_data`.`users`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `ug_data`.`users` ;
+
+CREATE  TABLE IF NOT EXISTS `ug_data`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `username` VARCHAR(75) NOT NULL ,
+  `email` VARCHAR(150) NOT NULL ,
+  `creation_date` TIMESTAMP NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `username` (`username` ASC) ,
+  INDEX `email` (`email` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ug_data`.`users_datasets`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `ug_data`.`users_datasets` ;
+
+CREATE  TABLE IF NOT EXISTS `ug_data`.`users_datasets` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `user_id` INT NOT NULL ,
+  `dataset_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `user_id` (`user_id` ASC) ,
+  INDEX `dataset_id` (`dataset_id` ASC) ,
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `ug_data`.`users` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `dataset_id`
+    FOREIGN KEY (`dataset_id` )
+    REFERENCES `ug_data`.`datasets` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -52,10 +95,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `ug_data`;
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `creation_date`) VALUES (1, 'Adam', NULL);
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `creation_date`) VALUES (2, 'Tyler', NULL);
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `creation_date`) VALUES (3, 'Elisabeth', NULL);
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `creation_date`) VALUES (4, 'Sarah', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `creation_date`) VALUES (1, 'Adam', 'http://www.google.ca', 'desc', '');
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `creation_date`) VALUES (2, 'Tyler', 'http://www.google.ca', 'desc', '');
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `creation_date`) VALUES (3, 'Elisabeth', 'http://www.google.ca', 'desc', '');
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `creation_date`) VALUES (4, 'Sarah', 'http://www.google.ca', 'desc', '');
 
 COMMIT;
 

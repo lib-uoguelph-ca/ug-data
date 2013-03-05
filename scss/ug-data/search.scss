@@ -6,16 +6,16 @@
 		float: left;
 		display: block;
 		margin-right: 1em;
+		margin-bottom: 0.5em;		
 	}
-	
-	
-	
+
 	#advancedSearch {
 		float: left;
 		display: block;
 		padding: 0 1em;
 		display: none;
-			
+		position: relative;
+		top: -1em;
 		
 	}
 }

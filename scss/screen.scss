@@ -22,6 +22,7 @@ $full_content_width: 820px;
 @import "compass";
 @import "mixins/general";
 @import "compass/css3/images";
+@import "compass/utilities/general/clearfix";
 
 /*
  * Imports
@@ -36,6 +37,7 @@ $full_content_width: 820px;
 @import "uofg/style2";
 @import "uofg/topmenu";
 @import "ug-data/search";
+@import "ug-data/dataset-add";
 
 /*
  * Main Content
@@ -43,7 +45,10 @@ $full_content_width: 820px;
 
 #main div.container {
 	padding: 10px 20px; 
-	width:820px;
+	width: 820px;
+	overflow: visible;
+	
+	@include legacy-pie-clearfix();
 }
 
 a {
@@ -71,6 +76,7 @@ table td {
 	vertical-align: top;
 }
 
+
 /*
  * Flash Messages.
  **/
@@ -90,4 +96,55 @@ table td {
 	max-width: $full_content_width;
 	text-align: center;
 
+}
+
+/*
+ * Forms
+ **/
+#main form {
+	
+	label,
+	{
+		span {
+			float: left;
+			clear: both;
+			display: block;
+		}
+		select, 
+		input,
+		textarea {
+			float: left;
+			clear: both;	
+		}
+	}
+	
+	fieldset {
+		border: 1px solid $border-colour;
+		padding: 1em;
+		margin-bottom: 1em;
+	 
+		legend {
+			font-size: 125%;
+		}
+	}
+	
+	input,
+	select {
+		height: 26px;
+	}
+	
+	select {
+		height: 24px;
+	}
+	
+	select[multiple=true] {
+		height: auto;
+		min-height: 12em;
+	}
+	
+	input[type="submit"] {
+		width: auto;
+		float: left;
+		clear: both;
+	} 
 }

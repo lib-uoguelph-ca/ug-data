@@ -31,4 +31,25 @@ class Dataset_Controller extends Base_Controller {
 		}
 		
 	}
+	
+	public function action_add() {
+		$submission = Input::get();
+		var_dump($submission);
+		
+		$this->layout->title = "UG-Data Search";
+		$this->layout->subtitle = "Describe your data";
+		
+		$view = View::make('dataset.add');
+		//Initial visit to the add form. 
+		if(empty($submission)) {
+						
+		}
+		//Handle submitted form data.
+		else {
+			$view->status = "success";
+			$view->msg = "Success! We've added your dataset to our database. Please be patient while we update our search index.";
+		} 
+		
+		$this->layout->content = $view;
+	}
 }
