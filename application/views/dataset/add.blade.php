@@ -14,9 +14,15 @@
 
 @if(!empty($status))
 	<div id="status" class=" {{ $status }}">
-		@if ($status == "success")
-			<p class="msg">{{ $msg }}</p>
-		@endif 
+		<ul class="message-list">
+			@if (is_array($msg))
+				@foreach ($msg as $m)
+					<li class="msg">{{ $m }}</li>
+				@endforeach
+			@else 
+				<li class="msg">{{ $msg }}</li>
+			@endif
+		</ul>
 	</div>
 @endif
 
@@ -25,17 +31,17 @@
 	<form action="" method="Post">
 		<label for="dataset-name">
 			<span>Name</span>
-			<input type="text" name="dataset-name" id="dataset-name" />
+			<input type="text" name="dataset_name" id="dataset-name" />
 		</label>
 		
 		<label for="dataset-url">
 			<span>URL</span>
-			<input type="text" name="dataset-url" id="dataset-url" />
+			<input type="text" name="dataset_url" id="dataset-url" />
 		</label>
 		
-		<label for="dataset-description">
+		<label for="dataset_description">
 			<span>Description</span>
-			<textarea rows="5" cols="50" name="dataset-desc" id="dataset-desc"></textarea>
+			<textarea rows="5" cols="50" name="dataset_description" id="dataset-description"></textarea>
 		</label>
 		
 		<div id="ontologies" >

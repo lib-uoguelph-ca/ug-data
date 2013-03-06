@@ -580,8 +580,9 @@ class Validator {
 	protected function validate_active_url($attribute, $value)
 	{
 		$url = str_replace(array('http://', 'https://', 'ftp://'), '', Str::lower($value));
-
-		return (trim($url) !== '') ? checkdnsrr($url) : false;
+		//return (trim($url) !== '') ? checkdnsrr($url) : false;
+		
+		return dns_get_record($url,DNS_A)!=false ? true : false;
 	}
 
 	/**

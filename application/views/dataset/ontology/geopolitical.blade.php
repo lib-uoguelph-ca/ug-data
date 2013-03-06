@@ -1,6 +1,6 @@
 <fieldset id="geopolitical" class="ontology">
 <legend>geopolitical</legend><label for="geopolitical_type"><span>Type</span>
-<select id="geopolitical_type" name="geopolitical_type" multiple=true>
+<select id="geopolitical_type" name="geopolitical_type[]" multiple="true">
 <option value="geopolitical_disputed">disputed</option>
 <option value="geopolitical_self_governing">self_governing</option>
 <option value="geopolitical_organization">organization</option>
@@ -16,7 +16,7 @@
 </select>
 </label>
 <label for="geopolitical_isPredecessorOf"><span>isPredecessorOf</span>
-<select id="geopolitical_isPredecessorOf" name="geopolitical_isPredecessorOf" multiple=true>
+<select id="geopolitical_isPredecessorOf" name="geopolitical_isPredecessorOf[]" multiple="true">
 <option value="geopolitical_Serbia_and_Montenegro">Serbia_and_Montenegro</option>
 <option value="geopolitical_Bahrain">Bahrain</option>
 <option value="geopolitical_Bermuda">Bermuda</option>
@@ -344,7 +344,7 @@
 </select>
 </label>
 <label for="geopolitical_isAdministeredBy"><span>isAdministeredBy</span>
-<select id="geopolitical_isAdministeredBy" name="geopolitical_isAdministeredBy" multiple=true>
+<select id="geopolitical_isAdministeredBy" name="geopolitical_isAdministeredBy[]" multiple="true">
 <option value="geopolitical_Serbia_and_Montenegro">Serbia_and_Montenegro</option>
 <option value="geopolitical_Bahrain">Bahrain</option>
 <option value="geopolitical_Bermuda">Bermuda</option>
@@ -672,7 +672,7 @@
 </select>
 </label>
 <label for="geopolitical_isInGroup"><span>isInGroup</span>
-<select id="geopolitical_isInGroup" name="geopolitical_isInGroup" multiple=true>
+<select id="geopolitical_isInGroup" name="geopolitical_isInGroup[]" multiple="true">
 <option value="geopolitical_Serbia_and_Montenegro">Serbia_and_Montenegro</option>
 <option value="geopolitical_Bahrain">Bahrain</option>
 <option value="geopolitical_Bermuda">Bermuda</option>
@@ -1000,7 +1000,7 @@
 </select>
 </label>
 <label for="geopolitical_hasMember"><span>hasMember</span>
-<select id="geopolitical_hasMember" name="geopolitical_hasMember" multiple=true>
+<select id="geopolitical_hasMember" name="geopolitical_hasMember[]" multiple="true">
 <option value="geopolitical_Serbia_and_Montenegro">Serbia_and_Montenegro</option>
 <option value="geopolitical_Bahrain">Bahrain</option>
 <option value="geopolitical_Bermuda">Bermuda</option>
@@ -1328,7 +1328,7 @@
 </select>
 </label>
 <label for="geopolitical_isSuccessorOf"><span>isSuccessorOf</span>
-<select id="geopolitical_isSuccessorOf" name="geopolitical_isSuccessorOf" multiple=true>
+<select id="geopolitical_isSuccessorOf" name="geopolitical_isSuccessorOf[]" multiple="true">
 <option value="geopolitical_Serbia_and_Montenegro">Serbia_and_Montenegro</option>
 <option value="geopolitical_Bahrain">Bahrain</option>
 <option value="geopolitical_Bermuda">Bermuda</option>
@@ -1656,7 +1656,7 @@
 </select>
 </label>
 <label for="geopolitical_hasBorderWith"><span>hasBorderWith</span>
-<select id="geopolitical_hasBorderWith" name="geopolitical_hasBorderWith" multiple=true>
+<select id="geopolitical_hasBorderWith" name="geopolitical_hasBorderWith[]" multiple="true">
 <option value="geopolitical_Serbia_and_Montenegro">Serbia_and_Montenegro</option>
 <option value="geopolitical_Bahrain">Bahrain</option>
 <option value="geopolitical_Bermuda">Bermuda</option>

@@ -1,6 +1,8 @@
 {
     "require": {
-        "chh/optparse": "*@dev"
+        "chh/optparse": "*@dev",
+        "titon/utility": "dev-master"
+        
     },
     
     "autoload": {

@@ -16,7 +16,8 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`datasets` (
   `name` TEXT NOT NULL ,
   `url` VARCHAR(500) NOT NULL ,
   `description` TEXT NULL ,
-  `creation_date` TIMESTAMP NOT NULL ,
+  `created_at` TIMESTAMP NOT NULL ,
+  `updated_at` TIMESTAMP NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -32,6 +33,8 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`attributes` (
   `dataset_id` INT NOT NULL ,
   `name` VARCHAR(100) NOT NULL ,
   `value` TEXT NOT NULL ,
+  `created_at` TIMESTAMP NOT NULL ,
+  `updated_at` TIMESTAMP NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `dataset_id` (`dataset_id` ASC) ,
@@ -84,6 +87,43 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`users_datasets` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+USE `ug_data`;
+
+DELIMITER $$
+
+USE `ug_data`$$
+DROP TRIGGER IF EXISTS `ug_data`.`datasets_on_insert` $$
+USE `ug_data`$$
+
+
+CREATE TRIGGER datasets_on_insert BEFORE INSERT
+ON datasets
+FOR EACH ROW BEGIN
+    SET NEW.updated_at = NOW();
+END
+
+$$
+
+
+DELIMITER ;
+
+DELIMITER $$
+
+USE `ug_data`$$
+DROP TRIGGER IF EXISTS `ug_data`.`attributes_on_insert` $$
+USE `ug_data`$$
+
+
+CREATE TRIGGER attributes_on_insert BEFORE INSERT
+ON attributes
+FOR EACH ROW BEGIN
+    SET NEW.updated_at = NOW();
+END
+
+$$
+
+
+DELIMITER ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -95,10 +135,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `ug_data`;
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `creation_date`) VALUES (1, 'Adam', 'http://www.google.ca', 'desc', '');
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `creation_date`) VALUES (2, 'Tyler', 'http://www.google.ca', 'desc', '');
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `creation_date`) VALUES (3, 'Elisabeth', 'http://www.google.ca', 'desc', '');
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `creation_date`) VALUES (4, 'Sarah', 'http://www.google.ca', 'desc', '');
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `created_at`, `updated_at`) VALUES (1, 'Adam', 'http://www.google.ca', 'desc', '', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `created_at`, `updated_at`) VALUES (2, 'Tyler', 'http://www.google.ca', 'desc', '', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `created_at`, `updated_at`) VALUES (3, 'Elisabeth', 'http://www.google.ca', 'desc', '', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `created_at`, `updated_at`) VALUES (4, 'Sarah', 'http://www.google.ca', 'desc', '', NULL);
 
 COMMIT;
 
@@ -107,7 +147,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `ug_data`;
-INSERT INTO `ug_data`.`attributes` (`id`, `dataset_id`, `name`, `value`) VALUES (1, 1, 'test1', '<h1>HTML Ipsum Presents</h1>	       <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href=\"#\">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p><h2>Header Level 2</h2>	       <ol>   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>   <li>Aliquam tincidunt mauris eu risus.</li></ol><blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote><h3>Header Level 3</h3><ul>   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>   <li>Aliquam tincidunt mauris eu risus.</li></ul><pre><code>#header h1 a {	display: block; 	width: 300px; 	height: 80px; }</code></pre>');
-INSERT INTO `ug_data`.`attributes` (`id`, `dataset_id`, `name`, `value`) VALUES (2, 1, 'test2', 'awesomer');
+INSERT INTO `ug_data`.`attributes` (`id`, `dataset_id`, `name`, `value`, `created_at`, `updated_at`) VALUES (1, 1, 'test1', '<h1>HTML Ipsum Presents</h1>	       <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href=\"#\">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p><h2>Header Level 2</h2>	       <ol>   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>   <li>Aliquam tincidunt mauris eu risus.</li></ol><blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote><h3>Header Level 3</h3><ul>   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>   <li>Aliquam tincidunt mauris eu risus.</li></ul><pre><code>#header h1 a {	display: block; 	width: 300px; 	height: 80px; }</code></pre>', '', '');
+INSERT INTO `ug_data`.`attributes` (`id`, `dataset_id`, `name`, `value`, `created_at`, `updated_at`) VALUES (2, 1, 'test2', 'awesomer', '', '');
 
 COMMIT;

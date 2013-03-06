@@ -1,5 +1,7 @@
 <?php 
 
+use Titon\Utility\Sanitize as Sanitize;
+
 class Dataset_Controller extends Base_Controller {
 	
 	public $layout = 'layouts.default';
@@ -33,8 +35,7 @@ class Dataset_Controller extends Base_Controller {
 	}
 	
 	public function action_add() {
-		$submission = Input::get();
-		var_dump($submission);
+		$submission = Input::all();
 		
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = "Describe your data";
@@ -42,14 +43,82 @@ class Dataset_Controller extends Base_Controller {
 		$view = View::make('dataset.add');
 		//Initial visit to the add form. 
 		if(empty($submission)) {
-						
+			
 		}
 		//Handle submitted form data.
 		else {
-			$view->status = "success";
-			$view->msg = "Success! We've added your dataset to our database. Please be patient while we update our search index.";
+			$valid = Dataset::validate($this->stripPrefix($submission));
+			
+			if($valid !== true) {
+				$view->status = "error";
+				$errors = $valid->all();
+				$view->msg = $valid->all();
+			}
+			else {
+				$dataset = new Dataset();
+				$dataset->name = Sanitize::html($submission["dataset_name"]);
+				$dataset->url = Sanitize::url($submission["dataset_url"]);
+				$dataset->description = Sanitize::escape($submission["dataset_description"]);
+					
+				try {
+					$dataset->save();			
+					$dataset->attributes()->save($this->getAttributesFromInput($submission));
+					
+					$view->status = "success";
+					$view->msg = "Success! We've added your dataset to our database. Please be patient while we update our search index.";
+				}
+				catch (Exception $e) {
+					$view->status = "error";
+					$view->msg = "Error. Something went wrong when inserting your values into the database. Please contact an administrator.";
+				}
+			}
 		} 
 		
 		$this->layout->content = $view;
+	}
+	
+	protected function getFieldPrefix($field) {
+		$start = 0;
+		$end = strpos($field, '_');
+		
+		if($end == False) {
+			return "";
+		}
+		
+		return substr($field, $start, $end);
+	}
+	
+	/*Strip the prefix from the field names in the array of submitted values.*/
+	protected function stripPrefix($prefixed_input) {
+
+		$input = array();
+		foreach($prefixed_input as $key => $value) {
+			$start = strpos($key,'_') + 1;
+			$short_key = substr($key, $start);
+
+			$input[$short_key] = $value;
+		}
+		
+		return $input;
+	}
+	
+	protected function getAttributesFromInput($input) {
+		$attributes = array();
+		foreach($input as $field => $val) {
+			$prefix = $this->getFieldPrefix($field);
+				
+			if($prefix != "" && $prefix != 'dataset') {
+				foreach($val as $v) {
+					$attr = array();
+					$attr['name'] = $field;
+					$attr['value'] = Sanitize::escape($v);
+					
+					$attributes[] = $attr;
+				}
+			}
+		}
+		
+		var_dump($attributes);
+		return $attributes;	
 	}
 }

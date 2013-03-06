@@ -62,6 +62,23 @@ class Dataset extends Eloquent {
 		return $result;		
 	}
 	
+	public static function validate($input) {
+		var_dump($input);
+		$rules = array(
+			'name'  => 'required|max:50',
+			'url' => 'required|active_url',
+		);
+		
+		$validation = Validator::make($input, $rules);
+		
+		if ($validation->fails()) {
+			return $validation->errors;
+		}
+		
+		return true;
+		
+	}
+	
 	/**********************PROTECTED**************************/
 	
 	/*
@@ -75,6 +92,5 @@ class Dataset extends Eloquent {
 				$this->_attributes[$attrib->name] = $attrib->value;
 			}
 		}
-	}
-	
+	}	
 }
