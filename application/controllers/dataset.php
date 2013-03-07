@@ -1,6 +1,7 @@
 <?php 
 
 use Titon\Utility\Sanitize as Sanitize;
+use Doana\DefaultValue;
 
 class Dataset_Controller extends Base_Controller {
 	
@@ -33,12 +34,15 @@ class Dataset_Controller extends Base_Controller {
 	}
 	
 	public function action_add() {
-		$submission = Input::all();
 		
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = "Describe your data";
 		
 		$view = View::make('dataset.add');
+		$submission = Input::all();
+		$dv = new \Doana\DefaultValue\DefaultValue($submission);
+		$view->input = $dv;
+		
 		//Initial visit to the add form. 
 		if(empty($submission)) {
 			
@@ -86,7 +90,9 @@ class Dataset_Controller extends Base_Controller {
 		return substr($field, $start, $end);
 	}
 	
-	/*Strip the prefix from the field names in the array of submitted values.*/
+	/*
+	 * Strip the prefix from the field names in the array of submitted values.
+	 */
 	protected function stripPrefix($prefixed_input) {
 
 		$input = array();
@@ -121,4 +127,5 @@ class Dataset_Controller extends Base_Controller {
 		
 		return $attributes;	
 	}
+	
 }

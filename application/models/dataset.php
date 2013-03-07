@@ -8,6 +8,9 @@ class Dataset extends Eloquent {
 		'sample size',
 	);
 	
+	/*
+	 * Defines the has_many relationship between datasets and attributes.
+	 */
 	public function attributes()
 	{
 		return $this->has_many('Attribute');
@@ -65,8 +68,10 @@ class Dataset extends Eloquent {
 		return $results;		
 	}
 	
+	/*
+	 * Takes user input and runs validation rules against the input values.
+	 */
 	public static function validate($input) {
-		var_dump($input);
 		$rules = array(
 			'name'  => 'required|max:50',
 			'url' => 'required|active_url',

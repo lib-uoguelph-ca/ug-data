@@ -28,26 +28,25 @@
 
 <div id="dataset-add">
 		
-	<form action="" method="Post">
-		<label for="dataset-name">
-			<span>Name</span>
-			<input type="text" name="dataset_name" id="dataset-name" />
-		</label>
+	<!-- <form action="" method="Post"> -->
+	{{ Form::open('dataset/add', 'POST');  }}
+		{{ Form::token(); }}
 		
-		<label for="dataset-url">
-			<span>URL</span>
-			<input type="text" name="dataset_url" id="dataset-url" />
-		</label>
+		{{ Form::label('dataset_name', 'Name'); }}
+		{{ Form::text('dataset_name', $input['dataset_name']); }}
 		
-		<label for="dataset_description">
-			<span>Description</span>
-			<textarea rows="5" cols="50" name="dataset_description" id="dataset-description"></textarea>
-		</label>
+		{{ Form::label('dataset_url', 'URL'); }}
+		{{ Form::text('dataset_url', $input['dataset_url']); }}
+		
+		{{ Form::label('dataset_description', 'Description'); }}
+		{{ Form::textarea('dataset_description', $input['dataset_description']); }}
 		
 		<div id="ontologies" >
 			{{ View::make('dataset.ontology.geopolitical')->render() }}
 		</div>
-		<input type="submit" value="Add Dataset" />
-	</form>
+		
+		{{ Form::submit('Add Dataset'); }}
+		<!-- <input type="submit" value="Add Dataset" /> -->
+	{{ Form::close() }}
 </div>
 
