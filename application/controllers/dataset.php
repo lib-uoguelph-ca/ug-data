@@ -40,6 +40,7 @@ class Dataset_Controller extends Base_Controller {
 		
 		$view = View::make('dataset.add');
 		$submission = Input::all();
+
 		$dv = new \Doana\DefaultValue\DefaultValue($submission);
 		$view->input = $dv;
 		
@@ -79,6 +80,10 @@ class Dataset_Controller extends Base_Controller {
 		$this->layout->content = $view;
 	}
 	
+	public function action_edit($id) {
+		
+	}
+	
 	protected function getFieldPrefix($field) {
 		$start = 0;
 		$end = strpos($field, '_');
@@ -114,13 +119,18 @@ class Dataset_Controller extends Base_Controller {
 		foreach($input as $field => $val) {
 			$prefix = $this->getFieldPrefix($field);
 				
-			if($prefix != "" && $prefix != 'dataset') {
-				foreach($val as $v) {
-					$attr = array();
-					$attr['name'] = $field;
-					$attr['value'] = Sanitize::escape($v);
-					
-					$attributes[] = $attr;
+			$invalid_prefixes = array("", "dataset", "csrf");
+			if(!in_array($prefix, $invalid_prefixes)) {
+				if(is_array($val)) {
+					foreach($val as $v) {
+						$attr = array();
+						$attr['name'] = $field;
+						$attr['value'] = Sanitize::escape($v);
+						$attributes[] = $attr;
+					}
+				}
+				else {
+					$attributes[] = array('name' => $field, 'value' => Sanitize::escape($val));
 				}
 			}
 		}

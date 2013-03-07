@@ -42,7 +42,7 @@
 		{{ Form::textarea('dataset_description', $input['dataset_description']); }}
 		
 		<div id="ontologies" >
-			{{ View::make('dataset.ontology.geopolitical')->render() }}
+			{{ render('dataset.ontology.geopolitical', array('input' => $input)); }}
 		</div>
 		
 		{{ Form::submit('Add Dataset'); }}
