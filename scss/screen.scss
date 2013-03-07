@@ -39,6 +39,10 @@ $full_content_width: 820px;
 @import "ug-data/search";
 @import "ug-data/dataset-add";
 
+body {
+	overflow: hidden;
+}
+
 /*
  * Main Content
  **/
@@ -146,4 +150,9 @@ table td {
 		float: left;
 		clear: both;
 	} 
+	
+	label.required:after {
+		content: "*";
+		color: red;
+	}
 }

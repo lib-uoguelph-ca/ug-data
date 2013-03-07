@@ -33,10 +33,10 @@
 	{{ Form::open('dataset/add', 'POST');  }}
 		{{ Form::token(); }}
 		
-		{{ Form::label('dataset_name', 'Name'); }}
+		{{ Form::label('dataset_name', 'Name', array('class' => 'required')); }}
 		{{ Form::text('dataset_name', $input['dataset_name']); }}
 		
-		{{ Form::label('dataset_url', 'URL'); }}
+		{{ Form::label('dataset_url', 'URL', array('class' => 'required')); }}
 		{{ Form::text('dataset_url', $input['dataset_url']); }}
 		
 		{{ Form::label('dataset_description', 'Description'); }}

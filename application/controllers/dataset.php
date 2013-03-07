@@ -60,8 +60,13 @@ class Dataset_Controller extends Base_Controller {
 			else {
 				$dataset = new Dataset();
 				$dataset->name = Sanitize::escape($submission["dataset_name"]);
-				$dataset->url = Sanitize::url($submission["dataset_url"]);
 				
+				$url = Sanitize::url($submission["dataset_url"]);
+				if (!preg_match('#(http://|https://)#', $url)) {
+					$url = "http://" . $url;
+				}
+				$dataset->url = $url;
+								
 				$config = HTMLPurifier_Config::createDefault();
 				$purifier = new HTMLPurifier($config);
 				$dataset->description = $purifier->purify($submission["dataset_description"]);
