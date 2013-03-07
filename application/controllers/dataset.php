@@ -24,8 +24,6 @@ class Dataset_Controller extends Base_Controller {
 			$dataset = Dataset::find($id);			
 			$this->layout->subtitle = $dataset->name;
 			
-			//$attributes = $dataset->attributes()->order_by('name', 'asc')->get();
-			
 			$view = View::make('dataset.dataset');
 			$view->dataset = $dataset;
 			
@@ -102,6 +100,9 @@ class Dataset_Controller extends Base_Controller {
 		return $input;
 	}
 	
+	/*
+	 * Returns an array of the attributes from the user input.
+	 */
 	protected function getAttributesFromInput($input) {
 		$attributes = array();
 		foreach($input as $field => $val) {
@@ -118,7 +119,6 @@ class Dataset_Controller extends Base_Controller {
 			}
 		}
 		
-		var_dump($attributes);
 		return $attributes;	
 	}
 }

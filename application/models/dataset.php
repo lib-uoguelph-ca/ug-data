@@ -20,11 +20,14 @@ class Dataset extends Eloquent {
 		 
 		$this->cacheAttributes();
 		
-		if(isset($this->_attributes[$name])) {
-			return $this->_attributes[$name];
+		$values = array();
+		foreach($this->_attributes as $attrib) {
+			if($attrib->name == $name) {
+				$values[] = $attrib->value;
+			}			
 		}
 		
-		return NULL;
+		return $values;
 	}
 	
 	/*
@@ -36,9 +39,9 @@ class Dataset extends Eloquent {
 		
 		$result = array();
 		
-		foreach ($this->_attributes as $name => $value) {
-			if(in_array($name, Dataset::$core_attr)) {
-				$result[$name] = $value;
+		foreach ($this->_attributes as $attrib) {
+			if(in_array($attrib->name, Dataset::$core_attr)) {
+				$result[] = $attrib;
 			}
 		}
 		
@@ -52,14 +55,14 @@ class Dataset extends Eloquent {
 	public function getSecondaryAttributes() {
 		$this->cacheAttributes();
 		
-		$result = array();
-		foreach ($this->_attributes as $name => $value) {
-			if(!in_array($name, Dataset::$core_attr)) {
-				$result[$name] = $value;
+		$results = array();
+		foreach ($this->_attributes as $attrib) {
+			if(!in_array($attrib->name, Dataset::$core_attr)) {
+				$results[] = array('name' => $attrib->name, 'value' => $attrib->value);
 			}
 		}
 		
-		return $result;		
+		return $results;		
 	}
 	
 	public static function validate($input) {
@@ -89,7 +92,7 @@ class Dataset extends Eloquent {
 		if (empty($this->_attributes)) {
 			$attribs = $this->attributes()->order_by('name', 'asc')->get();
 			foreach ($attribs as $attrib) {
-				$this->_attributes[$attrib->name] = $attrib->value;
+				$this->_attributes[] = $attrib;
 			}
 		}
 	}	
