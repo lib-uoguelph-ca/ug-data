@@ -1,8 +1,8 @@
 {
     "require": {
         "chh/optparse": "*@dev",
-        "titon/utility": "dev-master"
-        
+        "titon/utility": "dev-master",
+        "nick4fake/htmlpurifier": "dev-master"
     },
     
     "autoload": {

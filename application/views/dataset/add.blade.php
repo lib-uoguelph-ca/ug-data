@@ -2,6 +2,7 @@
 @section('scripts')
 	@parent
 	<script src="/js/vendor/chosen/chosen.jquery.js"></script>
+	<script src="/js/vendor/nicEdit/nicEdit.js" type="text/javascript"></script>
 	<!-- <script src="/js/vendor/jquery.collapsibleFieldset.js"></script> -->
 
 	<script src="/js/dataset-add.js"></script>
