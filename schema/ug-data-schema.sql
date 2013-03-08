@@ -42,7 +42,7 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`attributes` (
   CONSTRAINT `did`
     FOREIGN KEY (`dataset_id` )
     REFERENCES `ug_data`.`datasets` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -79,7 +79,7 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`users_datasets` (
     FOREIGN KEY (`user_id` )
     REFERENCES `ug_data`.`users` (`id` )
     ON DELETE CASCADE
-    ON UPDATE CASCADE,
+    ON UPDATE NO ACTION,
   CONSTRAINT `dataset_id`
     FOREIGN KEY (`dataset_id` )
     REFERENCES `ug_data`.`datasets` (`id` )

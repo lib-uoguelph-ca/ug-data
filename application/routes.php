@@ -52,6 +52,8 @@ Route::get('dataset/add', 'dataset@add');
 Route::post('dataset/add', 'dataset@add');
 Route::get('dataset/edit/(:num?)', 'dataset@edit');
 Route::post('dataset/edit/(:num?)', 'dataset@edit');
+Route::get('dataset/delete/(:num?)', 'dataset@delete');
+Route::post('dataset/delete/(:num?)', 'dataset@delete');
 
 /*
 |--------------------------------------------------------------------------

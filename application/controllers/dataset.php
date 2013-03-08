@@ -34,6 +34,10 @@ class Dataset_Controller extends Base_Controller {
 	 */
 	public function action_view($id) {
 		$dataset = Dataset::find($id);
+		if($dataset == Null) {
+			return Response::error('404');
+		}
+		
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = $dataset->name;
 			
@@ -54,6 +58,10 @@ class Dataset_Controller extends Base_Controller {
 		$this->layout->title = "UG-Data Search";
 				
 		$dataset = Dataset::find($id);
+		if($dataset == Null) {
+			return Response::error('404');
+		}
+		
 		$this->layout->subtitle = $dataset->name;
 			
 		$view = View::make('dataset.fullview');
@@ -201,7 +209,6 @@ class Dataset_Controller extends Base_Controller {
 						->with('status-msg', 'Success! Dataset updated.');
 				}
 				catch (Exception $e) {
-					throw $e;
 					Session::flash('status', 'error');
 					Session::flash('status-msg', "Error. Something went wrong when inserting your values into the database. Please contact an administrator.");
 				}
@@ -209,6 +216,57 @@ class Dataset_Controller extends Base_Controller {
 			}
 		}
 		
+		$this->layout->content = $view;
+	}
+	
+	/**
+	 * Delete action
+	 * 
+	 * Deletes a dataset.
+	 * 
+	 * @param unknown_type $id
+	 */
+	public function action_delete($id) {
+		$this->layout->title = "UG-Data Search";
+		$this->layout->subtitle = "Confirm Delete?";
+		
+		$dataset = Dataset::find($id);
+		if($dataset == Null) {
+			return Response::error('404');
+		}
+		
+		$submission = Input::all();
+	
+		//Initial Visit
+		if(empty($submission)) {
+			
+		}
+		//Process submission.
+		else {
+			//If the user clicked the confirm button.
+			if(isset($submission['dataset_delete_confirm'])) {
+				try {
+					/* We've got cascading deletes set up for the attributes table. 
+					 * So we only have to delete the dataset.
+					 */
+					$dataset->delete();
+					return Redirect::to_action('dataset@index')
+					->with('status', 'success')
+					->with('status-msg', 'Success! Dataset deleted.');
+				}
+				catch(Exception $e) {
+					Session::flash('status', 'error');
+					Session::flash('status-msg', "Error. Something went wrong when inserting your values into the database. Please contact an administrator.");
+				}
+			}
+			//The user clicked the cancel button.
+			else {
+				return Redirect::to_action('dataset@index');
+			}
+		}
+		
+		$view = View::make('dataset.delete');
+		$view->id = $id;
 		$this->layout->content = $view;
 	}
 	

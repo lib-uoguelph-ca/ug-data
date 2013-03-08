@@ -13,7 +13,7 @@
 	<link href="/js/vendor/chosen/chosen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 @endsection
 
-<div id="dataset-add">
+<div id="dataset-edit">
 		
 	<!-- <form action="" method="Post"> -->
 	{{ Form::open('dataset/edit/' . $id, 'POST');  }}
