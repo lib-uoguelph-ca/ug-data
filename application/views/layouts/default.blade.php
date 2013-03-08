@@ -28,7 +28,7 @@
     	<div id="global">
 	    	<div class="container">
 	    		<a id="logo" href="http://www.uoguelph.ca/" tip=""><strong>University of Guelph</strong></a>
-		    	<h1>{{ $title }}</h1>
+		    	<h1><a href="/">{{ $title }}</a></h1>
 		    	
 		    	<form id="searchbox_011117603928904778939:tp3ks5ha2dw" action="http://www.uoguelph.ca/search/" name="searchform">
 			        <input type="hidden" name="cx" value="011117603928904778939:tp3ks5ha2dw">
@@ -44,7 +44,7 @@
 					<span id="libSearchButton" class="altSearch"><a href="http://www.lib.uoguelph.ca"><span>Library</span></label></a></span>      
 		       	</div>
 			    
-		    	<div id="globalnav">
+		    	<nav id="globalnav">
 			    	<ul id="primary-links">
 				    	@section('primary-links')
 					    	<li><a href="http://www.uoguelph.ca/academics/" id="menu-academics" tip=""><span>Academics</span></a></li>
@@ -55,10 +55,10 @@
 						@endsection
 						@yield('primary-links')
 					</ul>
-				</div>
+				</nav>
 			</div>
 		</div>
-		<div id="local">
+		<nav id="local">
     		<div class="container">
     			<ul id="secondary-links">
 			    	@section('secondary-links')
@@ -69,11 +69,11 @@
 					@yield('secondary-links')
 				</ul>
     		</div>
-    	</div>
+    	</nav>
     </header>
     
     <body>    
-    	<div id="main">
+    	<article id="main">
 	    	<div class="container">
 	    	<h2>{{ $subtitle }}</h2>
 	    	@if(Session::has('status'))	    		
@@ -91,7 +91,7 @@
 			@endif
 	      	{{ $content }}
 	      	</div>
-      	</div>
+      	</article>
       	
       	@section('scripts')
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
