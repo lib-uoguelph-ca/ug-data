@@ -32,7 +32,6 @@ class DatasetArray {
 	}
 
 	public function build() {
-		var_dump($this->output);
 		return $this->output;
 	}
 

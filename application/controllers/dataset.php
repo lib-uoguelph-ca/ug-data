@@ -72,7 +72,6 @@ class Dataset_Controller extends Base_Controller {
 		
 		$view = View::make('dataset.add');
 		$submission = Input::all();
-		var_dump($submission);
 
 		$dv = new DefaultValue($submission);
 		$view->input = $dv;
@@ -149,7 +148,6 @@ class Dataset_Controller extends Base_Controller {
 		//Initial visit to the edit form.
 		//Pass the loaded values to the edit form.
 		
-		var_dump($submission);
 		$view->id = $id;
 		
 		if(empty($submission)) {
