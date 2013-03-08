@@ -13,20 +13,6 @@
 	<link href="/js/vendor/chosen/chosen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 @endsection
 
-@if(!empty($status))
-	<div id="status" class=" {{ $status }}">
-		<ul class="message-list">
-			@if (is_array($msg))
-				@foreach ($msg as $m)
-					<li class="msg">{{ $m }}</li>
-				@endforeach
-			@else 
-				<li class="msg">{{ $msg }}</li>
-			@endif
-		</ul>
-	</div>
-@endif
-
 <div id="dataset-add">
 		
 	<!-- <form action="" method="Post"> -->

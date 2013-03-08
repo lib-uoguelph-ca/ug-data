@@ -85,9 +85,9 @@ class Dataset_Controller extends Base_Controller {
 			$valid = Dataset::validate($this->stripPrefix($submission));
 			
 			if($valid !== true) {
-				$view->status = "error";
+				$this->layout->status = "error";
 				$errors = $valid->all();
-				$view->msg = $valid->all();
+				$this->layout->msg = $valid->all();
 			}
 			else {
 				$dataset = new Dataset();
@@ -112,12 +112,12 @@ class Dataset_Controller extends Base_Controller {
 					$dataset->save();			
 					$dataset->attributes()->save($this->getAttributesFromInput($submission));
 					
-					$view->status = "success";
-					$view->msg = "Success! We've added your dataset to our database. Please be patient while we update our search index.";
+					$this->layout->status = "success";
+					$this->layout->msg = "Success! We've added your dataset to our database. Please be patient while we update our search index.";
 				}
 				catch (Exception $e) {
-					$view->status = "error";
-					$view->msg = "Error. Something went wrong when inserting your values into the database. Please contact an administrator.";
+					$this->layout->status = "error";
+					$this->layout->msg = "Error. Something went wrong when inserting your values into the database. Please contact an administrator.";
 				}
 			}
 		} 
@@ -162,9 +162,9 @@ class Dataset_Controller extends Base_Controller {
 			$valid = Dataset::validate($this->stripPrefix($submission));
 				
 			if($valid !== true) {
-				$view->status = "error";
+				$this->layout->status = "error";
 				$errors = $valid->all();
-				$view->msg = $valid->all();
+				$this->layout->msg = $valid->all();
 			}
 			else {
 				//Name
@@ -193,13 +193,13 @@ class Dataset_Controller extends Base_Controller {
 				try {
 					$dataset->save();
 					$dataset->attributes()->save($this->getAttributesFromInput($submission));
-						
-					$view->status = "success";
-					$view->msg = "Success! We've added your dataset to our database. Please be patient while we update our search index.";
+				
+					$this->layout->status = "success";
+					$this->layout->msg = "Success! Dataset updated.";
 				}
 				catch (Exception $e) {
-					$view->status = "error";
-					$view->msg = "Error. Something went wrong when inserting your values into the database. Please contact an administrator.";
+					$this->layout->status = "error";
+					$this->layout->msg = "Error. Something went wrong when inserting your values into the database. Please contact an administrator.";
 				}
 				
 			}
