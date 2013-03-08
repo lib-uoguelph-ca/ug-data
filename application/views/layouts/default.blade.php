@@ -76,15 +76,15 @@
     	<div id="main">
 	    	<div class="container">
 	    	<h2>{{ $subtitle }}</h2>
-	    	@if(!empty($status))
-				<div id="status" class=" {{ $status }}">
+	    	@if(Session::has('status'))	    		
+				<div id="status" class=" {{ Session::get('status'); }}">
 					<ul class="message-list">
-						@if (is_array($msg))
-							@foreach ($msg as $m)
+						@if (is_array(Session::get('status-msg')))
+							@foreach (Session::get('status-msg') as $m)
 								<li class="msg">{{ $m }}</li>
 							@endforeach
 						@else 
-							<li class="msg">{{ $msg }}</li>
+							<li class="msg">{{ Session::get('status-msg'); }}</li>
 						@endif
 					</ul>
 				</div>

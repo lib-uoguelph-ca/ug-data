@@ -13,8 +13,7 @@ class Dataset_Controller extends Base_Controller {
 	 * URL: datasets, dataset, dataset/(int)
 	 * @param: $id	Optional. The id of the dataset to view.
 	 */
-	public function action_index($id=null)
-	{
+	public function action_index($id=null) {
 		$this->layout->title = "UG-Data Search";
 		
 		if ($id == null) {
@@ -27,7 +26,6 @@ class Dataset_Controller extends Base_Controller {
 			$this->layout->content = $view;
 		}
 		else {
-			
 			$dataset = Dataset::find($id);			
 			$this->layout->subtitle = $dataset->name;
 			
@@ -36,7 +34,6 @@ class Dataset_Controller extends Base_Controller {
 			
 			$this->layout->content = $view;			
 		}
-		
 	}
 	
 	/**
@@ -46,8 +43,7 @@ class Dataset_Controller extends Base_Controller {
 	 *  
 	 * @param $id
 	 */
-	public function action_fullview($id)
-	{
+	public function action_fullview($id) {
 		$this->layout->title = "UG-Data Search";
 				
 		$dataset = Dataset::find($id);
@@ -85,9 +81,8 @@ class Dataset_Controller extends Base_Controller {
 			$valid = Dataset::validate($this->stripPrefix($submission));
 			
 			if($valid !== true) {
-				$this->layout->status = "error";
-				$errors = $valid->all();
-				$this->layout->msg = $valid->all();
+				Session::flash('status', 'error');
+				Session::flash('status-msg', $valid->all());
 			}
 			else {
 				$dataset = new Dataset();
@@ -112,12 +107,12 @@ class Dataset_Controller extends Base_Controller {
 					$dataset->save();			
 					$dataset->attributes()->save($this->getAttributesFromInput($submission));
 					
-					$this->layout->status = "success";
-					$this->layout->msg = "Success! We've added your dataset to our database. Please be patient while we update our search index.";
+					Session::flash('status', 'success');
+					Session::flash('status-msg', "Success! Dataset updated.");
 				}
 				catch (Exception $e) {
-					$this->layout->status = "error";
-					$this->layout->msg = "Error. Something went wrong when inserting your values into the database. Please contact an administrator.";
+					Session::flash('status', 'error');
+					Session::flash('status-msg', "Error. Something went wrong when inserting your values into the database. Please contact an administrator.");
 				}
 			}
 		} 
@@ -162,9 +157,8 @@ class Dataset_Controller extends Base_Controller {
 			$valid = Dataset::validate($this->stripPrefix($submission));
 				
 			if($valid !== true) {
-				$this->layout->status = "error";
-				$errors = $valid->all();
-				$this->layout->msg = $valid->all();
+				Session::flash('status', 'error');
+				Session::flash('status-msg', $valid->all());
 			}
 			else {
 				//Name
@@ -194,12 +188,12 @@ class Dataset_Controller extends Base_Controller {
 					$dataset->save();
 					$dataset->attributes()->save($this->getAttributesFromInput($submission));
 				
-					$this->layout->status = "success";
-					$this->layout->msg = "Success! Dataset updated.";
+					Session::flash('status', 'success');
+					Session::flash('status-msg', "Success! Dataset updated.");
 				}
 				catch (Exception $e) {
-					$this->layout->status = "error";
-					$this->layout->msg = "Error. Something went wrong when inserting your values into the database. Please contact an administrator.";
+					Session::flash('status', 'error');
+					Session::flash('status-msg', "Error. Something went wrong when inserting your values into the database. Please contact an administrator.");
 				}
 				
 			}
