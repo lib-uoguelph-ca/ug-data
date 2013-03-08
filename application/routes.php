@@ -43,17 +43,17 @@ Route::controller('search');
 /*
  * Datasets
  */
-Route::get('dataset/view/(:num?)', 'dataset@index');
+Route::get('dataset/view/(:num)', 'dataset@index');
 Route::get('datasets', 'dataset@index');
-Route::get('dataset/(:num?)', 'dataset@view'); 
-Route::get('dataset/view/(:num?)', 'dataset@view');
-Route::get('dataset/fullview/(:num?)', 'dataset@fullview');
+Route::get('dataset/(:num)', 'dataset@view'); 
+Route::get('dataset/view/(:num)', 'dataset@view');
+Route::get('dataset/fullview/(:num)', 'dataset@fullview');
 Route::get('dataset/add', 'dataset@add');
 Route::post('dataset/add', 'dataset@add');
-Route::get('dataset/edit/(:num?)', 'dataset@edit');
-Route::post('dataset/edit/(:num?)', 'dataset@edit');
-Route::get('dataset/delete/(:num?)', 'dataset@delete');
-Route::post('dataset/delete/(:num?)', 'dataset@delete');
+Route::get('dataset/edit/(:num)', 'dataset@edit');
+Route::post('dataset/edit/(:num)', 'dataset@edit');
+Route::get('dataset/delete/(:num)', 'dataset@delete');
+Route::post('dataset/delete/(:num)', 'dataset@delete');
 
 /*
 |--------------------------------------------------------------------------

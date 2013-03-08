@@ -1,0 +1,15 @@
+.dataset-index { 
+	ul.dataset-list {
+		list-style-type: none;
+		margin-left: 0px;
+	
+		li {
+			border-bottom: 1px dashed #333;
+			margin-bottom: 1.625em;
+		}
+	}
+	
+	a.dataset-name {
+		font-size: 120%;
+	}
+}
