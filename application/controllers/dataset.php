@@ -13,27 +13,34 @@ class Dataset_Controller extends Base_Controller {
 	 * URL: datasets, dataset, dataset/(int)
 	 * @param: $id	Optional. The id of the dataset to view.
 	 */
-	public function action_index($id=null) {
+	public function action_index() {
 		$this->layout->title = "UG-Data Search";
 		
-		if ($id == null) {
-			$this->layout->subtitle = "Datasets";
-			$datasets = Dataset::all();
+		$this->layout->subtitle = "Datasets";
+		$datasets = Dataset::all();
+		
+		$view = View::make('dataset.index');
+		$view->datasets = $datasets;
+		
+		$this->layout->content = $view;
+	}
+	
+	/**
+	 * View action.
+	 *
+	 * Displays a summary view of a dataset.
+	 *
+	 * @param $id
+	 */
+	public function action_view($id) {
+		$dataset = Dataset::find($id);
+		$this->layout->title = "UG-Data Search";
+		$this->layout->subtitle = $dataset->name;
 			
-			$view = View::make('dataset.index');
-			$view->datasets = $datasets;
+		$view = View::make('dataset.view');
+		$view->dataset = $dataset;
 			
-			$this->layout->content = $view;
-		}
-		else {
-			$dataset = Dataset::find($id);			
-			$this->layout->subtitle = $dataset->name;
-			
-			$view = View::make('dataset.view');
-			$view->dataset = $dataset;
-			
-			$this->layout->content = $view;			
-		}
+		$this->layout->content = $view;
 	}
 	
 	/**
