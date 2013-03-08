@@ -4,8 +4,7 @@ class Dataset extends Eloquent {
 	protected $_attributes = array();
 	
 	public static $core_attr = array(
-		'replicates',
-		'sample size',
+			
 	);
 	
 	/*
@@ -44,7 +43,7 @@ class Dataset extends Eloquent {
 		
 		foreach ($this->_attributes as $attrib) {
 			if(in_array($attrib->name, Dataset::$core_attr)) {
-				$result[] = $attrib;
+				$result[] = array('name' => $attrib->name, 'value' => $attrib->value);
 			}
 		}
 		

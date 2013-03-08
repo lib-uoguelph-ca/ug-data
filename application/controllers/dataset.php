@@ -1,12 +1,18 @@
 <?php 
 
 use Titon\Utility\Sanitize as Sanitize;
-use Doana\DefaultValue;
+//use Doana\DefaultValue\DefaultValue;
 
 class Dataset_Controller extends Base_Controller {
 	
 	public $layout = 'layouts.default';
 
+	/**
+	 * Index action:
+	 * 
+	 * URL: datasets, dataset, dataset/(int)
+	 * @param: $id	Optional. The id of the dataset to view.
+	 */
 	public function action_index($id=null)
 	{
 		$this->layout->title = "UG-Data Search";
@@ -20,7 +26,7 @@ class Dataset_Controller extends Base_Controller {
 			
 			$this->layout->content = $view;
 		}
-		else if (is_numeric($id))  {
+		else {
 			
 			$dataset = Dataset::find($id);			
 			$this->layout->subtitle = $dataset->name;
@@ -33,6 +39,12 @@ class Dataset_Controller extends Base_Controller {
 		
 	}
 	
+	/**
+	 * Add action
+	 * 
+	 * Add a dataset to the database.
+	 * URL: dataset/add
+	 */
 	public function action_add() {
 		
 		$this->layout->title = "UG-Data Search";
@@ -40,8 +52,9 @@ class Dataset_Controller extends Base_Controller {
 		
 		$view = View::make('dataset.add');
 		$submission = Input::all();
+		var_dump($submission);
 
-		$dv = new \Doana\DefaultValue\DefaultValue($submission);
+		$dv = new DefaultValue($submission);
 		$view->input = $dv;
 		
 		//Initial visit to the add form. 
@@ -59,19 +72,23 @@ class Dataset_Controller extends Base_Controller {
 			}
 			else {
 				$dataset = new Dataset();
+				
+				//Name
 				$dataset->name = Sanitize::escape($submission["dataset_name"]);
 				
+				//Url
 				$url = Sanitize::url($submission["dataset_url"]);
 				if (!preg_match('#(http://|https://)#', $url)) {
 					$url = "http://" . $url;
 				}
 				$dataset->url = $url;
-								
+
+				//Description
 				$config = HTMLPurifier_Config::createDefault();
 				$purifier = new HTMLPurifier($config);
 				$dataset->description = $purifier->purify($submission["dataset_description"]);
-				//$dataset->description = Sanitize::escape($submission["dataset_description"]);
-					
+				
+				//Save the dataset and the attributes all in one go. 
 				try {
 					$dataset->save();			
 					$dataset->attributes()->save($this->getAttributesFromInput($submission));
@@ -89,10 +106,103 @@ class Dataset_Controller extends Base_Controller {
 		$this->layout->content = $view;
 	}
 	
+	/**
+	 * Edit action
+	 * 
+	 * Edit a dataset that exists in the database.
+	 * URL: dataset/edit/(int)
+	 * 
+	 * @param 	$id	The id of the dataset to edit.
+	 */
 	public function action_edit($id) {
+		$this->layout->title = "UG-Data Search";
+		$this->layout->subtitle = "Describe your data";
 		
+		$dataset = Dataset::find($id);
+		if($dataset == Null) {
+			return Response::error('404');
+		}
+		
+		$submission = Input::all();
+		$view = View::make('dataset.edit');
+		
+		//Initial visit to the edit form.
+		//Pass the loaded values to the edit form.
+		
+		var_dump($submission);
+		$view->id = $id;
+		
+		if(empty($submission)) {
+			$dv = new DefaultValue($dataset);
+			$view->input = $dv;
+		}
+		//Handle submitted form data.
+		else {
+			$dv = new DefaultValue($submission);
+			$view->input = $dv;
+			
+			$valid = Dataset::validate($this->stripPrefix($submission));
+				
+			if($valid !== true) {
+				$view->status = "error";
+				$errors = $valid->all();
+				$view->msg = $valid->all();
+			}
+			else {
+				//Name
+				$dataset->name = Sanitize::escape($submission["dataset_name"]);
+		
+				//Url
+				$url = Sanitize::url($submission["dataset_url"]);
+				if (!preg_match('#(http://|https://)#', $url)) {
+					$url = "http://" . $url;
+				}
+				$dataset->url = $url;
+		
+				//Description
+				$config = HTMLPurifier_Config::createDefault();
+				$purifier = new HTMLPurifier($config);
+				$dataset->description = $purifier->purify($submission["dataset_description"]);
+
+				//Now we've got to update the attributes
+				//Start by deleting the existing ones. 
+				$attributes = $dataset->attributes()->get();
+				foreach($attributes as $attribute) {
+					$attribute->delete();
+				}
+				
+				//Save everything in one go. 
+				try {
+					$dataset->save();
+					$dataset->attributes()->save($this->getAttributesFromInput($submission));
+						
+					$view->status = "success";
+					$view->msg = "Success! We've added your dataset to our database. Please be patient while we update our search index.";
+				}
+				catch (Exception $e) {
+					$view->status = "error";
+					$view->msg = "Error. Something went wrong when inserting your values into the database. Please contact an administrator.";
+				}
+				
+			}
+		}
+		
+		$this->layout->content = $view;
 	}
 	
+	/*
+	 * Non-Public functions
+	 */
+	
+	/**
+	 * Given a field, return the prefix used for that field.
+	 * 
+	 * Prefixes are divided using an underscore.
+	 * Eg. Given 'foo_bar' this function returns 'foo' 
+	 * 
+	 * @param string $field
+	 * @return string
+	 */
 	protected function getFieldPrefix($field) {
 		$start = 0;
 		$end = strpos($field, '_');
@@ -104,10 +214,15 @@ class Dataset_Controller extends Base_Controller {
 		return substr($field, $start, $end);
 	}
 	
-	/*
+	/**
 	 * Strip the prefix from the field names in the array of submitted values.
+	 * 
+	 * @param 	array 	$prefixed_input		An array of input values as passed from 
+	 * 								 		the submitted form.
+	 * 
+	 * @return array	
 	 */
-	protected function stripPrefix($prefixed_input) {
+	protected function stripPrefix(array $prefixed_input) {
 
 		$input = array();
 		foreach($prefixed_input as $key => $value) {
@@ -120,10 +235,17 @@ class Dataset_Controller extends Base_Controller {
 		return $input;
 	}
 	
-	/*
+	/**
 	 * Returns an array of the attributes from the user input.
+	 * 
+	 * Each attribute is returned in an array:
+	 * 	array('name' => 'foo', 'value' => 'bar');
+	 * 
+	 * Multivalue attributes get one array element per value
+	 *  
+	 * @param array $input
 	 */
-	protected function getAttributesFromInput($input) {
+	protected function getAttributesFromInput(array $input) {
 		$attributes = array();
 		foreach($input as $field => $val) {
 			$prefix = $this->getFieldPrefix($field);
