@@ -6,10 +6,16 @@
 		li {
 			border-bottom: 1px dashed #333;
 			margin-bottom: 1.625em;
+			
+			@include legacy-pie-clearfix();
 		}
 	}
 	
 	a.dataset-name {
 		font-size: 120%;
+	}
+	
+	.dataset-description {
+		@include legacy-pie-clearfix();
 	}
 }

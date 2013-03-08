@@ -19,6 +19,16 @@ class Dataset_Controller extends Base_Controller {
 		$this->layout->subtitle = "Datasets";
 		$datasets = Dataset::all();
 		
+		foreach($datasets as $ds) {
+			$short_description = Str::limit($ds->description, 1000);
+			
+			$config = HTMLPurifier_Config::createDefault();
+			$purifier = new HTMLPurifier($config);
+			$short_description = $purifier->purify($short_description);
+			
+			$ds->short_description = $short_description;		
+		}
+		
 		$view = View::make('dataset.index');
 		$view->datasets = $datasets;
 		

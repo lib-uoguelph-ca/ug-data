@@ -3,7 +3,7 @@
 	@foreach ($datasets as $dataset)
 	    <li>
 	    	<a href="/dataset/{{ $dataset->id }}" class="dataset-name">{{ $dataset->name }}</a>
-	    	<div class="dataset-description">{{ $dataset->description }}</div>
+	    	<div class="dataset-description">{{ $dataset->short_description }}</div>
 	    </li>
 	@endforeach
 	</ul>
