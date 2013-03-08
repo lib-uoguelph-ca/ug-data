@@ -52,6 +52,7 @@ body {
 	padding: 10px 20px; 
 	width: 820px;
 	overflow: visible;
+	word-wrap: break-word;
 	
 	@include legacy-pie-clearfix();
 }

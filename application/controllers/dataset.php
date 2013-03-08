@@ -107,8 +107,9 @@ class Dataset_Controller extends Base_Controller {
 					$dataset->save();			
 					$dataset->attributes()->save($this->getAttributesFromInput($submission));
 					
-					Session::flash('status', 'success');
-					Session::flash('status-msg', "Success! Dataset updated.");
+					return Redirect::to_action('dataset@index',  array($dataset->id))
+						->with('status', 'success')
+						->with('status-msg', 'Success! Dataset added.');
 				}
 				catch (Exception $e) {
 					Session::flash('status', 'error');
@@ -188,10 +189,12 @@ class Dataset_Controller extends Base_Controller {
 					$dataset->save();
 					$dataset->attributes()->save($this->getAttributesFromInput($submission));
 				
-					Session::flash('status', 'success');
-					Session::flash('status-msg', "Success! Dataset updated.");
+					return Redirect::to_action('dataset@index',  array($id))
+						->with('status', 'success')
+						->with('status-msg', 'Success! Dataset updated.');
 				}
 				catch (Exception $e) {
+					throw $e;
 					Session::flash('status', 'error');
 					Session::flash('status-msg', "Error. Something went wrong when inserting your values into the database. Please contact an administrator.");
 				}
