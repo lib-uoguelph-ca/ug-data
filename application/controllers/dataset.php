@@ -31,12 +31,32 @@ class Dataset_Controller extends Base_Controller {
 			$dataset = Dataset::find($id);			
 			$this->layout->subtitle = $dataset->name;
 			
-			$view = View::make('dataset.dataset');
+			$view = View::make('dataset.view');
 			$view->dataset = $dataset;
 			
 			$this->layout->content = $view;			
 		}
 		
+	}
+	
+	/**
+	 * Full view action.
+	 * 
+	 * Displays the dataset along with all associated attributes. 
+	 *  
+	 * @param $id
+	 */
+	public function action_fullview($id)
+	{
+		$this->layout->title = "UG-Data Search";
+				
+		$dataset = Dataset::find($id);
+		$this->layout->subtitle = $dataset->name;
+			
+		$view = View::make('dataset.fullview');
+		$view->dataset = $dataset;
+			
+		$this->layout->content = $view;
 	}
 	
 	/**

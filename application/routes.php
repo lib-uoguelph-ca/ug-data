@@ -45,6 +45,7 @@ Route::controller('search');
  */
 Route::get('dataset/(:num?)', 'dataset@index'); 
 Route::get('dataset/view/(:num?)', 'dataset@index');
+Route::get('dataset/fullview/(:num?)', 'dataset@fullview');
 Route::get('datasets', 'dataset@index');
 Route::get('dataset/add', 'dataset@add');
 Route::post('dataset/add', 'dataset@add');
