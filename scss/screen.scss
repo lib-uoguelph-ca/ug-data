@@ -159,3 +159,29 @@ table td {
 		color: red;
 	}
 }
+
+/*
+ * pagers
+ **/
+.pagination {
+	ul {
+		list-style-type: none;
+		margin-left: 0;
+		@include legacy-pie-clearfix();
+	}
+	
+	li {
+		float: left;
+		margin-right: 0.5em;
+		
+		&.disabled a {
+			color: grey;
+		}
+		
+		&.active a {
+			font-weight: bold;
+		}
+	}
+	
+	@include legacy-pie-clearfix();
+}

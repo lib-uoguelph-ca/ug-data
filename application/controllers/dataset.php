@@ -15,11 +15,14 @@ class Dataset_Controller extends Base_Controller {
 	 */
 	public function action_index() {
 		$this->layout->title = "UG-Data Search";
-		
 		$this->layout->subtitle = "Datasets";
-		$datasets = Dataset::all();
 		
-		foreach($datasets as $ds) {
+		$items_per_page = 5;
+		$datasets = DB::table('datasets')
+			->order_by('name', 'asc')
+			->paginate($items_per_page);
+		
+		foreach($datasets->results as $ds) {
 			$short_description = Str::limit($ds->description, 1000);
 			
 			$config = HTMLPurifier_Config::createDefault();

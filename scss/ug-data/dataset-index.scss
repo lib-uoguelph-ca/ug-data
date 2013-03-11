@@ -5,7 +5,8 @@
 	
 		li {
 			border-bottom: 1px dashed #333;
-			margin-bottom: 1.625em;
+			padding-bottom: 1em;
+			margin-bottom: 1em;
 			
 			@include legacy-pie-clearfix();
 		}
