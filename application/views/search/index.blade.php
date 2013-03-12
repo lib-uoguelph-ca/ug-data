@@ -12,17 +12,13 @@
 				<label for="ontology-select"><span>Advanced Search</span>
 					<select id="ontology-select" name="ontology-select">
 						<option selected disabled value="0">Select an Ontology</option>
-						<option value="expo">Expo</option>
 						<option value="geopolitical">Geopolitical</option>
-						<option value="human_activities">Human Activities</option>
 					</select>
 				</label>
 			</div>
 		</div>
 		<div id="advancedSearch" >
-			{{ View::make('search.ontology.geopolitical')->render() }}
-			{{ View::make('search.ontology.expo')->render() }}
-			{{ View::make('search.ontology.human_activities')->render() }}
+			{{ render('search.ontology.geopolitical', array('input' => $input)); }}
 		</div>
 		<input type="submit" value="Search" />
 	</form>
