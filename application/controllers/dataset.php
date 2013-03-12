@@ -204,7 +204,6 @@ class Dataset_Controller extends Base_Controller {
 				$config = HTMLPurifier_Config::createDefault();
 				$purifier = new HTMLPurifier($config);
 				$dataset->description = $purifier->purify($submission["dataset_description"]);
-
 				
 				//Save everything in one go. 
 				try {
@@ -218,6 +217,7 @@ class Dataset_Controller extends Base_Controller {
 				catch (Exception $e) {
 					Session::flash('status', 'error');
 					Session::flash('status-msg', "Error. Something went wrong when inserting your values into the database. Please contact an administrator.");
+					throw $e;
 				}
 				
 			}

@@ -16,7 +16,7 @@ class DatasetSolrObject {
 		//Parse through the dataset object and it's attributes and build an array.
 
 		//Core attributes
-		$this->add(array('name' => 'uid', 'value' => $ds->id));
+		$this->add(array('name' => 'id', 'value' => $ds->id));
 		$this->add(array('name' => 'name', 'value' => $ds->name));
 		$this->add(array('name' => 'url', 'value' => $ds->url));
 		$this->add(array('name' => 'description', 'value' => $ds->description));
@@ -38,6 +38,9 @@ class DatasetSolrObject {
 		foreach($this->output as $key => $val) {
 			$doc->$key = $val;
 		}
+		
+		$doc->fulltext = $this->getFullText($this->output);
+				
 		return $doc;
 	}
 
@@ -61,5 +64,18 @@ class DatasetSolrObject {
 			}
 				
 		}
+	}
+	
+	protected function getFullText($values) {
+		$ret = "";
+		foreach($values as $key => $val) {
+			if(is_array($val)) {
+				$ret .= " " . $this->getFullText($val);				
+			}
+			else {
+				$ret .= " " . $val;
+			}
+		}
+		return $ret;
 	}
 }
