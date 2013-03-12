@@ -132,8 +132,8 @@ class Dataset_Controller extends Base_Controller {
 				
 				//Save the dataset and the attributes all in one go. 
 				try {
-					$dataset->save();			
-					$dataset->attributes()->save($this->getAttributesFromInput($submission));
+					$dataset->setAttributes($this->getAttributesFromInput($submission));
+					$dataset->save();
 					
 					return Redirect::to_action('dataset@index',  array($dataset->id))
 						->with('status', 'success')
@@ -205,17 +205,11 @@ class Dataset_Controller extends Base_Controller {
 				$purifier = new HTMLPurifier($config);
 				$dataset->description = $purifier->purify($submission["dataset_description"]);
 
-				//Now we've got to update the attributes
-				//Start by deleting the existing ones. 
-				$attributes = $dataset->attributes()->get();
-				foreach($attributes as $attribute) {
-					$attribute->delete();
-				}
 				
 				//Save everything in one go. 
 				try {
+					$dataset->setAttributes($this->getAttributesFromInput($submission));
 					$dataset->save();
-					$dataset->attributes()->save($this->getAttributesFromInput($submission));
 				
 					return Redirect::to_action('dataset@index',  array($id))
 						->with('status', 'success')

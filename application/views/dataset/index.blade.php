@@ -7,7 +7,6 @@
 	    </li>
 	@endforeach
 	</ul>
-	
 	{{ $datasets->links(); }}
 </div>
 

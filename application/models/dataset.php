@@ -2,6 +2,7 @@
 
 class Dataset extends Eloquent {
 	protected $_attributes = array();
+	protected $input_attributes = array();
 	
 	public static $core_attr = array(
 			
@@ -84,6 +85,38 @@ class Dataset extends Eloquent {
 		
 		return true;
 		
+	}
+
+	/**
+	 * save
+	 * Override Eloquent save function to provide transparent Apache Solr integration.
+	 */
+	public function save() {
+		$result = parent::save();
+		
+		//Now we've got to update the attributes
+		//Start by deleting the existing ones.
+		$attributes = $this->attributes()->get();
+		foreach($attributes as $attribute) {
+			$attribute->delete();
+		}
+		
+		//Save the new attributes
+		if(isset($this->input_attributes)) {
+			$this->attributes()->save($this->input_attributes);
+		}
+
+		//Now add the whole thing to the Solr index.
+		$doc = new DatasetSolrObject($this);
+		$solr = new Solr();
+		$solr->add($doc->build());
+
+		return $result;
+
+	}
+	
+	public function setAttributes($attribs) {
+		$this->input_attributes = $attribs;
 	}
 	
 	/**********************PROTECTED**************************/

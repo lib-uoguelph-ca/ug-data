@@ -7,6 +7,14 @@ Exec["apt-update"] -> Package <| |>
 include 'lamp'
 include 'xdebug'
 
+package { 'curl':
+    ensure => installed,
+}
+
+package { 'php5-curl':
+    ensure => installed,
+}
+
 exec { "Create-DB":
     command => "mysqladmin -u root -pChangeThis1 create ug_data",
     returns => ['0','1'],
