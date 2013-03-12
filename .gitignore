@@ -8,3 +8,5 @@ composer.lock
 .sass-cache
 bin/*.owl
 bin/*.xml
+*.sublime-project
+*.sublime-workspace
