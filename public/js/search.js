@@ -7,4 +7,11 @@ $(document).ready(function() {
 		$('#advancedSearch input').val("");
 		$(id).show(400);
 	})
+
+	console.log($('#search_ontology').val());
+	if($('#search_ontology').val() != "") {
+		$('#advancedSearch').show();
+		var id = '#' + $(this).val();
+		$(id).show(0);
+	}
 })
