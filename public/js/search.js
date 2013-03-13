@@ -1,5 +1,5 @@
 $(document).ready(function() {	
-	$('#ontology-select').change(function() {
+	$('#search_ontology').change(function() {
 		$('#advancedSearch').show();
 		var id = '#' + $(this).val();
 		$('.ontology').hide();
