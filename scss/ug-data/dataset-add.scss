@@ -17,10 +17,18 @@
 	}
 }
 
-label,
-input, 
-textarea,
-select {
-	float: left; 
-	clear: both;
-} 
+#dataset-add {
+	label,
+	input, 
+	textarea,
+	select {
+		float: left; 
+		clear: both;
+		min-width: 30em;
+	} 
+
+	input[type="submit"] {
+		width: auto;
+		min-width: 0;
+	}
+}

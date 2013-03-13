@@ -141,6 +141,15 @@ table td {
 			font-size: 125%;
 		}
 	}
+
+	label,
+	input, 
+	textarea,
+	select {
+		float: left; 
+		clear: both;
+		min-width: 12em;
+	} 
 	
 	input,
 	select {
@@ -160,6 +169,7 @@ table td {
 		width: auto;
 		float: left;
 		clear: both;
+		min-width: 0;
 	} 
 	
 	label.required:after {
