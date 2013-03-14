@@ -71,9 +71,7 @@ class Solr {
 
         if(!empty($hl_fields)) {
             $hl = $select->getHighlighting();
-            $hl->setFields($hl_fields);
-            $hl->setSimplePrefix('<em>');
-            $hl->setSimplePostfix('</em>');          
+            $hl->setFields($hl_fields);        
         }
 
         $results = $this->client->select($select);
@@ -98,6 +96,7 @@ class Solr {
             }
         }
         $results = $this->query($query, 'fulltext');
+
         return $results;
     } 
 
@@ -123,7 +122,6 @@ class Solr {
     protected function formatHighlights(Solarium\QueryType\Select\Result\Highlighting\Result $hl) {
         $result = "";
         foreach($hl as $field => $highlight) {
-            var_dump($highlight);
             $result .= implode(' (...) ', $highlight) . '<br/>';
         }
         return $result;

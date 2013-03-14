@@ -27,10 +27,7 @@ class Search_Controller extends Base_Controller {
             $view->results = FALSE;
         }
         
-        $this->layout->content = $view;
-        
+        $this->layout->content = $view;   
     }
-    
-    
 
 }

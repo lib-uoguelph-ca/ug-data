@@ -19,7 +19,7 @@ class DatasetSolrObject {
 		$this->add(array('name' => 'id', 'value' => $ds->id));
 		$this->add(array('name' => 'name', 'value' => $ds->name));
 		$this->add(array('name' => 'url', 'value' => $ds->url));
-		$this->add(array('name' => 'description', 'value' => $ds->description));
+		$this->add(array('name' => 'description', 'value' => htmlspecialchars(strip_tags($ds->description))));
 
 		//Secondary attributes
 		foreach ($ds->getSecondaryAttributes() as $attrib) {

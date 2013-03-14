@@ -33,7 +33,7 @@
 
 	//Parse our OWL file and generate the form content.
 	$input_file = $parser->arg("input file");
-	use Doana\OwlForm\OwlForm;
+	use UGData\OwlForm\OwlForm;
 	$of = new OwlForm($input_file);
 	$form = $of->getForm();
 	

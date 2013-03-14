@@ -1,7 +1,6 @@
 <?php 
 
 use Titon\Utility\Sanitize as Sanitize;
-//use Doana\DefaultValue\DefaultValue;
 
 class Dataset_Controller extends Base_Controller {
 	

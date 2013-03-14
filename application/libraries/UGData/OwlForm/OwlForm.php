@@ -1,6 +1,6 @@
 <?php
 
-namespace doana\owlform;
+namespace ugdata\owlform;
 
 $vendor_location = dirname(dirname(__FILE__)) . '/../../../vendor/';
 $autoload_path = $vendor_location . 'autoload.php';
