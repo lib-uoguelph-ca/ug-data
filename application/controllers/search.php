@@ -10,16 +10,18 @@ class Search_Controller extends Base_Controller {
                 
         $view = View::make('search.index');
         
-        $submission = Input::all();
+        $submission = Util::inputStripEmpty(Input::all());
         $dv = new DefaultValue($submission);
         $view->input = $dv;
         
         //$submission = Input::get();
-        var_dump($submission);
         if(!empty($submission)) {
             $view->results = TRUE;
             $view->query = 'Your query';
-            //$view->ontology = $ontology;
+
+            $solr = new Solr();
+            $results = $solr->datasetSearch($submission);
+            $view->query_results = $results;
         } 
         else {
             $view->results = FALSE;
@@ -29,14 +31,6 @@ class Search_Controller extends Base_Controller {
         
     }
     
-    protected function queryStripEmpty($query_params) {
-        foreach ($query_params as $key => $param ) {
-            if (empty($param)) {
-                unset($query_params[$key]);
-            }
-        }
-        
-        return $query_params;
-    }
+    
 
 }

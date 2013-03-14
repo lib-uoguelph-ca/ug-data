@@ -23,6 +23,18 @@
 </div>
 @if ($results == TRUE)
 <div id="results">
-    <p>Your search: {{ $query }}</p>
+    <h3>Search Results</h3>
+    @if (isset($query_results["results"]))
+        @foreach ($query_results["results"] as $result)
+            <ol class="search-results"> 
+                <li class="search-result">
+                    {{ HTML::link('dataset/view/' . $result["id"], $result["name"]);}}
+                    <div class="search-highlihgt">
+                        {{ $result["highlight"] }}
+                    </div>
+                </li>
+            </ol>
+        @endforeach
+    @endif
 </div>
 @endif 

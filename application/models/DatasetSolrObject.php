@@ -39,7 +39,7 @@ class DatasetSolrObject {
 			$doc->$key = $val;
 		}
 		
-		$doc->fulltext = $this->getFullText($this->output);
+		//$doc->fulltext = $this->getFullText($this->output);
 				
 		return $doc;
 	}
@@ -61,8 +61,7 @@ class DatasetSolrObject {
 			}
 			else if(is_array($this->output[$attrib['name']])) {
 				$this->output[$attrib['name']][] = $attrib['value'];
-			}
-				
+			}	
 		}
 	}
 	

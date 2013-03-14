@@ -106,7 +106,7 @@ class Dataset_Controller extends Base_Controller {
 		}
 		//Handle submitted form data.
 		else {
-			$valid = Dataset::validate($this->stripPrefix($submission));
+			$valid = Dataset::validate(Util::inputStripPrefix($submission));
 			
 			if($valid !== true) {
 				Session::flash('status', 'error');
@@ -183,7 +183,7 @@ class Dataset_Controller extends Base_Controller {
 			$dv = new DefaultValue($submission);
 			$view->input = $dv;
 			
-			$valid = Dataset::validate($this->stripPrefix($submission));
+			$valid = Dataset::validate(Util::inputStripPrefix($submission));
 				
 			if($valid !== true) {
 				Session::flash('status', 'error');
@@ -282,47 +282,6 @@ class Dataset_Controller extends Base_Controller {
 	 */
 	
 	/**
-	 * Given a field, return the prefix used for that field.
-	 * 
-	 * Prefixes are divided using an underscore.
-	 * Eg. Given 'foo_bar' this function returns 'foo' 
-	 * 
-	 * @param string $field
-	 * @return string
-	 */
-	protected function getFieldPrefix($field) {
-		$start = 0;
-		$end = strpos($field, '_');
-		
-		if($end == False) {
-			return "";
-		}
-		
-		return substr($field, $start, $end);
-	}
-	
-	/**
-	 * Strip the prefix from the field names in the array of submitted values.
-	 * 
-	 * @param 	array 	$prefixed_input		An array of input values as passed from 
-	 * 								 		the submitted form.
-	 * 
-	 * @return array	
-	 */
-	protected function stripPrefix(array $prefixed_input) {
-
-		$input = array();
-		foreach($prefixed_input as $key => $value) {
-			$start = strpos($key,'_') + 1;
-			$short_key = substr($key, $start);
-
-			$input[$short_key] = $value;
-		}
-		
-		return $input;
-	}
-	
-	/**
 	 * Returns an array of the attributes from the user input.
 	 * 
 	 * Each attribute is returned in an array:
@@ -334,10 +293,10 @@ class Dataset_Controller extends Base_Controller {
 	 */
 	protected function getAttributesFromInput(array $input) {
 		$attributes = array();
+		$invalid_prefixes = array("", "dataset", "csrf");
 		foreach($input as $field => $val) {
-			$prefix = $this->getFieldPrefix($field);
+			$prefix = Util::getFieldPrefix($field);
 				
-			$invalid_prefixes = array("", "dataset", "csrf");
 			if(!in_array($prefix, $invalid_prefixes)) {
 				if(is_array($val)) {
 					foreach($val as $v) {
