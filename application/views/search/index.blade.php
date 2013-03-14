@@ -3,7 +3,7 @@
     <script src="js/search.js"></script>
 @endsection
 <div id="search">       
-    <form action="" method="Post">
+    <form action="" method="Get">
     {{ Form::open('search', 'POST');  }}
         {{ Form::token(); }}
         <div id="basicSearch">
@@ -24,17 +24,18 @@
 @if ($results == TRUE)
 <div id="results">
     <h3>Search Results</h3>
-    @if (isset($query_results["results"]))
-        @foreach ($query_results["results"] as $result)
-            <ol class="search-results"> 
-                <li class="search-result">
-                    {{ HTML::link('dataset/view/' . $result["id"], $result["name"]);}}
-                    <div class="search-highlihgt">
-                        {{ $result["highlight"] }}
-                    </div>
-                </li>
-            </ol>
+    @if (isset($query_results))
+    	<ol class="search-results"> 
+        @foreach ($query_results->results as $result)
+        	<li class="search-result">
+            	{{ HTML::link('dataset/view/' . $result["id"], $result["name"]);}}
+                <div class="search-highlihgt">
+                    {{ $result["highlight"] }}
+                </div>
+            </li>
         @endforeach
+        </ol>
+        {{ $query_results->appends($submission)->links(); }}
     @endif
 </div>
 @endif 
