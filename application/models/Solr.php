@@ -122,6 +122,7 @@ class Solr {
      * @return  array    An array of search results.
      */
     public function datasetSearch(array $input) {
+        
 
         $query = "";
         if (isset($input['search_keyword'])) {
@@ -138,9 +139,39 @@ class Solr {
                 $query .= $key . ":" . $item;
             }
         }
-        $results = $this->query($query, 'fulltext');
 
-        return $results;
+        //Here's where we do the actual query.
+        if(is_null($this->client)) {
+            $this->connect();
+        }
+        $select = $this->client->createSelect();
+        $select->setQuery($query);
+
+        //Set up highlighting on the fulltext field.
+        $hl = $select->getHighlighting();
+        $hl->setFields("fulltext");        
+
+        //Set up our facets
+
+        $attributes = Attribute::getAttributeNames();
+        $facets = $select->getFacetSet();
+        foreach ($attributes as $attrib) {
+            $facets->createFacetField(Util::stripFieldPrefix($attrib->name))->setField($attrib->name);
+        }
+
+        //Run the query.
+        $results = $this->client->select($select);
+
+        /*
+        $attributes = Attribute::getAttributeNames();
+        echo "<pre>";
+        foreach ($attributes as $attrib) {
+            var_dump($results->getFacetSet()->getFacet(Util::stripFieldPrefix($attrib->name)));
+        }
+        echo "</pre>";
+        */
+        
+        return $this->formatQueryResults($results);
     } 
 
     /**

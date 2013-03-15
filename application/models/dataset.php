@@ -115,6 +115,10 @@ class Dataset extends Eloquent {
 
 	}
 	
+	/**
+	 * Set the attributes to be used in the save operation.
+	 * @param array $attribs an array of Attributes.
+	 */
 	public function setAttributes($attribs) {
 		$this->input_attributes = $attribs;
 	}

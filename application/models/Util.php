@@ -21,6 +21,11 @@ class Util {
 		
 		return substr($field, $start, $end);
 	}
+
+	public static function stripFieldPrefix($field) {
+		$start = strpos($field,'_') + 1;
+		return substr($field, $start);
+	}
 	
 	/**
 	 * Strip the prefix from the field names in the array of submitted values.
@@ -34,9 +39,7 @@ class Util {
 
 		$input = array();
 		foreach($prefixed_input as $key => $value) {
-			$start = strpos($key,'_') + 1;
-			$short_key = substr($key, $start);
-
+			$short_key = $this::stripFieldPrefix($key);
 			$input[$short_key] = $value;
 		}
 		
