@@ -53,6 +53,13 @@ h1, h2, h3, h4, h5, h6 {
 	clear: both;
 }
 
+h3 {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	font-size: 120%;
+	border-bottom: 1px dashed #777;
+}
+
 #main div.container {
 	padding: 10px 20px; 
 	width: 820px;

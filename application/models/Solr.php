@@ -177,8 +177,9 @@ class Solr {
      * @return  array   An array of search results.
      */
     protected function formatQueryResults(Solarium\QueryType\Select\Result\Result $r) {
+        
         $results = array();
-
+        
         $highlights = $r->getHighlighting();
         foreach($r as $key => $document) {
             $result = array();
@@ -191,8 +192,8 @@ class Solr {
             $results["query_results"][] = $result;
         }
 
+        //Generate the list of facets
         $results['query_facets'] = array();
-
         $attributes = Attribute::getAttributeNames();
         foreach ($attributes as $attrib) {
             $facet = $r->getFacetSet()->getFacet(Util::stripFieldPrefix($attrib->name));
@@ -200,6 +201,30 @@ class Solr {
             $results['query_facets'][$attrib->name] = $values;
         }
 
+        //We want to remove the facets that have already been applied as filters. 
+        $query = $r->getQuery();
+        $filters = $query->getFilterQueries();
+        foreach($filters as $key => $filter) {
+            unset($results['query_facets'][$key]);
+        }
+
+        //Final cleanup. Go through and remove facet fields that exist but have no resutls. 
+        foreach($results['query_facets'] as $key => $facet) {
+            $empty = TRUE;
+            foreach($facet as $f) {
+                if($f != 0) {
+                    $empty = FALSE;
+                }
+            }
+            if($empty) {
+                unset($results['query_facets'][$key]);
+            }
+        }
+
+        if(empty($results['query_facets'])) {
+            unset($results['query_facets']);
+        }
+        
         return $results;
     }
 

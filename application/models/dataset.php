@@ -68,8 +68,12 @@ class Dataset extends Eloquent {
 		return $results;		
 	}
 	
-	/*
+	/**
 	 * Takes user input and runs validation rules against the input values.
+	 * 
+	 * @param array $input Validation 
+	 * @return type
+	 *
 	 */
 	public static function validate($input) {
 		$rules = array(

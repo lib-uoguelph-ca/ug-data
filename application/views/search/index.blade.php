@@ -24,10 +24,12 @@
 @if ($has_results == TRUE)
 <div id="search-results">
     <h3>Search Results</h3>
+    
     @if (!empty($results))
-        <div class="facets">
-            @foreach ($facets as $fieldname => $facetfield)
-                @if (!empty($facetfield))
+        {{--Facets--}}
+        @if (!empty($facets))
+            <div class="facets">
+                @foreach ($facets as $fieldname => $facetfield)
                     <div class="search-facet-field">
                         <span class="name">{{ $fieldname }}</span>
                         <ul>
@@ -40,23 +42,26 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
-            @endforeach
-        </div>
-        <div class="results">
-           	<ol class="search-results"> 
-            @foreach ($results->results as $result)
-            	<li class="search-result">
-                	{{ HTML::link('dataset/view/' . $result["id"], $result["name"]);}}
-                    <div class="search-highlihgt">
-                        {{ $result["highlight"] }}
-                    </div>
-                </li>
-            @endforeach
-            </ol>
-            {{ $results->appends($submission)->links(); }}
-        </div>
-        
+                @endforeach
+            </div>
+        @endif
+
+        {{--Search Results--}}
+        @if(!empty($results))
+            <div class="results">
+               	<ol class="search-results"> 
+                @foreach ($results->results as $result)
+                	<li class="search-result">
+                    	{{ HTML::link('dataset/view/' . $result["id"], $result["name"]);}}
+                        <div class="search-highlihgt">
+                            {{ $result["highlight"] }}
+                        </div>
+                    </li>
+                @endforeach
+                </ol>
+                {{ $results->appends($submission)->links(); }}
+            </div>
+        @endif
     @else 
         <p>Sorry, no results</p>
     @endif
