@@ -21,21 +21,45 @@
         <input type="submit" value="Search" />
     </form>
 </div>
-@if ($results == TRUE)
-<div id="results">
+@if ($has_results == TRUE)
+<div id="search-results">
     <h3>Search Results</h3>
-    @if (isset($query_results))
-    	<ol class="search-results"> 
-        @foreach ($query_results->results as $result)
-        	<li class="search-result">
-            	{{ HTML::link('dataset/view/' . $result["id"], $result["name"]);}}
-                <div class="search-highlihgt">
-                    {{ $result["highlight"] }}
-                </div>
-            </li>
-        @endforeach
-        </ol>
-        {{ $query_results->appends($submission)->links(); }}
+    @if (!empty($results))
+        <div class="facets">
+            @foreach ($facets as $fieldname => $facetfield)
+                @if (!empty($facetfield))
+                    <div class="search-facet-field">
+                        <span class="name">{{ $fieldname }}</span>
+                        <ul>
+                            @foreach($facetfield as $name => $value)
+                                @if ($value > 0)
+                                <li>
+                                    <a href="{{ URL::full() . '&fq_' . $fieldname . '=' . $name}}">{{ $name }}</a>  [{{ $value }}]
+                                </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+        <div class="results">
+           	<ol class="search-results"> 
+            @foreach ($results->results as $result)
+            	<li class="search-result">
+                	{{ HTML::link('dataset/view/' . $result["id"], $result["name"]);}}
+                    <div class="search-highlihgt">
+                        {{ $result["highlight"] }}
+                    </div>
+                </li>
+            @endforeach
+            </ol>
+            {{ $results->appends($submission)->links(); }}
+        </div>
+        
+    @else 
+        <p>Sorry, no results</p>
     @endif
+    
 </div>
 @endif 

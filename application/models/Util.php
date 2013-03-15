@@ -39,10 +39,9 @@ class Util {
 
 		$input = array();
 		foreach($prefixed_input as $key => $value) {
-			$short_key = $this::stripFieldPrefix($key);
+			$short_key = self::stripFieldPrefix($key);
 			$input[$short_key] = $value;
 		}
-		
 		return $input;
 	}
 

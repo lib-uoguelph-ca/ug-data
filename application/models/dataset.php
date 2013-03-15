@@ -74,9 +74,9 @@ class Dataset extends Eloquent {
 	public static function validate($input) {
 		$rules = array(
 			'name'  => 'required|max:50',
-			'url' => 'required|active_url',
+			'url' => 'required|url',
 		);
-		
+
 		$validation = Validator::make($input, $rules);
 		
 		if ($validation->fails()) {

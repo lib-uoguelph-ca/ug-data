@@ -122,14 +122,12 @@ class Solr {
      * @return  array    An array of search results.
      */
     public function datasetSearch(array $input) {
-        
-
         $query = "";
         if (isset($input['search_keyword'])) {
             $query .= "fulltext:" . $input['search_keyword'];
         }
 
-        $invalid_prefixes = array("", "search", "csrf");
+        $invalid_prefixes = array("", "search", "csrf", "fq");
         foreach ($input as $key => $item) {
             $prefix = Util::getFieldPrefix($key);
             if(!in_array($prefix, $invalid_prefixes)) {
@@ -152,25 +150,22 @@ class Solr {
         $hl->setFields("fulltext");        
 
         //Set up our facets
-
         $attributes = Attribute::getAttributeNames();
         $facets = $select->getFacetSet();
         foreach ($attributes as $attrib) {
             $facets->createFacetField(Util::stripFieldPrefix($attrib->name))->setField($attrib->name);
         }
 
+        //Apply filters
+        foreach($input as $key => $value) {
+            if(Util::getFieldPrefix($key) == "fq") {
+                $field = Util::stripFieldPrefix($key);
+                $select->createFilterQuery($field)->setQuery($field . ':' . $value);
+            }
+        }
+
         //Run the query.
         $results = $this->client->select($select);
-
-        /*
-        $attributes = Attribute::getAttributeNames();
-        echo "<pre>";
-        foreach ($attributes as $attrib) {
-            var_dump($results->getFacetSet()->getFacet(Util::stripFieldPrefix($attrib->name)));
-        }
-        echo "</pre>";
-        */
-        
         return $this->formatQueryResults($results);
     } 
 
@@ -193,7 +188,16 @@ class Solr {
             $result["description"] = $document->description;
             $result["highlight"] = $this->formatHighlights($highlights->getResult($document->id));
 
-            $results[] = $result;
+            $results["query_results"][] = $result;
+        }
+
+        $results['query_facets'] = array();
+
+        $attributes = Attribute::getAttributeNames();
+        foreach ($attributes as $attrib) {
+            $facet = $r->getFacetSet()->getFacet(Util::stripFieldPrefix($attrib->name));
+            $values = $facet->getValues();
+            $results['query_facets'][$attrib->name] = $values;
         }
 
         return $results;
