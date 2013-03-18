@@ -1,17 +1,15 @@
 $(document).ready(function() {	
 	$('#search_ontology').change(function() {
-		$('#advancedSearch').show();
+		$('#advancedSearch').removeClass('hidden');
 		var id = '#' + $(this).val();
-		$('.ontology').hide();
-		$('#advancedSearch select').val("");
-		$('#advancedSearch input').val("");
-		$(id).show(400);
+		$('.ontology').addClass('hidden');
+		$(id).removeClass('hidden');
 	})
 
 	console.log($('#search_ontology').val());
 	if($('#search_ontology').val() != "") {
-		$('#advancedSearch').show();
+		$('#advancedSearch').removeClass('hidden');
 		var id = '#' + $(this).val();
-		$(id).show(0);
+		$(id).removeClass('hidden');
 	}
 })

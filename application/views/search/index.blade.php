@@ -15,7 +15,7 @@
                 {{ Form::select('search_ontology', array('' => '', 'geopolitical' => 'Geopolitical'), $input['search_ontology']); }}
             </div>
         </div>
-        <div id="advancedSearch" >
+        <div id="advancedSearch" class="hidden">
             {{ render('search.ontology.geopolitical', array('input' => $input)); }}
         </div>
         <input type="submit" value="Search" />

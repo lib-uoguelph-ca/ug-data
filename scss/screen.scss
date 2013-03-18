@@ -99,6 +99,11 @@ table td {
 	vertical-align: top;
 }
 
+/*Accessibly hide content.*/
+.hidden {
+	@include hidden;
+}
+
 /* NicEdit - Shouldn't have to do this. But it floats weird in firefox */
 .nicEdit-panelContain {
 	clear: both;

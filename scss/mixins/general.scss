@@ -9,3 +9,12 @@
 	border: 1px solid $border_colour;
 }
 
+@mixin hidden {
+   position: absolute !important;
+   top: -9999px !important;
+   left: -9999px !important;
+}
+
+@mixin visible {
+   position: static !important;
+}
