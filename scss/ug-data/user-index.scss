@@ -1,0 +1,17 @@
+.user-index table.user-list {
+	width: 100%;
+
+	thead {
+		background-color: #777;
+		color: white;
+
+		th {
+			text-align: center;
+		}
+	}
+
+	td, th {
+		text-align: center;
+		border: 1px solid white;
+	}
+}

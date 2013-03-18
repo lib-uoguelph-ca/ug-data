@@ -54,12 +54,17 @@ DROP TABLE IF EXISTS `ug_data`.`users` ;
 
 CREATE  TABLE IF NOT EXISTS `ug_data`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `username` VARCHAR(75) NOT NULL ,
+  `username` VARCHAR(128) NOT NULL ,
   `email` VARCHAR(150) NOT NULL ,
-  `creation_date` TIMESTAMP NOT NULL ,
+  `password` VARCHAR(64) NOT NULL ,
+  `created_at` TIMESTAMP NOT NULL ,
+  `updated_at` TIMESTAMP NULL ,
+  `admin` TINYINT(1) NULL DEFAULT false ,
   PRIMARY KEY (`id`) ,
   INDEX `username` (`username` ASC) ,
-  INDEX `email` (`email` ASC) )
+  INDEX `email` (`email` ASC) ,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
 ENGINE = InnoDB;
 
 
@@ -120,6 +125,23 @@ FOR EACH ROW BEGIN
     SET NEW.updated_at = NOW();
 END
 
+$$
+
+
+DELIMITER ;
+
+DELIMITER $$
+
+USE `ug_data`$$
+DROP TRIGGER IF EXISTS `ug_data`.`users_on_insert` $$
+USE `ug_data`$$
+
+
+CREATE TRIGGER users_on_insert BEFORE INSERT
+ON users
+FOR EACH ROW BEGIN
+    SET NEW.updated_at = NOW();
+END
 $$
 
 

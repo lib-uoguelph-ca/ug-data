@@ -25,6 +25,10 @@ class DefaultValue implements \ArrayAccess {
 			$da = new DatasetArray($input);
 			$this->input = $da->build($input);
 		}
+		else if ($input instanceof User) {
+			$ua = new UserArray($input);
+			$this->input = $ua->build($input);
+		}
 		else {
 			throw new \InvalidArgumentException("This class only accepts constructor arguments of type: (array, Dataset).");
 		}

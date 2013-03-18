@@ -56,6 +56,30 @@ Route::get('dataset/delete/(:num)', 'dataset@delete');
 Route::post('dataset/delete/(:num)', 'dataset@delete');
 
 /*
+ * Users
+ */
+//Unauthenticated
+Route::get('login', 'user@login');
+Route::post('login', 'user@login');
+Route::get('logout', 'user@logout');
+
+//Authenticated
+Route::get('admin', array('before' => 'auth', function() {}));
+Route::get('user/profile', 'user@profile');
+Route::post('user/profile', 'user@profile');
+
+//Admin
+Route::get('admin/users', 'user@admin_index');
+Route::get('admin/user/add', 'user@admin_add');
+Route::post('admin/user/add', 'user@admin_add');
+Route::get('admin/user/view/(:num)', 'user@admin_view');
+Route::get('admin/user/edit/(:num)', 'user@admin_edit');
+Route::post('admin/user/edit/(:num)', 'user@admin_edit');
+Route::get('admin/user/delete/(:num)', 'user@admin_delete');
+Route::post('admin/user/delete/(:num)', 'user@admin_delete');
+
+
+/*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
 |--------------------------------------------------------------------------

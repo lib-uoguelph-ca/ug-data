@@ -10,7 +10,6 @@ class Dataset_Controller extends Base_Controller {
 	 * Index action:
 	 * 
 	 * URL: datasets, dataset, dataset/(int)
-	 * @param: $id	Optional. The id of the dataset to view.
 	 */
 	public function action_index() {
 		$this->layout->title = "UG-Data Search";
@@ -198,6 +197,7 @@ class Dataset_Controller extends Base_Controller {
 					$url = "http://" . $url;
 				}
 				$dataset->url = $url;
+				$dataset->updated_at = NULL;
 		
 				//Description
 				$config = HTMLPurifier_Config::createDefault();
