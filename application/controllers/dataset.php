@@ -48,6 +48,12 @@ class Dataset_Controller extends Base_Controller {
 		if($dataset == Null) {
 			return Response::error('404');
 		}
+
+		$this->layout->contextual = array(
+			HTML::link(URL::to_action('dataset@fullview', array($id)), 'Full View'),
+			HTML::link(URL::to_action('dataset@edit', array($id)), 'Edit'),			
+			HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete'),
+		);
 		
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = $dataset->name;
@@ -72,6 +78,12 @@ class Dataset_Controller extends Base_Controller {
 		if($dataset == Null) {
 			return Response::error('404');
 		}
+
+		$this->layout->contextual = array(
+			HTML::link(URL::to_action('dataset@view', array($id)), 'View'),
+			HTML::link(URL::to_action('dataset@edit', array($id)), 'Edit'),			
+			HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete'),
+		);
 		
 		$this->layout->subtitle = $dataset->name;
 			
@@ -164,6 +176,12 @@ class Dataset_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 		
+		$this->layout->contextual = array(
+			HTML::link(URL::to_action('dataset@view', array($id)), 'View'),
+			HTML::link(URL::to_action('dataset@fullview', array($id)), 'Full View'),			
+			HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete'),
+		);
+
 		$submission = Input::all();
 		$view = View::make('dataset.edit');
 		
@@ -240,6 +258,12 @@ class Dataset_Controller extends Base_Controller {
 		if($dataset == Null) {
 			return Response::error('404');
 		}
+
+		$this->layout->contextual = array(
+			HTML::link(URL::to_action('dataset@view', array($id)), 'View'),
+			HTML::link(URL::to_action('dataset@fullview', array($id)), 'Full View'),
+			HTML::link(URL::to_action('dataset@edit', array($id)), 'Edit'),			
+		);
 		
 		$submission = Input::all();
 	

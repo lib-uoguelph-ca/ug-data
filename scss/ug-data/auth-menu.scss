@@ -1,0 +1,50 @@
+#auth-menu {
+	height: 3em;
+	background-color: black;
+	padding: 0px 2em;
+
+	#user-links {
+		float: right;
+		width: auto;
+
+		li {
+			margin-left: 0.5em;
+		}
+		
+	}
+
+	#contextual-links {
+		float: left;
+		width: auto;
+
+		li {
+			margin-right: 0.5em;
+		}
+	}
+
+	ul {
+		list-style-type: none;
+		margin-left: 0;
+
+		li {
+			float: left;
+			
+			display: block;
+			height: auto;
+
+			a {
+				display: block;
+				height: 1.75em;
+				padding: 0.5em;
+				border-radius: 0px 0px 10px 10px;
+				text-decoration: none;
+				background-color: white; 
+
+				&:hover, &:focus {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	
+}

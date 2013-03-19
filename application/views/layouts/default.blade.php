@@ -23,7 +23,28 @@
         
         <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    
+    @if (Auth::check())
+	    <aside id="auth-menu">
+	    	<ul id="contextual-links">
+		    	@section('contextual-links')
+		    	@if (isset($contextual))
+		    		@foreach($contextual as $context)
+		    			<li>{{ $context }}</li>
+		    		@endforeach
+		    	@endif
+
+				@endsection
+				@yield('contextual-links')
+			</ul>
+			<ul id="user-links">
+		    	@section('user-links')
+			    	<li><a href="/user/profile">Edit Profile</a></li>
+			        <li><a href="/logout">Log Out</a></li>
+				@endsection
+				@yield('user-links')
+			</ul>
+	    </aside>
+    @endif
     <header id="header">
     	<div id="global">
 	    	<div class="container">
