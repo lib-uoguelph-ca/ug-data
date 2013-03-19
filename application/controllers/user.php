@@ -175,6 +175,13 @@ class User_Controller extends Base_Controller {
 		
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = $user->username;
+
+		//Contextual Links
+		$context_links = array(
+			HTML::link(URL::to_action('user@admin_edit', array($id)), 'Edit'),
+			HTML::link(URL::to_action('user@admin_delete', array($id)), 'Delete'),
+		);
+		$this->layout->contextual = $context_links;
 			
 		$view = View::make('user.view');
 		$view->user = $user;
@@ -263,6 +270,13 @@ class User_Controller extends Base_Controller {
 		if($user == Null) {
 			return Response::error('404');
 		}
+
+		//Contextual links
+		$context_links = array(
+			HTML::link(URL::to_action('user@admin_view', array($id)), 'View'),
+			HTML::link(URL::to_action('user@admin_delete', array($id)), 'Delete'),
+		);
+		$this->layout->contextual = $context_links;
 
 		$view = View::make('user.edit');
 		$submission = Input::all();

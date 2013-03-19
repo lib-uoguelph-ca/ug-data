@@ -38,8 +38,12 @@
 			</ul>
 			<ul id="user-links">
 		    	@section('user-links')
+		    		@if(Auth::check() && Auth::user()->admin)
+		    			<li>{{ HTML::link(URL::to_action('user@admin_index'), 'User Management') }}</li>
+		    		@endif
 			    	<li>{{ HTML::link(URL::to_action('user@profile'), 'Profile') }}</li>
 			        <li>{{ HTML::link(URL::to_action('user@logout'), 'Log Out') }}</li>
+
 				@endsection
 				@yield('user-links')
 			</ul>
