@@ -2,9 +2,18 @@
 
 class User extends Eloquent {
 	
+
+	/**
+	 * Hasmany relationship bewtween users and datasets.
+	 */
+	public function datasets() {
+        return $this->has_many('Datasets');
+    }
 	
 	/**
 	 * Takes user input and runs validation rules against the input values.
+	 * 
+	 * Validation is done for the add operation (password is required.)
 	 * 
 	 * @param array $input Validation 
 	 * @return type
@@ -27,6 +36,15 @@ class User extends Eloquent {
 		
 	}
 
+	/**
+	 * Takes user input and runs validation rules against the input values.
+	 * 
+	 * Validation is done for the edit operation (password is optional on edits.)
+	 * 
+	 * @param array $input Validation 
+	 * @return type
+	 *
+	 */
 	public static function validate_edit($input) {
 		$rules = array(
 			'username'  => 'required|max:128',

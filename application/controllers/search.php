@@ -33,7 +33,7 @@ class Search_Controller extends Base_Controller {
                 //Pagination
                 if(isset($results['query_results'])) {
                     $results = $results['query_results'];
-                    $per_page = 2;
+                    $per_page = 10;
                     $results = Paginator::make($results, count($results), $per_page, FALSE);
                 }
 

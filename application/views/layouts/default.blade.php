@@ -38,8 +38,8 @@
 			</ul>
 			<ul id="user-links">
 		    	@section('user-links')
-			    	<li><a href="/user/profile">Edit Profile</a></li>
-			        <li><a href="/logout">Log Out</a></li>
+			    	<li>{{ HTML::link(URL::to_action('user@profile'), 'Profile') }}</li>
+			        <li>{{ HTML::link(URL::to_action('user@logout'), 'Log Out') }}</li>
 				@endsection
 				@yield('user-links')
 			</ul>

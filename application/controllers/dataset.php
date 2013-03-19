@@ -49,11 +49,17 @@ class Dataset_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 
-		$this->layout->contextual = array(
+		//Build the contextual links.
+		$context_links = array(
 			HTML::link(URL::to_action('dataset@fullview', array($id)), 'Full View'),
-			HTML::link(URL::to_action('dataset@edit', array($id)), 'Edit'),			
-			HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete'),
 		);
+		if($dataset->is_owner()) {
+			$context_links[] = HTML::link(URL::to_action('dataset@edit', array($id)), 'Edit');
+		}
+		if(Auth::check() && Auth::user()->admin) {
+			$context_links[] = HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete');
+		}
+		$this->layout->contextual = $context_links;
 		
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = $dataset->name;
@@ -72,19 +78,26 @@ class Dataset_Controller extends Base_Controller {
 	 * @param $id
 	 */
 	public function action_fullview($id) {
-		$this->layout->title = "UG-Data Search";
+		
 				
 		$dataset = Dataset::find($id);
 		if($dataset == Null) {
 			return Response::error('404');
 		}
 
-		$this->layout->contextual = array(
+		//Build the contextual links.
+		$context_links = array(
 			HTML::link(URL::to_action('dataset@view', array($id)), 'View'),
-			HTML::link(URL::to_action('dataset@edit', array($id)), 'Edit'),			
-			HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete'),
 		);
+		if($dataset->is_owner()) {
+			$context_links[] = HTML::link(URL::to_action('dataset@edit', array($id)), 'Edit');
+		}
+		if(Auth::check() && Auth::user()->admin) {
+			$context_links[] = HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete');
+		}
+		$this->layout->contextual = $context_links;
 		
+		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = $dataset->name;
 			
 		$view = View::make('dataset.fullview');
@@ -123,8 +136,12 @@ class Dataset_Controller extends Base_Controller {
 				Session::flash('status-msg', $valid->all());
 			}
 			else {
+				$user = Auth::user();
 				$dataset = new Dataset();
 				
+				//Owner
+				$dataset->user_id = $user->id;
+
 				//Name
 				$dataset->name = Sanitize::escape($submission["dataset_name"]);
 				
@@ -175,22 +192,27 @@ class Dataset_Controller extends Base_Controller {
 		if($dataset == Null) {
 			return Response::error('404');
 		}
+		if(!$dataset->is_owner()) {
+			return Response::error('403');
+		}
 		
-		$this->layout->contextual = array(
+		//Build the contextual links.
+		$context_links = array(
 			HTML::link(URL::to_action('dataset@view', array($id)), 'View'),
-			HTML::link(URL::to_action('dataset@fullview', array($id)), 'Full View'),			
-			HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete'),
+			HTML::link(URL::to_action('dataset@fullview', array($id)), 'Full View'),
 		);
+		if(Auth::check() && Auth::user()->admin) {
+			$context_links[] = HTML::link(URL::to_action('dataset@delete', array($id)), 'Delete');
+		}
+		$this->layout->contextual = $context_links;
 
 		$submission = Input::all();
 		$view = View::make('dataset.edit');
-		
-		//Initial visit to the edit form.
-		//Pass the loaded values to the edit form.
-		
 		$view->id = $id;
-		
+
+		//Initial visit to the edit form.
 		if(empty($submission)) {
+			//Pass the loaded values to the edit form.
 			$dv = new DefaultValue($dataset);
 			$view->input = $dv;
 		}
@@ -257,6 +279,10 @@ class Dataset_Controller extends Base_Controller {
 		$dataset = Dataset::find($id);
 		if($dataset == Null) {
 			return Response::error('404');
+		}
+
+		if(!Auth::user()->admin) {
+			return Response::error('403');
 		}
 
 		$this->layout->contextual = array(

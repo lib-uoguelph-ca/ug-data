@@ -8,6 +8,28 @@ class Dataset extends Eloquent {
 			
 	);
 	
+	/**
+	 * Is the current user the owner of this dataset?
+	 * 
+	 * @return boolean
+	 */
+	public function is_owner() {
+		$user = Auth::user();
+		if($user == NULL) {
+			return FALSE;
+		}
+
+		if($this->get_key() == $user->id) {
+			return TRUE;
+		}
+
+		if($user->admin) {
+			return TRUE;
+		}
+
+		return FALSE;
+	}
+
 	/*
 	 * Defines the has_many relationship between datasets and attributes.
 	 */

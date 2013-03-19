@@ -78,9 +78,6 @@ class User_Controller extends Base_Controller {
 	public function action_profile() {
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = "Edit Profile";
-
-		$this->layout->title = "UG-Data Search";
-		$this->layout->subtitle = "Describe your data";
 		
 		$user = Auth::user();
 		if($user == Null) {

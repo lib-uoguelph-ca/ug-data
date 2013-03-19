@@ -7,6 +7,27 @@ CREATE SCHEMA IF NOT EXISTS `ug_data` DEFAULT CHARACTER SET utf8 ;
 USE `ug_data` ;
 
 -- -----------------------------------------------------
+-- Table `ug_data`.`users`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `ug_data`.`users` ;
+
+CREATE  TABLE IF NOT EXISTS `ug_data`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `username` VARCHAR(128) NOT NULL ,
+  `email` VARCHAR(150) NOT NULL ,
+  `password` VARCHAR(64) NOT NULL ,
+  `created_at` TIMESTAMP NOT NULL ,
+  `updated_at` TIMESTAMP NULL ,
+  `admin` TINYINT(1) NULL DEFAULT false ,
+  PRIMARY KEY (`id`) ,
+  INDEX `username` (`username` ASC) ,
+  INDEX `email` (`email` ASC) ,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `ug_data`.`datasets`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `ug_data`.`datasets` ;
@@ -15,11 +36,18 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`datasets` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` TEXT NOT NULL ,
   `url` VARCHAR(500) NOT NULL ,
+  `user_id` INT NOT NULL ,
   `description` TEXT NULL ,
   `created_at` TIMESTAMP NOT NULL ,
   `updated_at` TIMESTAMP NULL ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  INDEX `dataset_owner` (`user_id` ASC) ,
+  CONSTRAINT `dataset_owner`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `ug_data`.`users` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -44,52 +72,6 @@ CREATE  TABLE IF NOT EXISTS `ug_data`.`attributes` (
     REFERENCES `ug_data`.`datasets` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ug_data`.`users`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `ug_data`.`users` ;
-
-CREATE  TABLE IF NOT EXISTS `ug_data`.`users` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `username` VARCHAR(128) NOT NULL ,
-  `email` VARCHAR(150) NOT NULL ,
-  `password` VARCHAR(64) NOT NULL ,
-  `created_at` TIMESTAMP NOT NULL ,
-  `updated_at` TIMESTAMP NULL ,
-  `admin` TINYINT(1) NULL DEFAULT false ,
-  PRIMARY KEY (`id`) ,
-  INDEX `username` (`username` ASC) ,
-  INDEX `email` (`email` ASC) ,
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ug_data`.`users_datasets`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `ug_data`.`users_datasets` ;
-
-CREATE  TABLE IF NOT EXISTS `ug_data`.`users_datasets` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `user_id` INT NOT NULL ,
-  `dataset_id` INT NOT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `user_id` (`user_id` ASC) ,
-  INDEX `dataset_id` (`dataset_id` ASC) ,
-  CONSTRAINT `user_id`
-    FOREIGN KEY (`user_id` )
-    REFERENCES `ug_data`.`users` (`id` )
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION,
-  CONSTRAINT `dataset_id`
-    FOREIGN KEY (`dataset_id` )
-    REFERENCES `ug_data`.`datasets` (`id` )
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 USE `ug_data`;
@@ -153,14 +135,23 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `ug_data`.`users`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `ug_data`;
+INSERT INTO `ug_data`.`users` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `admin`) VALUES (1, 'doana', 'doana@uoguelph.ca', '$2a$08$5bzx6PM0gksnqGXMiTB8pep47gonPRhJrHVBSUjH3qqgeW/Ig4sUe', '', '', 1);
+
+COMMIT;
+
+-- -----------------------------------------------------
 -- Data for table `ug_data`.`datasets`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `ug_data`;
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `created_at`, `updated_at`) VALUES (1, 'Adam', 'http://www.google.ca', '<p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\"><img src=\"http://lorempixel.com/200/300/food/Adam\" style=\"font-size:13px;font-family:\'Lucida Grande\', \'Lucida Sans Unicode\', Tahoma, Helvetica, Verdana, sans-serif;line-height:1.5;\" alt=\"Awesome\" align=\"left\" /><span style=\"font-size:12px;line-height:1.5;\">Deep v labore cosby sweater organic four loko occupy. Tousled cillum synth dreamcatcher. VHS pariatur helvetica flexitarian. Typewriter fashion axe gastropub, 90\'s readymade put a bird on it direct trade terry richardson retro sriracha plaid shoreditch 8-bit ugh banh mi. Disrupt kogi nihil, mollit street art actually polaroid pinterest williamsburg VHS. Irure chambray retro brooklyn delectus, hella readymade terry richardson veniam. Umami carles lomo mlkshk duis, chambray salvia irure actually.</span></p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Delectus ethical photo booth craft beer high life, ut mixtape organic selfies wolf echo park pour-over narwhal godard cliche. Mumblecore officia leggings sunt narwhal, plaid put a bird on it tempor intelligentsia excepteur seitan art party freegan ex kogi. Actually labore before they sold out cardigan bushwick leggings. Cillum cupidatat DIY, wolf Austin mixtape literally excepteur. Bespoke eu seitan, ad master cleanse twee jean shorts magna 8-bit mlkshk flexitarian mixtape anim church-key. Literally cosby sweater ullamco church-key assumenda, letterpress locavore est 90\'s laborum intelligentsia bicycle rights nisi meggings stumptown. Chillwave bespoke occupy nesciunt, direct trade accusamus wolf beard food truck lomo gastropub jean shorts placeat vero.</p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Actually umami food truck incididunt shoreditch. Polaroid cliche ut VHS wes anderson, quinoa seitan ennui odio direct trade pinterest vinyl culpa truffaut sustainable. Deserunt in blue bottle cardigan salvia disrupt. Raw denim excepteur fap pork belly. Polaroid meh vice, portland neutra fingerstache VHS tattooed next level scenester pop-up quinoa skateboard wes anderson sartorial. Pickled keytar pariatur deep v. Messenger bag swag craft beer brooklyn labore, bushwick polaroid direct trade jean shorts officia ex pug eiusmod.</p>', '', NULL);
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `created_at`, `updated_at`) VALUES (2, 'Tyler', 'http://www.google.ca', '<p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\"><img src=\"http://lorempixel.com/200/300/technics/Tyler\" style=\"font-size:13px;font-family:\'Lucida Grande\', \'Lucida Sans Unicode\', Tahoma, Helvetica, Verdana, sans-serif;line-height:1.5;\" alt=\"Awesome\" align=\"left\" /><span style=\"font-size:12px;line-height:1.5;\">Deep v labore cosby sweater organic four loko occupy. Tousled cillum synth dreamcatcher. VHS pariatur helvetica flexitarian. Typewriter fashion axe gastropub, 90\'s readymade put a bird on it direct trade terry richardson retro sriracha plaid shoreditch 8-bit ugh banh mi. Disrupt kogi nihil, mollit street art actually polaroid pinterest williamsburg VHS. Irure chambray retro brooklyn delectus, hella readymade terry richardson veniam. Umami carles lomo mlkshk duis, chambray salvia irure actually.</span></p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Delectus ethical photo booth craft beer high life, ut mixtape organic selfies wolf echo park pour-over narwhal godard cliche. Mumblecore officia leggings sunt narwhal, plaid put a bird on it tempor intelligentsia excepteur seitan art party freegan ex kogi. Actually labore before they sold out cardigan bushwick leggings. Cillum cupidatat DIY, wolf Austin mixtape literally excepteur. Bespoke eu seitan, ad master cleanse twee jean shorts magna 8-bit mlkshk flexitarian mixtape anim church-key. Literally cosby sweater ullamco church-key assumenda, letterpress locavore est 90\'s laborum intelligentsia bicycle rights nisi meggings stumptown. Chillwave bespoke occupy nesciunt, direct trade accusamus wolf beard food truck lomo gastropub jean shorts placeat vero.</p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Actually umami food truck incididunt shoreditch. Polaroid cliche ut VHS wes anderson, quinoa seitan ennui odio direct trade pinterest vinyl culpa truffaut sustainable. Deserunt in blue bottle cardigan salvia disrupt. Raw denim excepteur fap pork belly. Polaroid meh vice, portland neutra fingerstache VHS tattooed next level scenester pop-up quinoa skateboard wes anderson sartorial. Pickled keytar pariatur deep v. Messenger bag swag craft beer brooklyn labore, bushwick polaroid direct trade jean shorts officia ex pug eiusmod.</p>', '', NULL);
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `created_at`, `updated_at`) VALUES (3, 'Elisabeth', 'http://www.google.ca', '<p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\"><img src=\"http://lorempixel.com/200/300/animals/Elisabeth\" style=\"font-size:13px;font-family:\'Lucida Grande\', \'Lucida Sans Unicode\', Tahoma, Helvetica, Verdana, sans-serif;line-height:1.5;\" alt=\"Awesome\" align=\"left\" /><span style=\"font-size:12px;line-height:1.5;\">Deep v labore cosby sweater organic four loko occupy. Tousled cillum synth dreamcatcher. VHS pariatur helvetica flexitarian. Typewriter fashion axe gastropub, 90\'s readymade put a bird on it direct trade terry richardson retro sriracha plaid shoreditch 8-bit ugh banh mi. Disrupt kogi nihil, mollit street art actually polaroid pinterest williamsburg VHS. Irure chambray retro brooklyn delectus, hella readymade terry richardson veniam. Umami carles lomo mlkshk duis, chambray salvia irure actually.</span></p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Delectus ethical photo booth craft beer high life, ut mixtape organic selfies wolf echo park pour-over narwhal godard cliche. Mumblecore officia leggings sunt narwhal, plaid put a bird on it tempor intelligentsia excepteur seitan art party freegan ex kogi. Actually labore before they sold out cardigan bushwick leggings. Cillum cupidatat DIY, wolf Austin mixtape literally excepteur. Bespoke eu seitan, ad master cleanse twee jean shorts magna 8-bit mlkshk flexitarian mixtape anim church-key. Literally cosby sweater ullamco church-key assumenda, letterpress locavore est 90\'s laborum intelligentsia bicycle rights nisi meggings stumptown. Chillwave bespoke occupy nesciunt, direct trade accusamus wolf beard food truck lomo gastropub jean shorts placeat vero.</p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Actually umami food truck incididunt shoreditch. Polaroid cliche ut VHS wes anderson, quinoa seitan ennui odio direct trade pinterest vinyl culpa truffaut sustainable. Deserunt in blue bottle cardigan salvia disrupt. Raw denim excepteur fap pork belly. Polaroid meh vice, portland neutra fingerstache VHS tattooed next level scenester pop-up quinoa skateboard wes anderson sartorial. Pickled keytar pariatur deep v. Messenger bag swag craft beer brooklyn labore, bushwick polaroid direct trade jean shorts officia ex pug eiusmod.</p>', '', NULL);
-INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `description`, `created_at`, `updated_at`) VALUES (4, 'Sarah', 'http://www.google.ca', '<p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\"><img src=\"http://lorempixel.com/200/300/nature/Sarah\" style=\"font-size:13px;font-family:\'Lucida Grande\', \'Lucida Sans Unicode\', Tahoma, Helvetica, Verdana, sans-serif;line-height:1.5;\" alt=\"Awesome\" align=\"left\" /><span style=\"font-size:12px;line-height:1.5;\">Deep v labore cosby sweater organic four loko occupy. Tousled cillum synth dreamcatcher. VHS pariatur helvetica flexitarian. Typewriter fashion axe gastropub, 90\'s readymade put a bird on it direct trade terry richardson retro sriracha plaid shoreditch 8-bit ugh banh mi. Disrupt kogi nihil, mollit street art actually polaroid pinterest williamsburg VHS. Irure chambray retro brooklyn delectus, hella readymade terry richardson veniam. Umami carles lomo mlkshk duis, chambray salvia irure actually.</span></p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Delectus ethical photo booth craft beer high life, ut mixtape organic selfies wolf echo park pour-over narwhal godard cliche. Mumblecore officia leggings sunt narwhal, plaid put a bird on it tempor intelligentsia excepteur seitan art party freegan ex kogi. Actually labore before they sold out cardigan bushwick leggings. Cillum cupidatat DIY, wolf Austin mixtape literally excepteur. Bespoke eu seitan, ad master cleanse twee jean shorts magna 8-bit mlkshk flexitarian mixtape anim church-key. Literally cosby sweater ullamco church-key assumenda, letterpress locavore est 90\'s laborum intelligentsia bicycle rights nisi meggings stumptown. Chillwave bespoke occupy nesciunt, direct trade accusamus wolf beard food truck lomo gastropub jean shorts placeat vero.</p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Actually umami food truck incididunt shoreditch. Polaroid cliche ut VHS wes anderson, quinoa seitan ennui odio direct trade pinterest vinyl culpa truffaut sustainable. Deserunt in blue bottle cardigan salvia disrupt. Raw denim excepteur fap pork belly. Polaroid meh vice, portland neutra fingerstache VHS tattooed next level scenester pop-up quinoa skateboard wes anderson sartorial. Pickled keytar pariatur deep v. Messenger bag swag craft beer brooklyn labore, bushwick polaroid direct trade jean shorts officia ex pug eiusmod.</p>', '', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `user_id`, `description`, `created_at`, `updated_at`) VALUES (1, 'Adam', 'http://www.google.ca', 1, '<p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\"><img src=\"http://lorempixel.com/200/300/food/Adam\" style=\"font-size:13px;font-family:\'Lucida Grande\', \'Lucida Sans Unicode\', Tahoma, Helvetica, Verdana, sans-serif;line-height:1.5;\" alt=\"Awesome\" align=\"left\" /><span style=\"font-size:12px;line-height:1.5;\">Deep v labore cosby sweater organic four loko occupy. Tousled cillum synth dreamcatcher. VHS pariatur helvetica flexitarian. Typewriter fashion axe gastropub, 90\'s readymade put a bird on it direct trade terry richardson retro sriracha plaid shoreditch 8-bit ugh banh mi. Disrupt kogi nihil, mollit street art actually polaroid pinterest williamsburg VHS. Irure chambray retro brooklyn delectus, hella readymade terry richardson veniam. Umami carles lomo mlkshk duis, chambray salvia irure actually.</span></p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Delectus ethical photo booth craft beer high life, ut mixtape organic selfies wolf echo park pour-over narwhal godard cliche. Mumblecore officia leggings sunt narwhal, plaid put a bird on it tempor intelligentsia excepteur seitan art party freegan ex kogi. Actually labore before they sold out cardigan bushwick leggings. Cillum cupidatat DIY, wolf Austin mixtape literally excepteur. Bespoke eu seitan, ad master cleanse twee jean shorts magna 8-bit mlkshk flexitarian mixtape anim church-key. Literally cosby sweater ullamco church-key assumenda, letterpress locavore est 90\'s laborum intelligentsia bicycle rights nisi meggings stumptown. Chillwave bespoke occupy nesciunt, direct trade accusamus wolf beard food truck lomo gastropub jean shorts placeat vero.</p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Actually umami food truck incididunt shoreditch. Polaroid cliche ut VHS wes anderson, quinoa seitan ennui odio direct trade pinterest vinyl culpa truffaut sustainable. Deserunt in blue bottle cardigan salvia disrupt. Raw denim excepteur fap pork belly. Polaroid meh vice, portland neutra fingerstache VHS tattooed next level scenester pop-up quinoa skateboard wes anderson sartorial. Pickled keytar pariatur deep v. Messenger bag swag craft beer brooklyn labore, bushwick polaroid direct trade jean shorts officia ex pug eiusmod.</p>', '', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `user_id`, `description`, `created_at`, `updated_at`) VALUES (2, 'Tyler', 'http://www.google.ca', 1, '<p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\"><img src=\"http://lorempixel.com/200/300/technics/Tyler\" style=\"font-size:13px;font-family:\'Lucida Grande\', \'Lucida Sans Unicode\', Tahoma, Helvetica, Verdana, sans-serif;line-height:1.5;\" alt=\"Awesome\" align=\"left\" /><span style=\"font-size:12px;line-height:1.5;\">Deep v labore cosby sweater organic four loko occupy. Tousled cillum synth dreamcatcher. VHS pariatur helvetica flexitarian. Typewriter fashion axe gastropub, 90\'s readymade put a bird on it direct trade terry richardson retro sriracha plaid shoreditch 8-bit ugh banh mi. Disrupt kogi nihil, mollit street art actually polaroid pinterest williamsburg VHS. Irure chambray retro brooklyn delectus, hella readymade terry richardson veniam. Umami carles lomo mlkshk duis, chambray salvia irure actually.</span></p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Delectus ethical photo booth craft beer high life, ut mixtape organic selfies wolf echo park pour-over narwhal godard cliche. Mumblecore officia leggings sunt narwhal, plaid put a bird on it tempor intelligentsia excepteur seitan art party freegan ex kogi. Actually labore before they sold out cardigan bushwick leggings. Cillum cupidatat DIY, wolf Austin mixtape literally excepteur. Bespoke eu seitan, ad master cleanse twee jean shorts magna 8-bit mlkshk flexitarian mixtape anim church-key. Literally cosby sweater ullamco church-key assumenda, letterpress locavore est 90\'s laborum intelligentsia bicycle rights nisi meggings stumptown. Chillwave bespoke occupy nesciunt, direct trade accusamus wolf beard food truck lomo gastropub jean shorts placeat vero.</p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Actually umami food truck incididunt shoreditch. Polaroid cliche ut VHS wes anderson, quinoa seitan ennui odio direct trade pinterest vinyl culpa truffaut sustainable. Deserunt in blue bottle cardigan salvia disrupt. Raw denim excepteur fap pork belly. Polaroid meh vice, portland neutra fingerstache VHS tattooed next level scenester pop-up quinoa skateboard wes anderson sartorial. Pickled keytar pariatur deep v. Messenger bag swag craft beer brooklyn labore, bushwick polaroid direct trade jean shorts officia ex pug eiusmod.</p>', '', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `user_id`, `description`, `created_at`, `updated_at`) VALUES (3, 'Elisabeth', 'http://www.google.ca', 1, '<p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\"><img src=\"http://lorempixel.com/200/300/animals/Elisabeth\" style=\"font-size:13px;font-family:\'Lucida Grande\', \'Lucida Sans Unicode\', Tahoma, Helvetica, Verdana, sans-serif;line-height:1.5;\" alt=\"Awesome\" align=\"left\" /><span style=\"font-size:12px;line-height:1.5;\">Deep v labore cosby sweater organic four loko occupy. Tousled cillum synth dreamcatcher. VHS pariatur helvetica flexitarian. Typewriter fashion axe gastropub, 90\'s readymade put a bird on it direct trade terry richardson retro sriracha plaid shoreditch 8-bit ugh banh mi. Disrupt kogi nihil, mollit street art actually polaroid pinterest williamsburg VHS. Irure chambray retro brooklyn delectus, hella readymade terry richardson veniam. Umami carles lomo mlkshk duis, chambray salvia irure actually.</span></p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Delectus ethical photo booth craft beer high life, ut mixtape organic selfies wolf echo park pour-over narwhal godard cliche. Mumblecore officia leggings sunt narwhal, plaid put a bird on it tempor intelligentsia excepteur seitan art party freegan ex kogi. Actually labore before they sold out cardigan bushwick leggings. Cillum cupidatat DIY, wolf Austin mixtape literally excepteur. Bespoke eu seitan, ad master cleanse twee jean shorts magna 8-bit mlkshk flexitarian mixtape anim church-key. Literally cosby sweater ullamco church-key assumenda, letterpress locavore est 90\'s laborum intelligentsia bicycle rights nisi meggings stumptown. Chillwave bespoke occupy nesciunt, direct trade accusamus wolf beard food truck lomo gastropub jean shorts placeat vero.</p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Actually umami food truck incididunt shoreditch. Polaroid cliche ut VHS wes anderson, quinoa seitan ennui odio direct trade pinterest vinyl culpa truffaut sustainable. Deserunt in blue bottle cardigan salvia disrupt. Raw denim excepteur fap pork belly. Polaroid meh vice, portland neutra fingerstache VHS tattooed next level scenester pop-up quinoa skateboard wes anderson sartorial. Pickled keytar pariatur deep v. Messenger bag swag craft beer brooklyn labore, bushwick polaroid direct trade jean shorts officia ex pug eiusmod.</p>', '', NULL);
+INSERT INTO `ug_data`.`datasets` (`id`, `name`, `url`, `user_id`, `description`, `created_at`, `updated_at`) VALUES (4, 'Sarah', 'http://www.google.ca', 1, '<p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\"><img src=\"http://lorempixel.com/200/300/nature/Sarah\" style=\"font-size:13px;font-family:\'Lucida Grande\', \'Lucida Sans Unicode\', Tahoma, Helvetica, Verdana, sans-serif;line-height:1.5;\" alt=\"Awesome\" align=\"left\" /><span style=\"font-size:12px;line-height:1.5;\">Deep v labore cosby sweater organic four loko occupy. Tousled cillum synth dreamcatcher. VHS pariatur helvetica flexitarian. Typewriter fashion axe gastropub, 90\'s readymade put a bird on it direct trade terry richardson retro sriracha plaid shoreditch 8-bit ugh banh mi. Disrupt kogi nihil, mollit street art actually polaroid pinterest williamsburg VHS. Irure chambray retro brooklyn delectus, hella readymade terry richardson veniam. Umami carles lomo mlkshk duis, chambray salvia irure actually.</span></p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Delectus ethical photo booth craft beer high life, ut mixtape organic selfies wolf echo park pour-over narwhal godard cliche. Mumblecore officia leggings sunt narwhal, plaid put a bird on it tempor intelligentsia excepteur seitan art party freegan ex kogi. Actually labore before they sold out cardigan bushwick leggings. Cillum cupidatat DIY, wolf Austin mixtape literally excepteur. Bespoke eu seitan, ad master cleanse twee jean shorts magna 8-bit mlkshk flexitarian mixtape anim church-key. Literally cosby sweater ullamco church-key assumenda, letterpress locavore est 90\'s laborum intelligentsia bicycle rights nisi meggings stumptown. Chillwave bespoke occupy nesciunt, direct trade accusamus wolf beard food truck lomo gastropub jean shorts placeat vero.</p><p style=\"font-family:\'Helvetica Neue\', Helvetica, Arial, sans-serif;font-size:12px;margin-bottom:1.625em;color:rgb(55,55,55);\">Actually umami food truck incididunt shoreditch. Polaroid cliche ut VHS wes anderson, quinoa seitan ennui odio direct trade pinterest vinyl culpa truffaut sustainable. Deserunt in blue bottle cardigan salvia disrupt. Raw denim excepteur fap pork belly. Polaroid meh vice, portland neutra fingerstache VHS tattooed next level scenester pop-up quinoa skateboard wes anderson sartorial. Pickled keytar pariatur deep v. Messenger bag swag craft beer brooklyn labore, bushwick polaroid direct trade jean shorts officia ex pug eiusmod.</p>', '', NULL);
 
 COMMIT;
 

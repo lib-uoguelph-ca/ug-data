@@ -52,8 +52,8 @@ Route::get('dataset/add', 'dataset@add');
 Route::post('dataset/add', 'dataset@add');
 Route::get('dataset/edit/(:num)', 'dataset@edit');
 Route::post('dataset/edit/(:num)', 'dataset@edit');
-Route::get('dataset/delete/(:num)', 'dataset@delete');
-Route::post('dataset/delete/(:num)', 'dataset@delete');
+Route::get('admin/dataset/delete/(:num)', 'dataset@delete');
+Route::post('admin/dataset/delete/(:num)', 'dataset@delete');
 
 /*
  * Users
@@ -64,9 +64,8 @@ Route::post('login', 'user@login');
 Route::get('logout', 'user@logout');
 
 //Authenticated
-Route::get('admin', array('before' => 'auth', function() {}));
-Route::get('user/profile', 'user@profile');
-Route::post('user/profile', 'user@profile');
+Route::get('profile', 'user@profile');
+Route::post('profile', 'user@profile');
 
 //Admin
 Route::get('admin/users', 'user@admin_index');
@@ -93,6 +92,11 @@ Route::post('admin/user/delete/(:num)', 'user@admin_delete');
 | uncaught exception thrown in the application.
 |
 */
+
+Event::listen('403', function()
+{
+	return Response::error('403');
+});
 
 Event::listen('404', function()
 {
@@ -151,3 +155,27 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });
+
+Route::filter('admin', function()
+{
+	if (Auth::guest()) 
+		return Redirect::to('login');
+	elseif (!Auth::user()->admin){
+		return Response::error('403');
+	}
+});
+
+
+//Admin routes
+//Attach the auth filter to all admin/* paths
+Route::filter('pattern: admin/*', 'auth');
+Route::filter('pattern: admin/*', 'admin');
+Route::filter('pattern: admin/*', 'auth');
+Route::filter('pattern: admin/*', 'admin');
+
+//Authenticated routes
+Route::filter('pattern: dataset/add', 'auth');
+Route::filter('pattern: dataset/edit/*', 'auth');
+Route::filter('pattern: profile', 'auth');
+
+
