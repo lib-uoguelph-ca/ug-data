@@ -151,6 +151,12 @@ class User_Controller extends Base_Controller {
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = "Users";
 
+		//Contextual Links
+		$context_links = array(
+			HTML::link(URL::to_action('user@admin_add'), 'Add User'),
+		);
+		$this->layout->contextual = $context_links;
+
 		$items_per_page = 20;
 		$users = DB::table('users')
 			->order_by('username', 'asc')

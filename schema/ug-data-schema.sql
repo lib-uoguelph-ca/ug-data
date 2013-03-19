@@ -140,6 +140,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `ug_data`;
 INSERT INTO `ug_data`.`users` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `admin`) VALUES (1, 'doana', 'doana@uoguelph.ca', '$2a$08$5bzx6PM0gksnqGXMiTB8pep47gonPRhJrHVBSUjH3qqgeW/Ig4sUe', '', '', 1);
+INSERT INTO `ug_data`.`users` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `admin`) VALUES (2, 'cbreton', 'cbreton@uoguelph.ca', '$2a$08$ELfk39TVkZxsvKJkpo4Z4..5reTvm6Dn85GOnAQRCtPeqyOo4Jo5S', '', '', 1);
+INSERT INTO `ug_data`.`users` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `admin`) VALUES (3, 'carolp', 'carolp@uoguelph.ca', '$2a$08$Fnv.sF77PPuaHt4mwhOrTO/ZvEtjbCNUlZJsgwXO8tURRFUVu9S3G', '', '', 1);
 
 COMMIT;
 
