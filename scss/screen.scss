@@ -132,6 +132,19 @@ table td {
 }
 
 /*
+ * Secondary Links
+ **/
+ul#secondary-links {
+	li {
+		width: auto;
+
+		a {
+			margin: 0px;
+		}
+	}
+}
+
+/*
  * Forms
  **/
 #main form {

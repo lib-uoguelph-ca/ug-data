@@ -87,6 +87,9 @@
     		<div class="container">
     			<ul id="secondary-links">
 			    	@section('secondary-links')
+			    		@if(!Auth::check()) 
+			    			<li>{{ HTML::link(URL::to_action('user@login'), 'Log In'); }}</li>
+			    		@endif
 					    <li><a href="/">Home</a></li>
 					    <li><a href="/datasets">Data Sets</a></li>
 					    <li><a href="/search">Search</a></li>
