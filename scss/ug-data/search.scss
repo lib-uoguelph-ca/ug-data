@@ -22,15 +22,20 @@
 #search-results {
 	float: left;
 	clear: both;
+	width: 100%;
 
 	.facets {
 		float: left;
 		margin-right: 2em;
 		border: 1px solid #777;
 		padding: 1em;
+		max-width: 25%;
 	}
 
 	.results {
-		@include clearfix();
+		min-width: 70%;
+		display: block;
 	}
+
+
 }
