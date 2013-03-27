@@ -1,15 +1,15 @@
 $(document).ready(function() {	
 	$('#search_ontology').change(function() {
 		$('#advancedSearch').removeClass('hidden');
-		var id = '#' + $(this).val();
+		var id = '#' + $('#search_ontology').val();
 		$('.ontology').addClass('hidden');
 		$(id).removeClass('hidden');
 	})
 
-	console.log($('#search_ontology').val());
 	if($('#search_ontology').val() != "") {
+		$('.ontology').addClass('hidden');
 		$('#advancedSearch').removeClass('hidden');
-		var id = '#' + $(this).val();
+		var id = '#' + $('#search_ontology').val();
 		$(id).removeClass('hidden');
 	}
 })

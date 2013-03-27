@@ -15,7 +15,6 @@
 
 <div id="dataset-add">
 		
-	<!-- <form action="" method="Post"> -->
 	{{ Form::open('dataset/add', 'POST');  }}
 		{{ Form::token(); }}
 		
@@ -30,10 +29,11 @@
 		
 		<div id="ontologies" >
 			{{ render('dataset.ontology.geopolitical', array('input' => $input)); }}
+			{{ render('dataset.ontology.scca', array('input' => $input)); }}
+			{{-- render('dataset.ontology.ddi', array('input' => $input)); --}}
 		</div>
 		
 		{{ Form::submit('Add Dataset'); }}
-		<!-- <input type="submit" value="Add Dataset" /> -->
 	{{ Form::close() }}
 </div>
 

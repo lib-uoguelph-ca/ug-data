@@ -12,11 +12,12 @@
             <div>
                 <h3>Advanced Search</h3>
                 {{ Form::label('search_ontology', 'Select an Ontology'); }}
-                {{ Form::select('search_ontology', array('' => '', 'geopolitical' => 'Geopolitical'), $input['search_ontology']); }}
+                {{ Form::select('search_ontology', array('' => '', 'geopolitical' => 'Geopolitical', 'scca' => 'Soil Capability Classification for Agriculture'), $input['search_ontology']); }}
             </div>
         </div>
         <div id="advancedSearch" class="hidden">
             {{ render('search.ontology.geopolitical', array('input' => $input)); }}
+            {{ render('search.ontology.scca', array('input' => $input)); }}
         </div>
         <input type="submit" value="Search" />
     </form>

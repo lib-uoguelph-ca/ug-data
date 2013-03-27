@@ -1,0 +1,11 @@
+#dataset-edit {
+
+	input[type="text"] {
+		width: 25em;
+	}
+
+	input[type="submit"] {
+		width: auto;
+		min-width: 0;
+	}
+}

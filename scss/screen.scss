@@ -39,9 +39,11 @@ $full_content_width: 820px;
 @import "ug-data/search";
 @import "ug-data/dataset-index";
 @import "ug-data/dataset-add";
+@import "ug-data/dataset-edit";
 @import "ug-data/images";
 @import "ug-data/user-index";
 @import "ug-data/auth-menu";
+@import "ug-data/forms";
 
 body {
 	overflow: hidden;
@@ -88,6 +90,10 @@ ol {
 em {
 	font-style: italic;
 	font-weight: bold;
+}
+
+p {
+	margin-bottom: 1em;
 }
 
 code {
@@ -144,71 +150,7 @@ ul#secondary-links {
 	}
 }
 
-/*
- * Forms
- **/
-#main form {
-	
-	label,
-	{
-		span {
-			float: left;
-			clear: both;
-			display: block;
-		}
-		select, 
-		input,
-		textarea {
-			float: left;
-			clear: both;	
-		}
-	}
-	
-	fieldset {
-		border: 1px solid $border-colour;
-		padding: 1em;
-		margin-bottom: 1em;
-	 
-		legend {
-			font-size: 125%;
-		}
-	}
 
-	label,
-	input, 
-	textarea,
-	select {
-		float: left; 
-		clear: both;
-		min-width: 12em;
-	} 
-	
-	input,
-	select {
-		height: 26px;
-	}
-	
-	select {
-		height: 24px;
-	}
-	
-	select[multiple=true] {
-		height: auto;
-		min-height: 12em;
-	}
-	
-	input[type="submit"] {
-		width: auto;
-		float: left;
-		clear: both;
-		min-width: 0;
-	} 
-	
-	label.required:after {
-		content: "*";
-		color: red;
-	}
-}
 
 /*
  * pagers

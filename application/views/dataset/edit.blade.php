@@ -30,6 +30,8 @@
 		
 		<div id="ontologies" >
 			{{ render('dataset.ontology.geopolitical', array('input' => $input)); }}
+			{{ render('dataset.ontology.scca', array('input' => $input)); }}
+			{{-- render('dataset.ontology.ddi', array('input' => $input)); --}}
 		</div>
 		
 		{{ Form::submit('Save Dataset'); }}
