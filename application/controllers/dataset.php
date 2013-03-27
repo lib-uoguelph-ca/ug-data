@@ -14,6 +14,12 @@ class Dataset_Controller extends Base_Controller {
 	public function action_index() {
 		$this->layout->title = "UG-Data Search";
 		$this->layout->subtitle = "Datasets";
+
+		//Build the contextual links.
+		$context_links = array(
+			HTML::link(URL::to_action('dataset@add'), 'Add Dataset'),
+		);
+		$this->layout->contextual = $context_links;
 		
 		$items_per_page = 5;
 		$datasets = DB::table('datasets')
@@ -78,8 +84,7 @@ class Dataset_Controller extends Base_Controller {
 	 * @param $id
 	 */
 	public function action_fullview($id) {
-		
-				
+			
 		$dataset = Dataset::find($id);
 		if($dataset == Null) {
 			return Response::error('404');
@@ -159,7 +164,7 @@ class Dataset_Controller extends Base_Controller {
 				
 				//Save the dataset and the attributes all in one go. 
 				try {
-					$dataset->setAttributes($this->getAttributesFromInput($submission));
+					$dataset->setAttributes($this->getAttributesFromInput(Util::inputStripEmpty($submission)));
 					$dataset->save();
 					
 					return Redirect::to_action('dataset@index',  array($dataset->id))
@@ -207,6 +212,7 @@ class Dataset_Controller extends Base_Controller {
 		$this->layout->contextual = $context_links;
 
 		$submission = Input::all();
+		
 		$view = View::make('dataset.edit');
 		$view->id = $id;
 
@@ -218,7 +224,7 @@ class Dataset_Controller extends Base_Controller {
 		}
 		//Handle submitted form data.
 		else {
-			$dv = new DefaultValue($submission);
+			$dv = new DefaultValue(Util::inputStripPrefix($submission));
 			$view->input = $dv;
 			
 			$valid = Dataset::validate(Util::inputStripPrefix($submission));
@@ -246,7 +252,7 @@ class Dataset_Controller extends Base_Controller {
 				
 				//Save everything in one go. 
 				try {
-					$dataset->setAttributes($this->getAttributesFromInput($submission));
+					$dataset->setAttributes($this->getAttributesFromInput(Util::inputStripEmpty($submission)));
 					$dataset->save();
 				
 					return Redirect::to_action('dataset@index',  array($id))
