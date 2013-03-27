@@ -12,7 +12,7 @@
             <div>
                 <h3>Advanced Search</h3>
                 {{ Form::label('search_ontology', 'Select an Ontology'); }}
-                {{ Form::select('search_ontology', array('' => '', 'geopolitical' => 'Geopolitical', 'scca' => 'Soil Capability Classification for Agriculture'), $input['search_ontology']); }}
+                {{ Form::select('search_ontology', array('' => '', 'geopolitical' => 'Geopolitical', 'scca' => i18n::t('scca')), $input['search_ontology']); }}
             </div>
         </div>
         <div id="advancedSearch" class="hidden">
@@ -32,12 +32,12 @@
             <div class="facets">
                 @foreach ($facets as $fieldname => $facetfield)
                     <div class="search-facet-field">
-                        <span class="name">{{ $fieldname }}</span>
+                        <span class="name">{{ i18n::t($fieldname) }}</span>
                         <ul>
                             @foreach($facetfield as $name => $value)
                                 @if ($value > 0)
                                 <li>
-                                    <a href="{{ URL::full() . '&fq_' . $fieldname . '=' . $name}}">{{ $name }}</a>  [{{ $value }}]
+                                    <a href="{{ URL::full() . '&fq_' . $fieldname . '=' . $name}}">{{ i18n::t($name) }}</a>  [{{ $value }}]
                                 </li>
                                 @endif
                             @endforeach
