@@ -6,7 +6,8 @@
 </p>
 
 {{ Form::label('cssc_order', i18n::t('cssc_order')); }}
-{{ Form::select('cssc_order[]', array(
+{{ Form::select('cssc_order', array(
+		'' => '',
 		'order_a' => 'A', 
 		'order_b' => 'B', 
 		'order_c' => 'C', 
@@ -17,10 +18,11 @@
 		'order_h' => 'H', 
 		'order_i' => 'I', 
 		'order_j' => 'J', 
-	), $input['cssc_order'], array('multiple' => 'true', 'id' => 'cssc_order')); }}
+	), $input['cssc_order'], array('id' => 'cssc_order')); }}
 
 {{ Form::label('cssc_great', i18n::t('cssc_great')); }}
-{{ Form::select('cssc_great[]', array(
+{{ Form::select('cssc_great', array(
+		'' => '',
 		'group_a' => 'A. Cryosolic order', 
 		'group_b' => 'B. Organic order', 
 		'group_c' => 'C. Vertisolic order', 
@@ -30,10 +32,11 @@
 		'group_g' => 'A. Chernozemic order', 
 		'group_h' => 'H. Luvisolic order', 
 		'group_i' => 'I. Brunisolic order',
-	), $input['cssc_great'], array('multiple' => 'true', 'id' => 'cssc_great')); }}
+	), $input['cssc_great'], array('id' => 'cssc_great')); }}
 
 {{ Form::label('cssc_sub', i18n::t('cssc_sub')); }}
-{{ Form::select('cssc_sub[]', array(
+{{ Form::select('cssc_sub', array(
+		'' => '',
 		'subgroup_aaa' => 'AAA. Organic Cryosols that have an ice layer >30 cm in thickness with the upper boundary within 1 m of the surface', 
 		'subgroup_aab' => 'AAB. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly fibric organic material above the contact',
 		'subgroup_aac' => 'AAC. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly mesic organic material above the contact', 
@@ -296,5 +299,5 @@
 		'subgroup_jbc' => 'JBC. Other Regosols that have faint to distinct mottles within 50 cm of the mineral soil surface',
 		'subgroup_jbd' => 'JBD. Other Regosols',
 
-	), $input['cssc_sub'], array('multiple' => 'true', 'id' => 'cssc_sub')); }}
+	), $input['cssc_sub'], array('id' => 'cssc_sub')); }}
 </fieldset>
