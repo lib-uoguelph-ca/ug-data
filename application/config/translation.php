@@ -25,5 +25,10 @@ return array(
 		'subclass_s' => 'Subclass S',
 		'subclass_t' => 'Subclass T',
 		'subclass_w' => 'Subclass W',
+
+		'cssc' => 'The Canadian System of Soil Classification',
+		'cssc_order' => 'Soil Orders',
+		'cssc_great' => 'Soil Great Groups',
+		'cssc_sub' => 'Soil Subgroups',
 	),
 );

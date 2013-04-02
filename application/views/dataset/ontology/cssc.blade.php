@@ -36,11 +36,11 @@
 {{ Form::select('cssc_sub[]', array(
 		'subgroup_aaa' => 'AAA. Organic Cryosols that have an ice layer >30 cm in thickness with the upper boundary within 1 m of the surface', 
 		'subgroup_aab' => 'AAB. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly fibric organic material above the contact',
-		'subgroup_aac' => 'AAA. Organic Cryosols that have an ice layer >30 cm in thickness with the upper boundary within 1 m of the surface', 
-		'subgroup_aad' => 'AAB. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly fibric organic material above the contact',
-		'subgroup_aae' => 'AAA. Organic Cryosols that have an ice layer >30 cm in thickness with the upper boundary within 1 m of the surface', 
-		'subgroup_aaf' => 'AAB. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly fibric organic material above the contact',
-		'subgroup_aag' => 'AAA. Organic Cryosols that have an ice layer >30 cm in thickness with the upper boundary within 1 m of the surface', 
+		'subgroup_aac' => 'AAC. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly mesic organic material above the contact', 
+		'subgroup_aad' => 'AAD. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly humic organic material above the contact',
+		'subgroup_aae' => 'AAE. Other Organic Cryosols in which the organic material is dominantly fibric below a depth of 40 cm', 
+		'subgroup_aaf' => 'AAF. Other Organic Cryosols in which the organic material is dominantly mesic below a depth of 40 cm',
+		'subgroup_aag' => 'AAG. Other Organic Cryosols in which the organic material is dominantly humic below a depth of 40 cm', 
 		
 		'subgroup_aba' => 'ABA. Turbic Cryosols that have a gleyed layer similar to soils of the Gleysolic order',
 		'subgroup_abb' => 'ABB. Other Turbic Cryosols that have organic horizons in the upper 1 m of the solum, are >15 cm in thickness, and have a pH ≥5.5 in some or all of the B horizons', 
