@@ -28,9 +28,10 @@
 		{{ Form::textarea('dataset_description', $input['dataset_description']); }}
 		
 		<div id="ontologies" >
-			{{ render('dataset.ontology.geopolitical', array('input' => $input)); }}
+			{{-- render('dataset.ontology.geopolitical', array('input' => $input)); --}}
 			{{ render('dataset.ontology.scca', array('input' => $input)); }}
 			{{ render('dataset.ontology.cssc', array('input' => $input)); }}
+			{{ render('dataset.ontology.opcg', array('input' => $input)); }}
 			{{-- render('dataset.ontology.ddi', array('input' => $input)); --}}
 		</div>
 		

@@ -26,9 +26,14 @@ return array(
 		'subclass_t' => 'Subclass T',
 		'subclass_w' => 'Subclass W',
 
+		//Canadian system of soil classification
 		'cssc' => 'The Canadian System of Soil Classification',
 		'cssc_order' => 'Soil Orders',
 		'cssc_great' => 'Soil Great Groups',
 		'cssc_sub' => 'Soil Subgroups',
+
+		//Ontario Pesticide Classification Guideline
+		'opcg' => 'Ontario Pesticide Classification Guideline',
+		'opcg_class' => 'Class'
 	),
 );

@@ -14,17 +14,19 @@
                 {{ Form::label('search_ontology', 'Select an Ontology'); }}
                 {{ Form::select('search_ontology', array(
                         '' => '', 
-                        'geopolitical' => 'Geopolitical', 
+                        //'geopolitical' => 'Geopolitical', 
                         'scca' => i18n::t('scca'),
                         'cssc' => i18n::t('cssc'),
+                        'opcg' => i18n::t('opcg'),
                     ), $input['search_ontology']); 
                 }}
             </div>
         </div>
         <div id="advancedSearch" class="hidden">
-            {{ render('search.ontology.geopolitical', array('input' => $input)); }}
+            {{-- render('search.ontology.geopolitical', array('input' => $input)); --}}
             {{ render('search.ontology.scca', array('input' => $input)); }}
             {{ render('search.ontology.cssc', array('input' => $input)); }}
+            {{ render('search.ontology.opcg', array('input' => $input)); }}
         </div>
         <input type="submit" value="Search" />
     </form>
