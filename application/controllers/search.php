@@ -20,6 +20,7 @@ class Search_Controller extends Base_Controller {
         //$submission = Input::get();
         if(!empty($submission)) {        
             $solr = new Solr();
+
             $results = $solr->datasetSearch($submission);
 
             if(!empty($results)) {

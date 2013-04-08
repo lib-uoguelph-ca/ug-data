@@ -152,9 +152,11 @@ class Solr {
         //Set up our facets
         $attributes = Attribute::getAttributeNames();
         $facets = $select->getFacetSet();
+
         foreach ($attributes as $attrib) {
-            $facets->createFacetField(Util::stripFieldPrefix($attrib->name))->setField($attrib->name);
+            $facets->createFacetField($attrib->name)->setField($attrib->name);
         }
+
 
         //Apply filters
         foreach($input as $key => $value) {
@@ -196,7 +198,7 @@ class Solr {
         $results['query_facets'] = array();
         $attributes = Attribute::getAttributeNames();
         foreach ($attributes as $attrib) {
-            $facet = $r->getFacetSet()->getFacet(Util::stripFieldPrefix($attrib->name));
+            $facet = $r->getFacetSet()->getFacet($attrib->name);
             $values = $facet->getValues();
             $results['query_facets'][$attrib->name] = $values;
         }

@@ -34,6 +34,6 @@ return array(
 
 		//Ontario Pesticide Classification Guideline
 		'opcg' => 'Ontario Pesticide Classification Guideline',
-		'opcg_class' => 'Class'
+		'opcg_class' => 'OPCG Class'
 	),
 );
