@@ -1,13 +1,31 @@
-<fieldset id="cssc" class="ontology">
-<legend>{{ i18n::t('cssc') }}</legend>
+<?php
 
-<p class="help">
-	For more information about the Canadian System of Soil Classification, refer to <a href="http://res.agr.ca/cansis/taxa/cssc3/intro.html">The Canadian System of Soil Classification, 3rd edition</a>.
-</p>
+	return array(
+		'scca' => 'Soil Capability Classification for Agriculture',
+		'scca_class' => 'Soil Capability Classification for Agriculture Class',
+		'scca_class_1' => 'Class 1',
+		'scca_class_2' => 'Class 2',
+		'scca_class_3' => 'Class 3',
+		'scca_class_4' => 'Class 4',
+		'scca_class_5' => 'Class 5',
+		'scca_class_6' => 'Class 6',
+		'scca_class_7' => 'Class 7',
+		'scca_subclass' => 'Soil Capability Classification for Agriculture Subclass',
+		'scca_subclass_c' => 'Subclass C',
+		'scca_subclass_d' => 'Subclass D',
+		'scca_subclass_e' => 'Subclass E',
+		'scca_subclass_f' => 'Subclass F',
+		'scca_subclass_i' => 'Subclass I',
+		'scca_subclass_m' => 'Subclass M',
+		'scca_subclass_p' => 'Subclass P',
+		'scca_subclass_r' => 'Subclass R',
+		'scca_subclass_s' => 'Subclass S',
+		'scca_subclass_t' => 'Subclass T',
+		'scca_subclass_w' => 'Subclass W',
 
-{{ Form::label('cssc_order', i18n::t('cssc_order')); }}
-{{ Form::select('cssc_order', array(
-		'' => '',
+		//Canadian system of soil classification
+		'cssc' => 'The Canadian System of Soil Classification',
+		'cssc_order' => 'Soil Orders',
 		'cssc_order_a' => 'A', 
 		'cssc_order_b' => 'B', 
 		'cssc_order_c' => 'C', 
@@ -18,11 +36,8 @@
 		'cssc_order_h' => 'H', 
 		'cssc_order_i' => 'I', 
 		'cssc_order_j' => 'J', 
-	), $input['cssc_order'], array('id' => 'cssc_order')); }}
 
-{{ Form::label('cssc_great', i18n::t('cssc_great')); }}
-{{ Form::select('cssc_great', array(
-		'' => '',
+		'cssc_great' => 'Soil Great Groups',
 		'cssc_group_a' => 'A. Cryosolic order', 
 		'cssc_group_b' => 'B. Organic order', 
 		'cssc_group_c' => 'C. Vertisolic order', 
@@ -32,11 +47,8 @@
 		'cssc_group_g' => 'A. Chernozemic order', 
 		'cssc_group_h' => 'H. Luvisolic order', 
 		'cssc_group_i' => 'I. Brunisolic order',
-	), $input['cssc_great'], array('id' => 'cssc_great')); }}
 
-{{ Form::label('cssc_sub', i18n::t('cssc_sub')); }}
-{{ Form::select('cssc_sub', array(
-		'' => '',
+		'cssc_sub' => 'Soil Subgroups',
 		'cssc_subgroup_aaa' => 'AAA. Organic Cryosols that have an ice layer >30 cm in thickness with the upper boundary within 1 m of the surface', 
 		'cssc_subgroup_aab' => 'AAB. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly fibric organic material above the contact',
 		'cssc_subgroup_aac' => 'AAC. Other Organic Cryosols that have a mineral contact within 1 m of the surface and mainly mesic organic material above the contact', 
@@ -299,5 +311,19 @@
 		'cssc_subgroup_jbc' => 'JBC. Other Regosols that have faint to distinct mottles within 50 cm of the mineral soil surface',
 		'cssc_subgroup_jbd' => 'JBD. Other Regosols',
 
-	), $input['cssc_sub'], array('id' => 'cssc_sub')); }}
-</fieldset>
+
+		//Ontario Pesticide Classification Guideline
+		'opcg' => 'Ontario Pesticide Classification Guideline',
+		'opcg_class' => 'OPCG Class',
+		'opcg_class_1' => 'Class 1 - Products intended for manufacturing purposes',
+		'opcg_class_2' => 'Class 2 - Restricted or commercial products',
+		'opcg_class_3' => 'Class 3 - Restricted or commercial products',
+		'opcg_class_4' => 'Class 4 - Restricted or commercial products',
+		'opcg_class_5' => 'Class 5 - Domestic products intended for household use',
+		'opcg_class_6' => 'Class 6 - Domestic products intended for household use',
+		'opcg_class_7' => 'Class 7 - Controlled sale products (domestic or restricted)',
+		'opcg_class_8' => 'Class 8 - Domestic products that are banned for sale and use',
+		'opcg_class_9' => 'Class 9 - Pesticides are ingredients in products for use only under exceptions to the ban',
+		'opcg_class_10' => 'Class 10 - Pesticides are ingredients in products for the poisonous plant exception',
+		'opcg_class_11' => 'Class 11 - Pesticides are ingredients in products for cosmetic uses under the ban',
+	);

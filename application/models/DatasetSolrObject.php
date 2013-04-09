@@ -22,8 +22,12 @@ class DatasetSolrObject {
 		$this->add(array('name' => 'description', 'value' => htmlspecialchars(strip_tags($ds->description))));
 
 		//Secondary attributes
+		
 		foreach ($ds->getSecondaryAttributes() as $attrib) {
 			$this->add($attrib);
+
+			$translated = array('name' => 'translated', 'value' => i18n::t($attrib['value']));
+			$this->add($translated);
 		}
 	}
 
