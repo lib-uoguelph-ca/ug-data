@@ -26,7 +26,7 @@ class DatasetSolrObject {
 		foreach ($ds->getSecondaryAttributes() as $attrib) {
 			$this->add($attrib);
 
-			$translated = array('name' => 'translated', 'value' => i18n::t($attrib['value']));
+			$translated = array('name' => 'translated', 'value' => i18n::t($attrib['value'], 'en_long'));
 			$this->add($translated);
 		}
 	}
