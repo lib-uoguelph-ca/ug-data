@@ -8,16 +8,16 @@
 {{ Form::label('opcg_class', i18n::t('opcg_class')); }}
 {{ Form::select('opcg_class', array(
 		'' => '',
-		'opcg_class1' => 'Class 1 - Products intended for manufacturing purposes',
-		'opcg_class2' => 'Class 2 - Restricted or commercial products',
-		'opcg_class3' => 'Class 3 - Restricted or commercial products',
-		'opcg_class4' => 'Class 4 - Restricted or commercial products',
-		'opcg_class5' => 'Class 5 - Domestic products intended for household use',
-		'opcg_class6' => 'Class 6 - Domestic products intended for household use',
-		'opcg_class7' => 'Class 7 - Controlled sale products (domestic or restricted)',
-		'opcg_class8' => 'Class 8 - Domestic products that are banned for sale and use',
-		'opcg_class9' => 'Class 9 - Pesticides are ingredients in products for use only under exceptions to the ban',
-		'opcg_class10' => 'Class 10 - Pesticides are ingredients in products for the poisonous plant exception',
-		'opcg_class11' => 'Class 11 - Pesticides are ingredients in products for cosmetic uses under the ban',
+		'opcg_class1' => i18n::t('opcg_class1', 'en_long'),
+		'opcg_class2' => i18n::t('opcg_class2', 'en_long'),
+		'opcg_class3' => i18n::t('opcg_class3', 'en_long'),
+		'opcg_class4' => i18n::t('opcg_class4', 'en_long'),
+		'opcg_class5' => i18n::t('opcg_class5', 'en_long'),
+		'opcg_class6' => i18n::t('opcg_class6', 'en_long'),
+		'opcg_class7' => i18n::t('opcg_class7', 'en_long'),
+		'opcg_class8' => i18n::t('opcg_class8', 'en_long'),
+		'opcg_class9' => i18n::t('opcg_class9', 'en_long'),
+		'opcg_class10' => i18n::t('opcg_class10', 'en_long'),
+		'opcg_class11' => i18n::t('opcg_class11', 'en_long'),
 	), $input['opcg_class'], array('multiple' => 'true', 'id' => 'opcg_class')); }}
 </fieldset>
